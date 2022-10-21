@@ -1,14 +1,19 @@
 ---
-description: 페이지 설명
+description: 2022년-10월-21일 (금)
 ---
 
-# 첫번째 페이지
+# devlog 오픈
 
-### 첫 번째 페이지 제목 h3?
+### ㅇ
 
+### 프론트엔드 개발 기술 공유 블로그
 
-
-* 이건 마크다운 형식
-
-1. 마크다운
+* React
+* TypeScript
+* Redux
+* Recoil
+* JavaScript
+* node.js
+* Express
+* MongoDB
 

@@ -1,3 +1,3 @@
 # Table of contents
 
-* [첫번째 페이지](README.md)
+* [devlog 오픈](README.md)
