@@ -1,19 +1,15 @@
 ---
-description: 2022년-10월-21일 (금)
+description: 2022년-10월-21일 (금) ~ ing
 ---
 
-# devlog 오픈
+# Home
 
-### ㅇ
 
-### 프론트엔드 개발 기술 공유 블로그
 
-* React
-* TypeScript
-* Redux
-* Recoil
-* JavaScript
-* node.js
-* Express
-* MongoDB
+### 안녕하세요
+
+30s\_coding 의 devlog 입니다.\
+잘 부탁드립니다
+
+
 
