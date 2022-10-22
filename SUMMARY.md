@@ -11,4 +11,4 @@
   * [Recoil](home/recoil.md)
   * [Express.js](home/express.js.md)
   * [MongoDB](home/mongodb.md)
-  * [Heroku](home/heroku.md)
+  * [Heroku 배포 & 개발 환경 세팅](home/heroku-and.md)
