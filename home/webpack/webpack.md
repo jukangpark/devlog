@@ -234,3 +234,5 @@ module.exports = {
 // babel.config.js 파일을 만들어 구성합니다.
 
 ```
+
+written by [Jkng\_96](https://app.gitbook.com/u/LsUgwzw6eIN96tulpoOPoAFwwhm1 "mention")
