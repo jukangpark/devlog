@@ -12,7 +12,7 @@ description: webpack.config.js 직접 설정하기
 npm i webpack webpack-cli -D
 ```
 
-### webpack.config.js 파일 생
+### webpack.config.js 파일 생성
 
 <pre class="language-javascript"><code class="lang-javascript">const path = require("path");
 // node.js 의 모듈 중 하나, node.js 는 경로를 맞추기 위해 Path 모듈을 제공한다.
