@@ -1,6 +1,8 @@
 # Table of contents
 
 * [Home](README.md)
+  * [JavaScript](home/javascript/README.md)
+    * [Closure](home/javascript/closure.md)
   * [React](home/react.md)
   * [Webpack](home/webpack/README.md)
     * [Webpack Concepts](home/webpack/webpack-concepts.md)
