@@ -6,7 +6,7 @@ description: 기존과 달라진 ES6 에서의 순회와 이터러블 / 이터�
 
 
 
-<figure><img src="../../.gitbook/assets/스크린샷 2022-10-25 오후 5.29.34.png" alt=""><figcaption><p>이터레이션 프로토콜</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-10-25 오후 5.29.34.png" alt=""><figcaption><p>이터레이션 프로토콜</p></figcaption></figure>
 
 ### 이터레이션 프로토콜이 왜 필요한가?
 
@@ -18,7 +18,7 @@ es6에서 부터 달라진 순회\
 소비자가 효율적으로 다양한 데이터 소스를 사용할 수 있도록 \
 데이터 소비자와 데이터 소스를 연결하는 인터페이스의 역할을 한다.
 
-<figure><img src="../../.gitbook/assets/스크린샷 2022-10-27 오후 3.35.53.png" alt=""><figcaption><p>이터러블은 데이터 소비자와 데이터 소스를 연결하는 인터페이스</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-10-27 오후 3.35.53.png" alt=""><figcaption><p>이터러블은 데이터 소비자와 데이터 소스를 연결하는 인터페이스</p></figcaption></figure>
 
 ES6 에서 제공하는 '빌트인 이터러블'
 
@@ -172,7 +172,7 @@ console.log(newObj); // { a: 1, b: 2}
 
 
 
-<figure><img src="../../.gitbook/assets/스크린샷 2022-10-25 오후 5.26.10.png" alt=""><figcaption><p>이터러블 / 이터레이터 프로토콜 동작 원리</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-10-25 오후 5.26.10.png" alt=""><figcaption><p>이터러블 / 이터레이터 프로토콜 동작 원리</p></figcaption></figure>
 
 ### 사용자 정의 이터러블 만들어보기
 
@@ -322,7 +322,7 @@ string.length // 4
 console.log(Object.getPrototypeOf(string));
 ```
 
-<figure><img src="../../.gitbook/assets/스크린샷 2022-10-27 오후 8.25.06.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-10-27 오후 8.25.06.png" alt=""><figcaption></figcaption></figure>
 
 
 

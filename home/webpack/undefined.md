@@ -367,7 +367,7 @@ JavaScript 가 실행이 됩니다. \
 npm i @loadable/component
 ```
 
-<figure><img src="../../.gitbook/assets/스크린샷 2022-10-24 오전 11.28.05.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-10-24 오전 11.28.05.png" alt=""><figcaption></figcaption></figure>
 
 Loadable Components 는 코드 분할을 편하게 하도록 도와주는 서드파티 라이브러리 이다. \
 가장 큰 장점은 서버 사이드 렌더링을 지원한다. \
