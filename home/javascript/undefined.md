@@ -286,10 +286,10 @@ for (let i = 0; i < arrayLike.length; i++) {
 }
 ```
 
+
+
 유사 배열 객체는 이터러블이 아닌 일반 객체다.\
 따라서 유사 배열 객체에는 Symbol.iterator 메서드가 없기 때문에, for ... of 문으로 순회할 수 없다.
-
-
 
 ```javascript
 // 유사 배열 객체는 이터러블이 아니기 때문에 for ... of 문으로 순회할 수 없다.
@@ -300,13 +300,23 @@ for ( const item of arrayLike ) {
 // -> TypeError: arrayLike is not iterable
 ```
 
+단, arguments(함수의 매개변수 객체), NodeList, HTMLCollection, String \
+은 유사 배열 객체이면서 이터러블이다.\
+정확히 말하면 ES6 에서 이터러블이 도입되면서,\
+유사 배열 객체인 arguments, NodeList, HTMLCollection 객체, String 에 Symbol.iterator 메서드를 구현하여\
+이터러블이 되었다. \
+하지만 이터러블이 된 이후에도 length 프로퍼티를 가지며 \
+인덱스로 접근할 수 있는 것에는 변함이 없으므로 유사 배열 객체이면서 이터러블이다.\
+배열도 마찬가지로 ES6 에서 이터러블이 도입되면서 Symbol.iterator 메서드를 구현하여 이터러블이 되었다.\
+문자열은 원시형 데이터이지만, 객체처럼 접근하여 length 프로퍼티를 가질 수 있다.\
+원시형 데이터를 객체처럼 사용할 수 있도록 임시 변환하는 작업을 박싱(Boxing) 이라 하는데,\
+이렇게 변환된 문자열 객체도 유사 배열 객체이기 때문에 순회가 가능하다.
 
 
 
-
-
-
-
+> 참조 \
+> [https://dev.to/capscode/what-is-array-like-object-in-javascript-3f5m](https://dev.to/capscode/what-is-array-like-object-in-javascript-3f5m)\
+> [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration\_protocols](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration\_protocols)
 
 
 
