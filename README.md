@@ -13,3 +13,7 @@ description: 2022년-10월-21일 (금) ~ ing
 
 
 
+[https://www.youtube.com/channel/UCJoqs9hXVD2gdZusrhSRN9A](https://www.youtube.com/channel/UCJoqs9hXVD2gdZusrhSRN9A)
+
+
+
