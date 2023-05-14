@@ -66,8 +66,8 @@ const iterator = array[Symbol.iterator]();
 console.log('next' in iterator); // true
 ```
 
-****\
-****이터레이터의 next 메소드를 호출하면 \
+\
+이터레이터의 next 메소드를 호출하면 \
 value, done 프로퍼티를 갖는 **이터레이터 리절트(iterator result) 객체를 반환한다.**
 
 ```javascript

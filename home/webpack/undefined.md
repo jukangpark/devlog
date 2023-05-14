@@ -62,7 +62,7 @@ webpack-demo
 |- /node_modules
 ```
 
-****
+
 
 **another-module.js**
 
@@ -72,7 +72,7 @@ import _ from 'lodash';
 console.log(_.join(['Another', 'module', 'loaded!'], ' '));
 ```
 
-****
+
 
 **webpack.config.js**
 
