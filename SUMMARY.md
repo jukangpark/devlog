@@ -15,6 +15,8 @@
         * [O(n2)](home/and/undefined-1/undefined/o-n2.md)
         * [O(2n)](home/and/undefined-1/undefined/o-2n.md)
         * [O(n!)](home/and/undefined-1/undefined/o-n-1.md)
+    * [데이터 구조](home/and/undefined-2/README.md)
+      * [선형 데이터 구조](home/and/undefined-2/undefined.md)
   * [JavaScript](home/javascript/README.md)
     * [Closure](home/javascript/closure.md)
     * [이터러블 / 이터레이터 프로토콜](home/javascript/undefined.md)
