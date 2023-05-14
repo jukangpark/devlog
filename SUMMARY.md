@@ -6,6 +6,7 @@
       * [선형 및 이진 탐색](home/and/undefined/undefined/README.md)
         * [선형 탐색](home/and/undefined/undefined/undefined.md)
       * [정렬 알고리즘](home/and/undefined/undefined-1.md)
+    * [알고리즘 분석](home/and/undefined-1.md)
   * [JavaScript](home/javascript/README.md)
     * [Closure](home/javascript/closure.md)
     * [이터러블 / 이터레이터 프로토콜](home/javascript/undefined.md)
