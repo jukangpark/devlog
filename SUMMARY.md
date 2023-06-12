@@ -7,7 +7,7 @@
         * [선형 탐색](home/and/undefined/undefined/undefined.md)
       * [정렬 알고리즘](home/and/undefined/undefined-1.md)
     * [알고리즘 분석](home/and/undefined-1/README.md)
-      * [빅 오 표기법](home/and/undefined-1/undefined/README.md)
+      * [빅 오 표기법](home/and/undefined-1/undefined/README.md)
         * [O(1)](home/and/undefined-1/undefined/o-1.md)
         * [O(log n)](home/and/undefined-1/undefined/o-log-n.md)
         * [O(n)](home/and/undefined-1/undefined/o-n.md)
