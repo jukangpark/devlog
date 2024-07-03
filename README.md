@@ -8,7 +8,7 @@ description: 2022년-10월-21일 (금) ~ ing
 
 ### 안녕하세요
 
-30s\_coding 의 devlog 입니다.\
+CodeKingAcademy 기술 블로그 입니다.\
 잘 부탁드립니다
 
 
