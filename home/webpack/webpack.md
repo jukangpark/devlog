@@ -236,4 +236,4 @@ module.exports = {
 
 ```
 
-written by [Jkng\_96](http://localhost:5000/u/LsUgwzw6eIN96tulpoOPoAFwwhm1 "mention")
+written by [Jkng\_96](https://app.gitbook.com/u/LsUgwzw6eIN96tulpoOPoAFwwhm1 "mention")

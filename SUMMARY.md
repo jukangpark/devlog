@@ -35,5 +35,5 @@
   * [Express.js](home/express.js.md)
   * [MongoDB](home/mongodb.md)
     * [Document vs Collection](home/mongodb/document-vs-collection.md)
-  * [Heroku 배포 & 개발 환경 세팅](home/heroku-and.md)
   * [Lerna 로 monoRepo 구성하기](home/lerna-monorepo.md)
+  * [E2E 자동화 테스트](home/e2e.md)
