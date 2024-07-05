@@ -11,6 +11,7 @@
   * [Ajax 요청 취소와 자동완성](home/ajax.md)
   * [조금 일하는데 빨리 개발하고싶어요](home/undefined-5.md)
   * [그건 잘못된 구조입니다 갈등 해결](home/undefined-6.md)
+  * [Recoil 활용하면 이거 재렌더링 막을 수 있는데](home/recoil.md)
   * [JavaScript](home/javascript/README.md)
     * [Closure](home/javascript/closure.md)
     * [이터러블 / 이터레이터 프로토콜](home/javascript/undefined.md)
