@@ -5,6 +5,7 @@
   * [피그마 같은 데이터 시각화 편집툴을 만들자고?](home/undefined.md)
   * [주니어가 토큰 관리를 내맘대로? 어떻게?](home/undefined-1.md)
   * [상대 좌표계 라이브러리의 한계를 극복?](home/undefined-2.md)
+  * [서로의 행위를 존중해주는 실시간 undo / redo](home/undo-redo.md)
   * [JavaScript](home/javascript/README.md)
     * [Closure](home/javascript/closure.md)
     * [이터러블 / 이터레이터 프로토콜](home/javascript/undefined.md)
