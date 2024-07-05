@@ -6,6 +6,8 @@
   * [주니어가 토큰 관리를 내맘대로? 어떻게?](home/undefined-1.md)
   * [상대 좌표계 라이브러리의 한계를 극복?](home/undefined-2.md)
   * [서로의 행위를 존중해주는 실시간 undo / redo](home/undo-redo.md)
+  * [버그를 픽스 했더니 또 다른 버그가?](home/undefined-3.md)
+  * [너무 다른 테스트 환경들 다 맞춰줘야해?](home/undefined-4.md)
   * [JavaScript](home/javascript/README.md)
     * [Closure](home/javascript/closure.md)
     * [이터러블 / 이터레이터 프로토콜](home/javascript/undefined.md)
