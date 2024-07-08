@@ -22,4 +22,5 @@
     * [Webpack Concepts](home/webpack/webpack-concepts.md)
     * [Webpack 설정하기](home/webpack/webpack.md)
     * [코드 스플리팅](home/webpack/undefined.md)
-  * [E2E 자동화 테스트](home/e2e.md)
+  * [테스트를 더 효율적으로 할 수 없을까?](home/undefined-8.md)
+  * [오픈소스 컨트리뷰터가 되고 싶어요](home/undefined-9.md)
