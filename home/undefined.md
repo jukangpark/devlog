@@ -8,7 +8,7 @@ description: 피그마 같은 편집툴을 만드려면 2명이선 너무 공수
 만들게 된 계기는 기존에 회사내에 존재하던 Builder R2 라고 불리는 \
 데이터 시각화 편집 툴이 AngularJS 로 구축되어있었는데
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>기존에 존재하던 Builder R2</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>기존에 존재하던 Builder R2</p></figcaption></figure>
 
 \
 너무 오래 되기도 하였고, 앞으로 ReactJS 을 중심으로 프론트엔드 생태계가 변화하다보니,\
@@ -32,7 +32,7 @@ Builder R3 도 출시하게 되었다.&#x20;
 당시 나와 같이 협업하기로 한 선임 백엔드 개발자와 함께 논의하기 시작했다.\
 
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>기획을 바탕으로 나오게된 피그마 디자인</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>기획을 바탕으로 나오게된 피그마 디자인</p></figcaption></figure>
 
 
 
