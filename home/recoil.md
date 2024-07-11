@@ -1,5 +1,8 @@
 ---
 description: 아니 내가 변경한 노드들만 재렌더링 하고 싶다니깐요? 너무 성능이 떨어지니까 지금 구조는 ㅋㅋ
+cover: >-
+  https://images.unsplash.com/photo-1633998860530-d5ebf1e2018e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw0fHxhdG9tfGVufDB8fHx8MTcyMDY4NjkyMnww&ixlib=rb-4.0.3&q=85
+coverY: 0
 ---
 
 # Recoil 활용하면 이거 재렌더링 막을 수 있는데
