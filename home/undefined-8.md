@@ -1,5 +1,8 @@
 ---
 description: 리팩토링을 해야하는 이유와 실무에서의 적용 사례
+cover: >-
+  https://images.unsplash.com/photo-1514975440715-7b6852af4ee7?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw3fHxjbGVhbnxlbnwwfHx8fDE3MjA2ODY4NDF8MA&ixlib=rb-4.0.3&q=85
+coverY: 0
 ---
 
 # 리팩토링 : 클린 코드를 향해
