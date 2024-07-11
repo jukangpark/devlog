@@ -98,9 +98,21 @@ DOMS 제작 초기에는 사업을 진행하기 위해 각 대시보드를 구�
 
 ### Rack 모델 사고 싶어요
 
+DOMS 초창기에는 3D 랙 모델이 존재하지 않았기 때문에, 정육면체 박스에 이미지를 입히는 형태로 사업을 나갔다.\
+나는 회사에 새로운 랙 모델을 구매하자고 제안 하고 싶었지만 여러 절차가 있어서, 관련 절차가 복잡하다는 판단하에 상업적으로 구매가 가능한 랙 모델 라이센스를 나의 사비를 들여 구매하고 실제 DOMS 프로젝트에서 실험 해보고 싶었다.\
 
 
-<figure><img src="../.gitbook/assets/스크린샷 2022-10-05 오전 11.14.51.png" alt=""><figcaption></figcaption></figure>
+랙 모델을 쇼핑하기 시작했다.
+
+<figure><img src="../.gitbook/assets/스크린샷 2022-10-05 오전 11.14.51.png" alt=""><figcaption><p>3D 모델을 판매하는 TURBOSQUID</p></figcaption></figure>
+
+
+
+<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption><p>참지 못하고 구매하여 적용하였다</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>적용된 모습</p></figcaption></figure>
+
+
 
 
 
@@ -114,7 +126,7 @@ DOMS 제작 초기에는 사업을 진행하기 위해 각 대시보드를 구�
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>카메라 버튼으로 2D 뷰 전환</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>예약 모드 장비를 예약 할 수 있는 기</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>예약 모드 장비를 예약 할 수 있는 기능</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>자산 정보 관리 랙을 선택하면 꽂힌 장비 목록을 볼 수 있고, 전체적인 그룹별 랙과 장비를 모두 관리 할 수 있다.</p></figcaption></figure>
 
@@ -128,7 +140,7 @@ DOMS 는 QA 팀을 거쳐 여러 테스트를 거친 이후에  제품으로서 
 
 <div align="left" data-full-width="false">
 
-<figure><img src="../.gitbook/assets/IMG_9595 (2).PNG" alt="" width="563"><figcaption><p>DOMS 제품화 패키지</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/IMG_9595 (2).PNG" alt="" width="563"><figcaption><p>DOMS 제품 패키지</p></figcaption></figure>
 
 </div>
 
