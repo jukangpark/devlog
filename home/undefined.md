@@ -104,17 +104,17 @@ DOMS 초창기에는 3D 랙 모델이 존재하지 않았기 때문에, 정육�
 
 랙 모델을 쇼핑하기 시작했다.
 
-<figure><img src="../.gitbook/assets/스크린샷 2022-10-05 오전 11.14.51.png" alt=""><figcaption><p>3D 모델을 판매하는 TURBOSQUID</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/스크린샷 2022-10-05 오전 11.14.51.png" alt="" width="375"><figcaption><p>3D 모델을 판매하는 TURBOSQUID</p></figcaption></figure>
 
 
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption><p>참지 못하고 구매하여 적용하였다</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (18).png" alt="" width="375"><figcaption><p>참지 못하고 구매하여 적용하였다</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/line 색 #888888.png" alt=""><figcaption><p>기존의 DOMS 랙 모델의 형태는 이런식으로 이미지를 매핑한 모델이었다.</p></figcaption></figure>
+
+
 
 <figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>적용된 모습</p></figcaption></figure>
-
-
-
-
 
 
 
@@ -122,7 +122,7 @@ DOMS 초창기에는 3D 랙 모델이 존재하지 않았기 때문에, 정육�
 
 <figure><img src="../.gitbook/assets/스크린샷 2022-11-29 오후 4.58.53.png" alt=""><figcaption><p>초창기 DOMS 의 모습</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>새로운 랙 모델 추가와  전체적인 디자인의 개선된 DOMS</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>새로운 랙 모델 추가와  전체적인 디자인이 개선된 DOMS</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>카메라 버튼으로 2D 뷰 전환</p></figcaption></figure>
 
