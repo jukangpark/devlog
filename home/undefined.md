@@ -60,11 +60,7 @@ coverY: 0
 각 컴포넌트들은 어떤 역할을 맡게 되고, 어떤 행위를 할지 나누기 시작한다.\
 
 
-
-
-
-
-
+<figure><img src="../.gitbook/assets/아이디어 스케치 노트북ㅇㅇㅇ-2 (1).jpg" alt=""><figcaption><p>컴포넌트와 데이터 스키마 설계 아이디어 스케치</p></figcaption></figure>
 
 \
 \
