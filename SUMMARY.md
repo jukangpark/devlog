@@ -14,3 +14,4 @@
   * [웹 성능 지표 개선하기](home/undefined-5.md)
   * [테스트를 더 효율적으로 할 수 없을까?](home/undefined-6.md)
   * [오픈소스 컨트리뷰터가 되고 싶어요](home/undefined-7.md)
+  * [리팩토링 : 클린 코드를 향해](home/undefined-8.md)
