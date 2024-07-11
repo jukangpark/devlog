@@ -1,9 +1,9 @@
 ---
-description: jest jest jest 또 테스트 코드 작성 안했죠?
+description: 절대 좌표계 지원안해주면 우리 이 제품 못만들어요,, 4주동안 하나의 문제를 고민
 cover: >-
-  https://images.unsplash.com/photo-1621905251189-08b45d6a269e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw3fHxmaXh8ZW58MHx8fHwxNzIwNTk0MTE2fDA&ixlib=rb-4.0.3&q=85
+  https://images.unsplash.com/photo-1577784933312-84961dbe18fd?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwxfHxsaW1pdHxlbnwwfHx8fDE3MjA1OTQwNjJ8MA&ixlib=rb-4.0.3&q=85
 coverY: 0
 ---
 
-# 버그를 픽스 했더니 또 다른 버그가?
+# 상대 좌표계 라이브러리의 한계를 극복?
 
