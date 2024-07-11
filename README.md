@@ -1,5 +1,8 @@
 ---
 description: 저의 블로그에 오신걸 환영합니다! :D
+cover: >-
+  https://images.unsplash.com/photo-1633356122544-f134324a6cee?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwxfHxyZWFjdHxlbnwwfHx8fDE3MjA1OTUyNzV8MA&ixlib=rb-4.0.3&q=85
+coverY: 0
 ---
 
 # Home

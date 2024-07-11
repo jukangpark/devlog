@@ -1,72 +1,49 @@
 ---
-description: 웹 성능 지표 개선을 왜 해야하지? 유저는 예민해 ㅋ
+description: 효율적인 E2E 테스트는 어떻게 작성할 수 있을까
+cover: >-
+  https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw5fHx0ZXN0fGVufDB8fHx8MTcyMDU5NTEzN3ww&ixlib=rb-4.0.3&q=85
+coverY: 0
 ---
 
-# 페이지가 너무 늦게 뜨잖아요?
+# 테스트를 더 효율적으로 할 수 없을까?
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Performance Insights</p></figcaption></figure>
-
-Lighthouse 패널에서 웹 성능 지표 측정하기
+<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption><p>Builder R3 v1.0 기능 리스트</p></figcaption></figure>
 
 
 
-### First Contentful Paint (FCP)
-
-사용자에게 처음으로 콘텐츠가 표시되는 시점을 의미\
-콘텐츠는 텍스트, 이미지, 비디오 등 페이지의 주요 요소를 포함
-
-
-
-### Largest Contentful Paint (LCP)
-
-가장 큰 콘텐츠 요소가 화면에 렌더링되는 시점을 의미함. \
-이 요소는 보통 이미지, 비디오 또는 큰 텍스트 블록임
+데이터 시각화 편집툴인 Builder R3 의 출시를 앞두고, \
+기능에 대한 검증을 하기 위해 v1 기능리스트를 기반으로 내가 작성한 테스트 시나리오를 기준으로 \
+우리팀에서 먼저 테스트를 진행하였다
 
 
 
-### First Input Delay (FID)
-
-사용자가 페이지에 처음으로 인터랙션(클릭, 탭 등)을 시도할 때까지의 시간
+<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption><p>테스트 시나리오를 기반으로 테스트를 진행</p></figcaption></figure>
 
 
 
-### Time to Interactive (TTI)
-
-페이지가 완전히 상호작용 가능한 상태가 되는 데 걸리는 시간\
-이 시점 이후에는 사용자가 페이지와 자유롭게 상호작용할 수 있음
+테스트를 진행하다 보니, 여러가지 문제에 부딪혔다.\
+사람마다 테스트의 결과가 달랐고, 테스트 결과에 자신의 주관이 들어갔다
 
 
 
-### Total Blocking Time (TBT)
-
-FCP와 TTI 사이에 메인 스레드가 차단된 시간의 합
-
-
-
-### Cumulative Layout Shift (CLS)
-
-페이지 요소의 예상치 못한 레이아웃 이동을 측정함 \
-시각적 안정성을 나타냄
-
-***
+회사에 전문 기획자가 없었고, 각 기능에 대하여 개발자들이 정의하고, 기획한 내용들이 많아서\
+이런 내용들이 모두 공유되지 않았기 때문에 이런 문제점들이 발생하였다.
 
 
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>2024 년 7월 8일 Light House 측정 결과</p></figcaption></figure>
+그리고 각 테스트를 진행하는 사람들의 환경이 너무 달랐고, (OS, 브라우저 등등)\
+업무 생산성이 떨어진다는 느낌을 받았다.
 
 
 
-### 코드 스플리팅과 lazy loading
+회사에서 E2E 자동화 테스트 툴을 사용하여 테스팅을 했던 사례가 없어서, \
+PlayWright 나 Cypress 같은 툴을 활용하여 자동화 테스트를 사용해보고 \
+사내 테스트 효율성을 더 극대화 하고 싶었다.
 
 
 
-[https://webpack.js.org/guides/code-splitting/#root](https://webpack.js.org/guides/code-splitting/#root)
-
-[https://webpack.js.org/guides/lazy-loading/#root](https://webpack.js.org/guides/lazy-loading/#root)
-
-
-
-
+[https://playwright.dev/](https://playwright.dev/)\
+[https://www.cypress.io/](https://www.cypress.io/)
 
 
 
