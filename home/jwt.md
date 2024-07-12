@@ -17,9 +17,16 @@ coverY: 0
 이 글에서 JWT 에 대한 기본적인 개념과 Axios 의 인터셉터를 활용하여 실제 프로젝트에 인증 및 재발행 시스템을 구현한 기술적인 내용을 다루고자 한다.\
 
 
+
+
 ### JWT 토큰이란
 
-[JWT (Json Web Token)](https://jwt.io/introduction) 토큰은 클라이언트와 서버 간에 정보를 안전하게 전송하기 위한 컴팩트하고, 독립적인 방식의 토큰이다. JWT 는 JSON 객체를 사용하여 정보를 저장하며, 이 정보는 디지털 서명되어 있어 인증 및 정보 무결성을 보장할 수 있다.
+JSON Web Token (JWT) is an open standard ([RFC 7519](https://tools.ietf.org/html/rfc7519)) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the **HMAC** algorithm) or a public/private key pair using **RSA** or **ECDSA**.
+
+Although JWTs can be encrypted to also provide secrecy between parties, we will focus on _signed_ tokens. Signed tokens can verify the _integrity_ of the claims contained within it, while encrypted tokens _hide_ those claims from other parties. When tokens are signed using public/private key pairs, the signature also certifies that only the party holding the private key is the one that signed it.
+
+공식문서의 정의를 한글로 요약하면,\
+[JWT (Json Web Token)](https://jwt.io/introduction) 토큰은 정보의 안전한 전송을 위해 JSON 객체 형태로 정보를 담아 디지털 서명으로 신뢰성을 보장하는 개방형 표준이다. JWT는 HMAC 알고리즘을 사용한 비밀 키 또는 RSA나 ECDSA를 사용한 공개/개인 키 쌍으로 서명될 수 있으며, 서명된 토큰은 그 안의 정보 무결성을 검증할 수 있다.
 
 
 
@@ -39,8 +46,7 @@ JWT 는 3가지의 부분으로 구성되어있다.
 
 ### 헤더 (Header)
 
-JWT 의 유형과 서명 알고리즘을 지정한다.\
-ex)
+JWT 의 유형과 서명 알고리즘을 지정한다.
 
 ```json
 {
@@ -49,27 +55,38 @@ ex)
 }
 ```
 
-Base64Url 로 인코딩된 헤더
-
-```json
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-```
-
-
-
 
 
 ### 페이로드 (Payload)
 
-JWT 가 저장하는 클레임(Claim)을 포함한다. 클레임은 토큰에 담고자 하는 정보이며, 보통 다음과 같은 세 가지 유형으로 나뉜다.
+JWT 가 저장하는 클레임(Claim)을 포함한다. 클레임은 토큰에 담고자 하는 정보이며, \
+보통 다음과 같은 세 가지 유형으로 나뉜다.
 
+1.  등록된 클레임 (Registered claims): 등록된 클레임은 JWT 표준에 의해 정의된 사전 정해진 클레임으로, 특정 목적을 위해 사용된다. 이러한 클레임은 JWT의 상호 운용성을 보장하기 위해 정해진 것이다. 대표적인 등록된 클레임은 다음과 같다:\
+    • iss (issuer): 토큰을 발급한 주체
 
+    • sub (subject): 토큰의 주제나 사용자
 
-1. 등록된 클레임 (Registered claims): iss(발급자), exp(만료시간), sub(주제), aud(청중) 등
-2. 공개 클레임 (Public claims) : 충돌을 방지하기 위해 IANA JSON Web Token Registry 또는 URI 형식을 통해 정의된 클레임
-3. 비공개 클레임 (Private claims) : 양 당사자 간에 사용하기 위해 정의된 클레임
+    • aud (audience): 토큰의 수신자
 
-ex)
+    • exp (expiration): 토큰의 만료 시간
+
+    • nbf (not before): 토큰이 유효해지기 시작하는 시간
+
+    • iat (issued at): 토큰이 발급된 시간
+
+    • jti (JWT ID): 토큰의 고유 식별자\
+
+2.  공개 클레임 (Public claims) : 충돌을 방지하기 위해 IANA JSON Web Token Registry 또는 URI 형식을 통해 정의된 클레임\
+    • name: 사용자 이름
+
+    • email: 사용자 이메일 주소\
+
+3.  비공개 클레임 (Private claims) : 공개적으로 사용되지 않으며, 클레임 이름과 의미가 해당 시스템 내에서만 이해되고 처리된다. 따라서 특정 애플리케이션이나 시스템 요구 사항에 맞춰 자유롭게 정의될 수 있다.\
+    예를 들어,\
+    • user\_id: 사용자 ID
+
+    • role: 사용자 역할
 
 ```json
 {
@@ -77,12 +94,6 @@ ex)
   "name": "John Doe",
   "iat": 1516239022
 }
-```
-
-Base64Url로 인코딩된 페이로드&#x20;
-
-```
-eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ
 ```
 
 
@@ -102,11 +113,7 @@ HMACSHA256(
   secret)
 ```
 
-ex)
 
-```
-SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-```
 
 
 
