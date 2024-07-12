@@ -125,10 +125,6 @@ JWT 를 가지고 연습하려면 [jwt.io.Debbugger](https://jwt.io/#debugger-io
 
 
 
-
-
-
-
 ### JWT 장점과 단점
 
 #### 장점
@@ -168,26 +164,79 @@ HTTP 헤더를 통해 JWT 토큰을 보내는 경우 너무 커지는 것을 방
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>인증 과정</p></figcaption></figure>
 
-위와 같은 형태로 클라이언트에서 인증 구조를 구현하려고 했다. 그러면 여기서 잠깐 accessToken 과 refresh Token 차이가 무엇일까?
+위와 같은 형태로 클라이언트에서 인증 구조를 구현하려고 했다. 그러면 여기서 잠깐 Access Token 과 Refresh Token 차이가 무엇일까?
 
 
 
 ### AccessToken vs RefreshToken
 
-AccessToken 은&#x20;
+#### Access Token:
+
+• 목적: 리소스 접근 권한 증명\
+• 수명: 짧음 (몇 분에서 몇 시간)\
+• 사용 방식: 요청 시 토큰 전송\
+• 보안 측면: 짧은 수명으로 보안성 향상
+
+#### Refresh Token:
+
+• 목적: 새로운 Access Token 발급\
+• 수명: 김 (몇 주에서 몇 달)\
+• 사용 방식: Access Token 만료 시 갱신 요청\
+• 보안 측면: 안전한 저장 필요, 높은 보안 기준 요구
 
 
 
-
+요약 : 이 2개의 토큰을 사용하여 보안과 사용자  경험 모두 최적화 할 수 있다. \
+Access Token 을 짧게 유지하여 보안을 강화하고, \
+Refresh Token 을 통해 사용자 로그인 빈도를 줄여 편의성을 높일 수 있다.
 
 
 
 ### 요청과 응답을 가로채자
 
-그럼 이제 기본적인 개념들과 설계 방향성에 대하여 모두 알았으니, 실제로 Axios 의 인터셉터를 사용하여 요청와 응답을 가로채보자.
+그럼 이제 기본적인 개념들과 설계 방향성에 대하여 모두 알았으니, 실제로 Axios 의 [인터셉터](https://axios-http.com/kr/docs/interceptors)를 사용하여 요청와 응답을 가로채보자. 공식문서를 보면 then 또는 catch 로 처리되기 전에 요청과 응답을 가로챌 수 있다고 되어있다.\
+Promise 와 관련된 배경지식이 부족하다면 [여기](https://www.instagram.com/p/C3PFvcYSmO\_/?img\_index=1)를 보고 오자.
+
+```javascript
+// 요청 인터셉터 추가하기
+axios.interceptors.request.use(function (config) {
+    // 요청이 전달되기 전에 작업 수행
+    return config;
+  }, function (error) {
+    // 요청 오류가 있는 작업 수행
+    return Promise.reject(error);
+  });
+
+// 응답 인터셉터 추가하기
+axios.interceptors.response.use(function (response) {
+    // 2xx 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+    // 응답 데이터가 있는 작업 수행
+    return response;
+  }, function (error) {
+    // 2xx 외의 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
+    // 응답 오류가 있는 작업 수행
+    return Promise.reject(error);
+  });
+```
 
 
 
+우리는 Axios 커스텀 [인스턴스](https://axios-http.com/kr/docs/instance)를 사용하고 있었기 때문에, \
+아래와 같이 구현해야만 했다.
+
+```javascript
+const instance = axios.create();
+instance.interceptors.request.use(function () {/*...*/});
+```
+
+예제 코드를 보면 알 수 있듯이,&#x20;
+
+
+
+
+
+Access Token 이 만료가 되었을 때 errorCode 는 5001 이고\
+만약 Access Token 이 유효하지 않은 경우의 errorCode 는 \
 
 
 
@@ -195,6 +244,8 @@ AccessToken 은&#x20;
 ### AccessToken 재발급 받고 어떻게 다시 ajax 요청할까?
 
 
+
+다시 ajax 요청을 하기 위해서는 어떤 구조로 접근해야할까? 고민했었다.
 
 
 
