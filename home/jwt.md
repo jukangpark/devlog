@@ -26,7 +26,7 @@ JSON Web Token (JWT) is an open standard ([RFC 7519](https://tools.ietf.org/html
 Although JWTs can be encrypted to also provide secrecy between parties, we will focus on _signed_ tokens. Signed tokens can verify the _integrity_ of the claims contained within it, while encrypted tokens _hide_ those claims from other parties. When tokens are signed using public/private key pairs, the signature also certifies that only the party holding the private key is the one that signed it.
 
 공식문서의 정의를 한글로 요약하면,\
-[JWT (Json Web Token)](https://jwt.io/introduction) 토큰은 정보의 안전한 전송을 위해 JSON 객체 형태로 정보를 담아 디지털 서명으로 신뢰성을 보장하는 개방형 표준이다. JWT는 HMAC 알고리즘을 사용한 비밀 키 또는 RSA나 ECDSA를 사용한 공개/개인 키 쌍으로 서명될 수 있으며, 서명된 토큰은 그 안의 정보 무결성을 검증할 수 있다.
+[JWT (Json Web Token)](https://jwt.io/introduction) 토큰은 정보의 안전한 전송을 위해 JSON 객체 형태로 정보를 담아 디지털 서명으로 신뢰성을 보장하는 개방형 표준이다. JWT는 [HMAC](https://ko.wikipedia.org/wiki/HMAC) 알고리즘을 사용한 비밀 키 또는 [RSA](https://ko.wikipedia.org/wiki/RSA\_%EC%95%94%ED%98%B8)나 [ECDSA](https://ko.wikipedia.org/wiki/%ED%83%80%EC%9B%90%EA%B3%A1%EC%84%A0\_DSA)를 사용한 공개/개인 키 쌍으로 서명될 수 있으며, 서명된 토큰은 그 안의 정보 무결성을 검증할 수 있다.
 
 
 
@@ -40,18 +40,18 @@ JWT 는 3가지의 부분으로 구성되어있다.
 
 이 세 부분은 각 Base64Url 로 인코딩되며, 점(.) 으로 구분된다.
 
-
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 
 
 ### 헤더 (Header)
 
-JWT 의 유형과 서명 알고리즘을 지정한다.
+헤더는 토큰의 타입(JWT)과 서명 알고리즘(HMAC SHA256 or RSA)으로 구성된다. 여기서 alg 는 헤더를 암호화 하는 것이 아닌, Signature 를 해싱하기 위한 알고리즘을 지정하는 것이다.
 
 ```json
 {
-  "alg": "HS256",
-  "typ": "JWT"
+  "alg": "HS256", // HS256(SHA256) 또는 RSA
+  "typ": "JWT" // 토큰의 타입을 지정
 }
 ```
 
@@ -59,23 +59,23 @@ JWT 의 유형과 서명 알고리즘을 지정한다.
 
 ### 페이로드 (Payload)
 
-JWT 가 저장하는 클레임(Claim)을 포함한다. 클레임은 토큰에 담고자 하는 정보이며, \
-보통 다음과 같은 세 가지 유형으로 나뉜다.
+전달하는 정보들을 담는 곳이다. 그리고 이 정보들을 Claim 이라 부른다. payload 에 있는 정보들은 수정이 가능하여 더 많은 정보를 추가할 수 있다. 그러나 노출과 수정이 가능하기 때문에 필요한 최소한의 정보만을 담아야한다.\
+클레임은 보통 다음과 같은 세 가지 유형으로 나뉜다.
 
-1.  등록된 클레임 (Registered claims): 등록된 클레임은 JWT 표준에 의해 정의된 사전 정해진 클레임으로, 특정 목적을 위해 사용된다. 이러한 클레임은 JWT의 상호 운용성을 보장하기 위해 정해진 것이다. 대표적인 등록된 클레임은 다음과 같다:\
-    • iss (issuer): 토큰을 발급한 주체
+1.  등록된 클레임 (Registered claims): JWT 표준에 의해 이미 정의된 클레임이다. JWT 를 간결하게 하기 위해 key 는 모두 길이 3의 String 이다.\
+    • iss (issuer): 토큰 발급자
 
-    • sub (subject): 토큰의 주제나 사용자
+    • sub (subject): 토큰 제목
 
-    • aud (audience): 토큰의 수신자
+    • aud (audience): 토큰 대상자
 
-    • exp (expiration): 토큰의 만료 시간
+    • exp (expiration): 토큰 만료 시간 (NumericDate 형식) 1480849147370
 
-    • nbf (not before): 토큰이 유효해지기 시작하는 시간
+    • nbf (not before): 토큰 활성 날짜, 이 날이 지나기 전의 토큰은 활성화 되지 않음
 
-    • iat (issued at): 토큰이 발급된 시간
+    • iat (issued at): 토큰 발급 시간, 토큰 발급 이후의 경과 시간을 알 수 있음
 
-    • jti (JWT ID): 토큰의 고유 식별자\
+    • jti (JWT ID): 토큰 고유 식별자, 중복 방지를 위해 사용하며, 일회용 토큰 (AccesToken) 등에 사용\
 
 2.  공개 클레임 (Public claims) : 충돌을 방지하기 위해 IANA JSON Web Token Registry 또는 URI 형식을 통해 정의된 클레임\
     • name: 사용자 이름
@@ -92,36 +92,89 @@ JWT 가 저장하는 클레임(Claim)을 포함한다. 클레임은 토큰에 �
 {
   "sub": "1234567890",
   "name": "John Doe",
-  "iat": 1516239022
+  "admin": true
 }
 ```
 
 
 
-
-
 ### 서명 (Signature)
 
-서명을 통해 토큰의 무결성과 출처를 검증할 수 있다. \
-서명은 헤더, 페이로드, 그리고 비밀 키를 사용하여 생성된다.
+서명은 토큰을 인코딩하거나 유효성 검사를 할 때 사용하는 고유한 암호화 코드이다. 서명 (Signature) 은 위에서 만든 헤더와 페이로드의 값을 각각 Base64Url 로 인코딩하고, 인코딩한 값을 비밀키를 이용해 헤더에서 정의한 알고리즘으로 해싱을 하고, 이 값은 다시 Base64Url 로 인코딩 하여 생성한다.
 
-• 서명 생성 방법:
+
+
+예를 들어 HMAC SHA256 알고리즘을 사용하려는 경우 다음과 같은 방법으로 서명이 생성된다.
 
 ```
 HMACSHA256(
-  base64UrlEncode(header) + "." + base64UrlEncode(payload),
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
   secret)
 ```
 
+서명은 메시지가 도중에 변경되지 않았는지 확인하는 데 사용되며, 개인 키로 서명된 토큰의 경우 JWT의 발신자가 누구인지 확인할 수도 있다.
 
 
 
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+JWT 를 가지고 연습하려면 [jwt.io.Debbugger](https://jwt.io/#debugger-io) 를 decode, verify 그리고 JWT 를 생성할 때 사용하면 된다.
+
+
+
+
+
+
+
+
+
+### JWT 장점과 단점
+
+#### 장점
+
+사용자 인증에 필요한 모든 정보는 토큰 자체에 포함하기 때문에 별도의 인증 저장소가 필요없다는 것이다. 분산 마이크로 서비스 환경에서 중앙 집중식 인증 서버와 데이터베이스에 의존하지 않는 쉬운 인증 및 인가 방법을 제공한다.\
+개별 마이크로 서비스에는 토큰 검증과 검증에 필요한 비밀 키를 처리하기위한 미들웨어가 필요하다. 검증은 서명 및 클레임과 같은 몇 가지 매개 변수를 검사하는 것과 토큰이 만료되는 경우로 구성된다. JSON 웹 토큰의 사용을 권장하는 몇 가지 이유는 다음과 같다.
+
+
+
+1. URL 파라미터와 헤더로 사용
+2. 수평 스케일이 용이
+3. 디버깅 및 관리가 용이
+4. 트래픽 대한 부담이 낮음
+5. REST 서비스로 제공 가능
+6. 내장된 만료
+7. 독립적인 JWT
+
+
+
+**단점**
+
+1. 토큰은 클라이언트에 저장되어 데이터베이스에서 사용자 정보를 조작하더라도 토큰에 직접 적용할 수 없다.
+2. 더 많은 필드가 추가되면 토큰이 커질 수 있다.
+3. 비상태 애플리케이션에서 토큰은 거의 모든 요청에 대해 전송되므로 데이터 트래픽 크기에 영향을 미칠 수 있다.
+
+
+
+### JWT 를 어떻게 사용해요?
+
+HTTP 헤더를 통해 JWT 를 보내 인증을 수행하는 경우 아래와 같이 사용한다.
+
+```
+Authorization: Bearer <token>
+```
+
+HTTP 헤더를 통해 JWT 토큰을 보내는 경우 너무 커지는 것을 방지해야 한다. 일부 서버는 헤더에 8KB 이상을 허용하지 않는다. 사용자의 모든 권한을 포함하는 것처럼 JWT 토큰에 너무 많은 정보를 포함하려고 하면 Auth0 Fine-Grained Authorization과 같은 대체 솔루션이 필요할 수 있다.
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>인증 과정</p></figcaption></figure>
+
+위와 같은 형태로 클라이언트에서 인증 구조를 구현하려고 했다. 그러면 여기서 잠깐 accessToken 과 refresh Token 차이가 무엇일까?
 
 
 
 ### AccessToken vs RefreshToken
 
-
+AccessToken 은&#x20;
 
 
 
@@ -130,6 +183,8 @@ HMACSHA256(
 
 
 ### 요청과 응답을 가로채자
+
+그럼 이제 기본적인 개념들과 설계 방향성에 대하여 모두 알았으니, 실제로 Axios 의 인터셉터를 사용하여 요청와 응답을 가로채보자.
 
 
 
