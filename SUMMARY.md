@@ -5,7 +5,7 @@
   * [3D 모델링과 좌표계 설계 그리고 최적화](home/3d-1.md)
   * [JWT 토큰을 활용한 프론트엔드 인증 및 재발행 시스템 구현](home/jwt.md)
   * [피그마 같은 데이터 시각화 편집툴을 만들자고?](home/undefined.md)
-  * [gRPC 란 무엇인가?](home/grpc.md)
+  * [CRDT 란 무엇인가?](home/crdt.md)
   * [상대 좌표계 라이브러리의 한계를 극복?](home/undefined-1.md)
   * [서로의 행위를 존중해주는 실시간 undo / redo](home/undo-redo.md)
   * [버그를 픽스 했더니 또 다른 버그가?](home/undefined-2.md)
