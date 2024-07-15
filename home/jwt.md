@@ -39,7 +39,7 @@ JWT 는 3가지의 부분으로 구성되어있다.
 
 이 세 부분은 각 Base64Url 로 인코딩되며, 점(.) 으로 구분된다.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -115,7 +115,7 @@ HMACSHA256(
 
 
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 JWT 를 가지고 연습하려면 [jwt.io.Debbugger](https://jwt.io/#debugger-io) 를 decode, verify 그리고 JWT 를 생성할 때 사용하면 된다.
 
