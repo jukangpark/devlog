@@ -14,6 +14,7 @@
   * [조금 일하는데 빨리 개발하고싶어요](home/undefined-4.md)
   * [Recoil 활용하면 이거 재렌더링 막을 수 있는데](home/recoil.md)
   * [웹 성능 지표 개선하기](home/undefined-5.md)
+  * [번들링 최적화 Code Splitting](home/code-splitting.md)
   * [테스트를 더 효율적으로 할 수 없을까?](home/undefined-6.md)
   * [오픈소스 컨트리뷰터가 되고 싶어요](home/undefined-7.md)
   * [리팩토링 : 클린 코드를 향해](home/undefined-8.md)
