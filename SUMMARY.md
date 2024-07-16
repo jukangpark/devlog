@@ -23,3 +23,4 @@
   * [오픈소스 막 사용하면 안돼! 라이선스 문제](home/undefined-8.md)
   * [리팩토링 : 클린 코드를 향해](home/undefined-9.md)
   * [동기 vs 비동기, 블로킹 vs 논블로킹](home/vs-vs.md)
+  * [모두가 알지만 모두가 모르는 package.json 과 의존성 관리](home/package.json.md)
