@@ -16,6 +16,7 @@
   * [웹 성능 지표 개선하기](home/undefined-5.md)
   * [Webpack 으로 프로젝트 초기 작업 하기](home/webpack.md)
   * [번들링 최적화 Code Splitting](home/code-splitting.md)
+  * [번들링 최적화 minify, uglify](home/minify-uglify.md)
   * [모듈 시스템과 Tree-Shaking](home/tree-shaking.md)
   * [테스트를 더 효율적으로 할 수 없을까?](home/undefined-6.md)
   * [오픈소스 컨트리뷰터가 되고 싶어요](home/undefined-7.md)
