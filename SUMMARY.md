@@ -21,3 +21,4 @@
   * [오픈소스 컨트리뷰터가 되고 싶어요](home/undefined-7.md)
   * [오픈소스 막 사용하면 안돼! 라이선스 문제](home/undefined-8.md)
   * [리팩토링 : 클린 코드를 향해](home/undefined-9.md)
+  * [동기 vs 비동기, 블로킹 vs 논블로킹](home/vs-vs.md)
