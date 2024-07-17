@@ -71,16 +71,17 @@ Webpack은 다음 조건에 따라 자동으로 청크를 분할한다.
 
 ### SplitChunksPlugin / Configuration
 
-아래 설정 객체는 splitChunksPlugin 의 기본 동작을 나타낸다.
+아래 설정 객체는 splitChunksPlugin 의 기본 동작을 나타낸다. 각 설정에 대한 자세한 설명은 [여기](https://webpack.kr/plugins/split-chunks-plugin/#optimizationsplitchunks)를 참고하길 바란다.
 
 ```javascript
 module.exports = {
   //...
   optimization: {
     splitChunks: {
-      chunks: 'async',
-      minSize: 20000,
-      minRemainingSize: 0,
+      chunks: 'async', // 최적화를 위해 선택될 청크, all, async, initial 이 있다.
+      minSize: 20000, // 생성할 청크의 최소 byte 크기이다.
+      minRemainingSize: 0, 
+      // 분할 후 남아있는 청크의 최소 크기가 제한을 초과하도록 하여 크기가 0인 모듈을 방지하기 위해 
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,
@@ -101,9 +102,6 @@ module.exports = {
   },
 };
 ```
-
-\
-
 
 
 
