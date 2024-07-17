@@ -45,14 +45,65 @@ There are three general approaches to code splitting available:
 * **Prevent Duplication**: Use [Entry dependencies](https://webpack.js.org/configuration/entry-context/#dependencies) or [`SplitChunksPlugin`](https://webpack.js.org/plugins/split-chunks-plugin/) to dedupe and split chunks.
 * [**Dynamic Imports**](https://webpack.js.org/guides/code-splitting/#dynamic-imports): Split code via inline function calls within modules.
 
-위의 3가지 접근 방법 중, 우리는 [Prevent Duplication](https://webpack.kr/guides/code-splitting/#prevent-duplication) 과 [Dynamic Imports](https://webpack.kr/guides/code-splitting/#dynamic-imports)  를 사용하기로 하였다. [SplitChunksPlugin](https://webpack.kr/guides/code-splitting/#splitchunksplugin) 으로 중복 코드를 제거하고, Dynamic Imports 를 통해 모듈을 비동기로 로드하고, Code Splitting 을 통해 애플리케이션을 여러 개의 작은 청크로 분리하여 초기 로딩 시간을 단축하고자 한다.&#x20;
+위의 3가지 접근 방법 중, 우리는 [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/) 과 [Dynamic Imports](https://webpack.kr/guides/code-splitting/#dynamic-imports)  를 사용하기로 하였다. [SplitChunksPlugin](https://webpack.kr/guides/code-splitting/#splitchunksplugin) 으로 node\_modules 폴더에 있는 외부 라이브러리를 별도의 청크로 분리하고, Dynamic Imports 를 통해 모듈을 비동기로 로드하고, 애플리케이션을 여러 개의 작은 청크로 분리하여 초기 로딩 시간을 단축하고자 한다.&#x20;
 
 
 
 ### SplitChunksPlugin
 
-[`SplitChunksPlugin`](https://webpack.kr/plugins/split-chunks-plugin/)을 사용하면 기존 엔트리 청크 또는 완전히 새로운 청크로 공통 의존성을 추출할 수 있다. [`optimization.splitChunks`](https://webpack.kr/plugins/split-chunks-plugin/#optimizationsplitchunks) 설정 옵션을 적용하면 각 모듈에서 중복 의존성이 제거된 것을 확인 할 수 있다.\
-Builder R3 프로젝트에서  SplitChunksPlugin 을 사용하여, **Prevent Duplication** 한 사례를 소개하고자 한다.
+원래 청크(및 그 안에 가져온 모듈)는 webpack 내부 그래프에서 부모 - 자식 관계로 연결되어 있다. CommonsChunkPlugin 은 중복되는 의존성을 피하고자 사용되었지만, 추가 최적화는 불가능했다.\
+webpack v4 부터 optimization.splitChunks 를 위해 commonsChunkPlugin 은 제거되었다.&#x20;
+
+
+
+### SplitChunksPlugin / Defaults
+
+즉시 사용 가능한 SplitChunksPlugin 은 대부분의 사용자에게 잘 작동한다. 초기 청크를 변경하면 HTML 파일이 프로젝트를 실행하기 위해 포함해야 하는 스크립트 태그에 영향을 미치기 때문에 기본적으로 on-demand 청크에만 영향을 미친다.
+
+Webpack은 다음 조건에 따라 자동으로 청크를 분할한다.
+
+* 새 청크를 공유 할 수 있거나 모듈이 `node_modules` 폴더에 있는 경우
+* 새 청크가 20kb보다 클 경우(min+gz 이전에)
+* 요청 시 청크를 로드할 때 최대 병렬 요청 수가 30개 이하일 경우
+* 초기 페이지 로드 시 최대 병렬 요청 수가 30개 이하일 경우
+
+마지막 두 가지 조건을 충족하려고 할 때 더 큰 청크가 선호된다.
+
+### SplitChunksPlugin / Configuration
+
+아래 설정 객체는 splitChunksPlugin 의 기본 동작을 나타낸다.
+
+```javascript
+module.exports = {
+  //...
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
+};
+```
+
+\
+
 
 
 
