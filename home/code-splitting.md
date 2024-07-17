@@ -49,37 +49,16 @@ Code splitting is one of the most compelling features of webpack. This feature a
 
 ### SplitChunksPlugin
 
-원래 청크(및 그 안에 가져온 모듈)는 webpack 내부 그래프에서 부모 - 자식 관계로 연결되어 있다. CommonsChunkPlugin 은 중복되는 의존성을 피하고자 사용되었지만, 추가 최적화는 불가능했다.\
-webpack v4 부터 optimization.splitChunks 를 위해 commonsChunkPlugin 은 제거되었다.&#x20;
-
-
-
-### SplitChunksPlugin / Defaults
-
-즉시 사용 가능한 SplitChunksPlugin 은 대부분의 사용자에게 잘 작동한다. 초기 청크를 변경하면 HTML 파일이 프로젝트를 실행하기 위해 포함해야 하는 스크립트 태그에 영향을 미치기 때문에 기본적으로 on-demand 청크에만 영향을 미친다.
-
-Webpack은 다음 조건에 따라 자동으로 청크를 분할한다.
-
-* 새 청크를 공유 할 수 있거나 모듈이 `node_modules` 폴더에 있는 경우
-* 새 청크가 20kb보다 클 경우(min+gz 이전에)
-* 요청 시 청크를 로드할 때 최대 병렬 요청 수가 30개 이하일 경우
-* 초기 페이지 로드 시 최대 병렬 요청 수가 30개 이하일 경우
-
-마지막 두 가지 조건을 충족하려고 할 때 더 큰 청크가 선호된다.
-
-### SplitChunksPlugin / Configuration
-
-아래 설정 객체는 splitChunksPlugin 의 기본 동작을 나타낸다. 각 설정에 대한 자세한 설명은 [여기](https://webpack.kr/plugins/split-chunks-plugin/#optimizationsplitchunks)를 참고하길 바란다.
+코드 중복을 최소화하고 애플리케이션 성능을 최적화하기 위해 공통 모듈을 자동으로 추출하여 별도의 청크 파일로 분리하는 플러그인이다. 아래 설정 객체는 splitChunksPlugin 의 기본 동작을 나타낸다. 각 설정에 대한 자세한 설명은 [여기](https://webpack.kr/plugins/split-chunks-plugin/#optimizationsplitchunks)를 참고하길 바란다.
 
 ```javascript
 module.exports = {
   //...
   optimization: {
     splitChunks: {
-      chunks: 'async', // 최적화를 위해 선택될 청크, all, async, initial 이 있다.
-      minSize: 20000, // 생성할 청크의 최소 byte 크기이다.
+      chunks: 'async',
+      minSize: 20000,
       minRemainingSize: 0, 
-      // 분할 후 남아있는 청크의 최소 크기가 제한을 초과하도록 하여 크기가 0인 모듈을 방지하기 위해 
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,
@@ -100,6 +79,19 @@ module.exports = {
   },
 };
 ```
+
+우리는 웹팩에 아래와 같은 설정을 추가하여, 기존과 번들파일이 어떤식으로 달라지는지 확인해보았다.
+
+```
+// 웹팩 설정 코드를 여기에 작성한다
+// 이미지 캡
+```
+
+
+
+
+
+
 
 
 
