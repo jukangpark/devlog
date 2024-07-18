@@ -49,51 +49,70 @@ Code splitting is one of the most compelling features of webpack. This feature a
 
 ### SplitChunksPlugin
 
-코드 중복을 최소화하고 애플리케이션 성능을 최적화하기 위해 공통 모듈을 자동으로 추출하여 별도의 청크 파일로 분리하는 플러그인이다. 아래 설정 객체는 splitChunksPlugin 의 기본 동작을 나타낸다. 각 설정에 대한 자세한 설명은 [여기](https://webpack.kr/plugins/split-chunks-plugin/#optimizationsplitchunks)를 참고하길 바란다.
+[SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/#root) 은 코드 중복을 최소화하고 애플리케이션 성능을 최적화하기 위해 공통 모듈을 자동으로 추출하여 별도의 청크 파일로 분리하는 플러그인이다. 각 설정에 대한 자세한 설명은 [여기](https://webpack.kr/plugins/split-chunks-plugin/#optimizationsplitchunks)를 참고하길 바란다. 우리는 웹팩에 아래와 같은 설정을 추가하여, 기존과 번들파일이 어떤식으로 달라지는지 확인해보았다.  기본값에 대하여 설정을 생략 하고, 아래와 같이 코드를 작성하더라도, node\_modules 의 모듈들이 chunk 로 분리된걸 확인하였지만, 각 설정들에 대하여 모든 팀원들이 바로 알 수 있도록 요약된 설명과 공식문서 링크를 주석으로 달았다.
 
 ```javascript
-module.exports = {
-  //...
-  optimization: {
+splitChunks: {
+      chunks: "all",
+    },
+```
+
+
+
+모든 팀원들이 알 수 있도록 요약된 설명과 공식문서 링크를 주석으로 건 코드
+
+```javascript
+optimization: {
+    minimizer: [
+      // `...`는 기존의 minimizer 옵션을 확장하기 위해서 사용, 생략하면 기본값인 terser plugin 등이 생략되기 때문에 JS의 minify가 되지 않습니다.
+      // CssMinimizerPlugin (https://webpack.js.org/plugins/css-minimizer-webpack-plugin/)
+      `...`,
+      new CssMinimizerPlugin(),
+    ],
+    // splitChunks는 코드를 분할하는 방법을 설정합니다. (https://webpack.js.org/plugins/split-chunks-plugin/)
     splitChunks: {
-      chunks: 'async',
-      minSize: 20000,
-      minRemainingSize: 0, 
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      enforceSizeThreshold: 50000,
+      chunks: "all", // all, async, initial 중 하나를 설정합니다.
+      // all : 모든 종류의 청크에서 공유된 모듈을 분리합니다.
+      // async : 비동기로 로드되는 모듈에서 공유된 모듈을 분리합니다.
+      // initial : 초기 로딩 시 로드되는 모듈에서 공유된 모듈을 분리합니다.
+      minSize: 20000, // 최소 청크 크기 (기본값: 20000 bytes)
+      minRemainingSize: 0, // 남아 있는 청크 최소 크기 (기본값: 0)
+      minChunks: 1, // 최소 공유 청크 수 (기본값: 1)
+      maxAsyncRequests: 30, // 최대 비동기 청크 요청 수 (기본값: 30)
+      maxInitialRequests: 30, // 최대 초기 청크 요청 수 (기본값: 30)
+      enforceSizeThreshold: 50000, // 강제 사이즈 임계값 (기본값: 50000 bytes)
       cacheGroups: {
+        // 청크 그룹 설정 (기본값)
         defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-          reuseExistingChunk: true,
+          test: /[\\/]node_modules[\\/]/, // node_modules 폴더에 있는 모듈을 대상으로 합니다.
+          priority: -10, // 우선순위를 설정합니다.
+          reuseExistingChunk: true, // 이미 존재하는 청크를 재사용합니다.
         },
         default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true,
+          minChunks: 2, // 최소 공유 청크 수를 설정합니다.
+          priority: -20, // 우선순위를 설정합니다.
+          reuseExistingChunk: true, // 이미 존재하는 청크를 재사용합니다.
         },
       },
     },
   },
-};
-```
-
-우리는 웹팩에 아래와 같은 설정을 추가하여, 기존과 번들파일이 어떤식으로 달라지는지 확인해보았다.
-
-```
-// 웹팩 설정 코드를 여기에 작성한다
-// 이미지 캡
 ```
 
 
 
+<figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption><p>bundle.main.js 크기가 stat 기준 2.25 MB 로 줄어든 모습</p></figcaption></figure>
 
 
 
 
 
+우리는 웹팩 설정들에 대하여 각 옵션들에 대해 모두 공식 문서 링크와 간단한 설명을 주석으로 적어놓았다. 왜냐하면 다른 개발자들이 보더라도 웹팩 관련된 설정들에 대하여 쉽게 이해하고 파악할 수 있게 하기 위함이었다.&#x20;
+
+
+
+하지만 이것만으로 부족하다.  왜냐하면 네트워크 탭을 보다시피 초기 페이지 진입시에, 유저가 사용하고 있지 않은 번들 파일이 로드 되기 때문이다. 이 defaultVendors 는 하나의 캐시그룹으로 새로 생성되는 대신 재사용된다.
+
+<figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
 
 
