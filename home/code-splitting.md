@@ -246,7 +246,13 @@ splitChunks: {
 
 
 
-<figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption><p>SplitChunksPlugin 으로 2번 이상 호출되는 모듈들에 대하여 utils 라고 하는 청크 이름으로 분리됨</p></figcaption></figure>
+
+
+
+<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption><p>깔끔하게 util 내부의 중복으로 포함되던 모듈들이 chunk 번들 파일에서 제거된 모습</p></figcaption></figure>
+
+
 
 
 
