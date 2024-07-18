@@ -114,5 +114,75 @@ optimization: {
 
 <figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
+하지만 여전히 최초에 불러오는 번들 사이즈가 너무 크다. 왜냐하면 defaultVendors 는 node\_modules 를 청크로 분리한 번들 파일인데, 이 번들 파일은 현재 유저가 사용하지 않아도 되는 청크 파일들을 모두 포함하고 있기 때문이다. 따라서 우리는 Dynamic Imports 를 사용하여 청크된 번들파일을 필요할 때에 최초로 한번 가져오는 방향으로 최적화 해주었다.
+
+
+
+### **Dynamic Imports**
+
+[Dynamic Imports](https://webpack.kr/guides/code-splitting/#dynamic-imports) 는 [import()](https://webpack.kr/api/module-methods/#import-1) 구문을 사용하는 방식을 사용해서 코드 스플리팅을 하였다. import 구문을 가지고 모듈을 동적으로 로드한다. import() 에 대한 호출은 분할 지점으로 처리되어, 요청된 모듈과 그 자식은 별도의 청크로 웹팩이 알아서 분할해준다. 이 구문은 내부적으로 Promise 에 의존한다. import() 는 최소한 모듈 위치에 대한 정보를 포함해야 한다. 그리고 런타임에 만약 import 문으로 가져와서 변수에 담아놓은 해당 변수가 계산되면 해당 파일이 사용가능하도록 번들 파일을 가져온다
+
+
+
+우선 R3 프로젝트에서 최초 로드시 필요한 모듈을 제외하기 시작하였다. 프로젝트 단위가 커서, 한꺼번에 전부 제외하기는 힘들었고, 우선 순위를 두고 작업을 하기 시작했다. getLayerBySubType.jsx 에서 아래와 같이 subType 에 따라 렌더링 하게 되는 각각의 레이어들을 청크로 나누기 위해 import 구문을 사용하고, 해당 모듈의 경로를 작성해주었다. 이렇게만 작업을 하게 되면 각 모듈들을 동적으로 불러오게 되기 때문에 getLayerBySubType 를 호출하는 곳에서 에러가 발생하였다.&#x20;
+
+```javascript
+// Lazy load components
+const ImageLayer = React.lazy(() => import("@nodes/layers/ImageLayer"));
+const DataImageLayer = React.lazy(() => import("@nodes/layers/DataImageLayer"));
+const VideoLayer = React.lazy(() => import("@nodes/layers/VideoLayer"));
+const EChartLayer = React.lazy(() => import("@nodes/layers/chart/EChartLayer"));
+const AgGridLayer = React.lazy(() =>
+  import("@nodes/layers/agGrid/AgGridLayer")
+);
+const RectLayer = React.lazy(() => import("@nodes/layers/RectLayer"));
+const TextLayer = React.lazy(() => import("@nodes/layers/TextLayer"));
+const DataTextLayer = React.lazy(() => import("@nodes/layers/DataTextLayer"));
+const DoldoriLayer = React.lazy(() =>
+  import("@nodes/layers/doldori/DoldoriLayer")
+);
+const LinkTabLayer = React.lazy(() => import("@nodes/layers/LinkTabLayer"));
+const LinkTabToggleSwitchLayer = React.lazy(() =>
+  import("@nodes/layers/LinkTabToggleSwitchLayer")
+);
+const LegendLayer = React.lazy(() => import("@nodes/layers/LegendLayer"));
+const TimeLineLayer = React.lazy(() => import("@nodes/layers/TimeLineLayer"));
+const CustomReactComponentLayer = React.lazy(() =>
+  import("@nodes/layers/custom/CustomReactComponentLayer")
+);
+const TimeLayer = React.lazy(() => import("@nodes/layers/TimeLayer"));
+const HexagonChartLayer = React.lazy(() =>
+  import("@nodes/layers/chart/HexagonChartLayer")
+);
+```
+
+
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+Uncaught Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.\
+\
+이 오류 메시지는 React 18에서 도입된 새로운 동시성 기능과 관련이 있다. 특히, 동적 import() 문을 사용하여 비동기적으로 컴포넌트를 로드할 때 발생할 수 있는 문제이다. React는 비동기적으로 로드되는 컴포넌트가 로드되는 동안 UI를 어떻게 처리할지 제어하는 메커니즘을 제공한다. 이 에러 메시지는 특정 컴포넌트가 동적 import()를 사용하여 비동기적으로 로드되는 동안 서스펜딩되었고, 이로 인해 UI가 로딩 인디케이터로 대체되었음을 의미한다. React는 이러한 상황을 피하기 위해, 이러한 업데이트를 startTransition으로 래핑할 것을 권장한다. 이 문제를 해결하기 위해, startTransition을 사용하여 비동기 업데이트를 래핑해야 한다. startTransition은 비동기 작업을 낮은 우선순위로 처리하여, 사용자가 동기 작업을 계속 수행할 수 있도록 한다.
+
+
+
+
+
+### Suspense
+
+[Suspense](https://react.dev/reference/react/Suspense#suspense) 는 컴포넌트를 동적으로 가져올 수 있게 도와주는 기능이다. 이 Suspense 는 React.lazy 를 통해 지연시켜 불러온 컴포넌트를 렌더링 하는 역할을 하게 된다. Suspesne 는 크게 2개의 인자를 받는데, 하나는 fallback props 로, 지연시켜 불러온 컴포넌트를 미처 불러오지 못했을 때 보여주는 fallback 을 나타낸다. 그리고 children 으로 React.lazy 로 선언한 지연 컴포넌트를 받는다. 정리하면, 지연 컴포넌트를 로딩하기 전에는 fallback 을 보여주고, 이 lazy 로 불러온 컴포넌트가 지연 로딩이 완료되면 fallback 대신 비로소 해당 컴포넌트를 보여주게 된다.
+
+
+
+### React.lazy
+
+[`lazy`](https://react.dev/reference/react/lazy) lets you defer loading component’s code until it is rendered for the first time.
+
+lazy 를 사용하면 컴포넌드가 처음 렌더링 될 때까지 로딩을 연기할 수 있다.
+
+* `load`: A function that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Promise) or another _thenable_ (a Promise-like object with a `then` method). React will not call `load` until the first time you attempt to render the returned component. After React first calls `load`, it will wait for it to resolve, and then render the resolved value’s `.default` as a React component. Both the returned Promise and the Promise’s resolved value will be cached, so React will not call `load` more than once. If the Promise rejects, React will `throw` the rejection reason for the nearest Error Boundary to handle.
+
+lazy 에 파라미터는 load 라고 하는 Promise 를 반환하는 함수이다. React 는 반환된 컴포넌트를 처음 렌더링 할 때까지 load 함수를 호출하지 않는다. React 가 먼저 load 함수를 호출한 후 resolve 가 될 때까지 기다렸다가 해결된 값의 .default 를 Reat 컴포넌트로 렌더링한다. 반환된 Promise 의 resolved 된 값이 모두 캐시되므로 React 는 load 함수를 두 번 이상 호출하지 않는다. Promise 가 만약 reject 되면 React 는 가장 가까운 Error Boundary 에서 rejections reason 을 throw 할것이다.
+
 
 
