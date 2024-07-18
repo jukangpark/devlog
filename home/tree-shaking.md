@@ -15,7 +15,7 @@ Webpack 에서 build 시 [Tree Shaking](https://webpack.js.org/guides/tree-shaki
 
 <figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption><p>eCharts-for-react 모듈 모두 포함됨</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>lodash 모듈 모두 포함됨</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>lodash 모듈 모두 포함됨</p></figcaption></figure>
 
 
 
@@ -37,7 +37,7 @@ ESM 은 어떻게 Tree Shaking 을 가능하게 하는지, 다른 모듈 시스�
 
 
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 JavaScript 에 모듈 개념이 도입 되기 이전에 공통 변수인 foo 를 foo.js 와 bar.js 가 공유하는 가장 쉬운 방법은 foo 를 전역변수로 끌어올리는 것이었다. 이 방법은 전역 변수의 상태나 할당시점을 제어할 수 없기 때문에 js 로드 순서에 의존적이고 변수 참조에 대한 의존성 관리가 어려워진다. javaScript 에 모듈 시스템이 도입되기 시작하였고, 클라이언트 / 서버 사이드로 나누어져 제안된 것이 [CommonJS](https://wiki.commonjs.org/wiki/CommonJS) 와 [AMD(Asychronous Module Definition)](https://github.com/amdjs/amdjs-api/wiki/AMD) 이다.
 

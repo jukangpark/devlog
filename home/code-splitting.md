@@ -150,7 +150,7 @@ const HexagonChartLayer = React.lazy(() =>
 
 
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Uncaught Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.\
 \
@@ -162,7 +162,9 @@ Uncaught Error: A component suspended while responding to synchronous input. Thi
 
 ### Suspense
 
-[Suspense](https://react.dev/reference/react/Suspense#suspense) 는 컴포넌트를 동적으로 가져올 수 있게 도와주는 기능이다. 이 Suspense 는 React.lazy 를 통해 지연시켜 불러온 컴포넌트를 렌더링 하는 역할을 하게 된다. Suspesne 는 크게 2개의 인자를 받는데, 하나는 fallback props 로, 지연시켜 불러온 컴포넌트를 미처 불러오지 못했을 때 보여주는 fallback 을 나타낸다. 그리고 children 으로 React.lazy 로 선언한 지연 컴포넌트를 받는다. 정리하면, 지연 컴포넌트를 로딩하기 전에는 fallback 을 보여주고, 이 lazy 로 불러온 컴포넌트가 지연 로딩이 완료되면 fallback 대신 비로소 해당 컴포넌트를 보여주게 된다.
+[Suspense](https://react.dev/reference/react/Suspense#suspense) 는 리액트 16.6 버전에서부터 실험 버전으로 도입된 기능으로, 컴포넌트를 동적으로 가져올 수 있게 도와주는 기능이다. 이 Suspense 는 React.lazy 를 통해 지연시켜 불러온 컴포넌트를 렌더링 하는 역할을 하게 된다. Suspesne 는 크게 2개의 인자를 받는데, 하나는 fallback props 로, 지연시켜 불러온 컴포넌트를 미처 불러오지 못했을 때 보여주는 fallback 을 나타낸다. 그리고 children 으로 React.lazy 로 선언한 지연 컴포넌트를 받는다. 정리하면, 지연 컴포넌트를 로딩하기 전에는 fallback 을 보여주고, 이 lazy 로 불러온 컴포넌트가 지연 로딩이 완료되면 fallback 대신 비로소 해당 컴포넌트를 보여주게 된다.
+
+
 
 
 
@@ -175,6 +177,37 @@ lazy 를 사용하면 컴포넌드가 처음 렌더링 될 때까지 로딩을 �
 * `load`: A function that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Promise) or another _thenable_ (a Promise-like object with a `then` method). React will not call `load` until the first time you attempt to render the returned component. After React first calls `load`, it will wait for it to resolve, and then render the resolved value’s `.default` as a React component. Both the returned Promise and the Promise’s resolved value will be cached, so React will not call `load` more than once. If the Promise rejects, React will `throw` the rejection reason for the nearest Error Boundary to handle.
 
 lazy 에 파라미터는 load 라고 하는 Promise 를 반환하는 함수이다. React 는 반환된 컴포넌트를 처음 렌더링 할 때까지 load 함수를 호출하지 않는다. React 가 먼저 load 함수를 호출한 후 resolve 가 될 때까지 기다렸다가 해결된 값의 .default 를 Reat 컴포넌트로 렌더링한다. 반환된 Promise 의 resolved 된 값이 모두 캐시되므로 React 는 load 함수를 두 번 이상 호출하지 않는다. Promise 가 만약 reject 되면 React 는 가장 가까운 Error Boundary 에서 rejections reason 을 throw 할것이다.
+
+
+
+우리는 아래와 같이 getLayerBySubType 을 호출하는 곳에서, Suspense 로 감싸고 fallback 은 null 을 넣어주었다. 왜냐하면 우리의 프로젝트 특성상 fallbackUI 를 보여줄 필요가 없었기 때문이었다.
+
+```javascript
+          <Suspense fallback={null}>
+            {getLayerBySubType(subType, {
+              id,
+              width: roundedWidth,
+              height: roundedHeight,
+              backgroundColor,
+              property,
+              node,
+              isText,
+              globalVariables,
+              pageType,
+              opacity,
+              responseData,
+              setProject,
+              isWS,
+              isHTTP,
+            })}
+          </Suspense>
+```
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>잘 분리된 chunk 파일들</p></figcaption></figure>
+
+그러나 util 폴더에서 사용하고 있는 공통 모듈들이 각 chunk 파일에서 중복으로 존재하는걸 발견하였다.
+
+
 
 
 
