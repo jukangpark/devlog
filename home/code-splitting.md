@@ -205,9 +205,48 @@ lazy 에 파라미터는 load 라고 하는 Promise 를 반환하는 함수이�
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>잘 분리된 chunk 파일들</p></figcaption></figure>
 
-그러나 util 폴더에서 사용하고 있는 공통 모듈들이 각 chunk 파일에서 중복으로 존재하는걸 발견하였다.
+그러나 util 폴더에서 사용하고 있는 공통 모듈들이 각 chunk 파일에서 중복으로 존재하는걸 발견하였다. 그래서 우리는 2번 이상 재 사용되는 모듈에 대하여 utils 폴더에 있는 모듈들을 splitChunkPlugin 의 범위에 포함시키는 코드를 작성하고 다시 build 하여서 아래와 같이 공통적으로 사용되는 모듈을 청크로 분리하여서 중복을 제거하였다.
 
 
+
+```javascript
+splitChunks: {
+      chunks: "all", // all, async, initial 중 하나를 설정합니다.
+      // all : 모든 종류의 청크에서 공유된 모듈을 분리합니다.
+      // async : 비동기로 로드되는 모듈에서 공유된 모듈을 분리합니다.
+      // initial : 초기 로딩 시 로드되는 모듈에서 공유된 모듈을 분리합니다.
+      minSize: 20000, // 최소 청크 크기 (기본값: 20000 bytes)
+      minRemainingSize: 0, // 남아 있는 청크 최소 크기 (기본값: 0)
+      minChunks: 1, // 최소 공유 청크 수 (기본값: 1)
+      maxAsyncRequests: 30, // 최대 비동기 청크 요청 수 (기본값: 30)
+      maxInitialRequests: 30, // 최대 초기 청크 요청 수 (기본값: 30)
+      enforceSizeThreshold: 50000, // 강제 사이즈 임계값 (기본값: 50000 bytes)
+      cacheGroups: {
+        utilModules: {
+          // `utilModules`는 임의로 지정한 그룹 이름입니다.
+          test: /[\\/]util[\\/]/, // `util` 폴더에 있는 모든 모듈을 타겟팅합니다.
+          name: "utils", // 생성될 청크의 이름을 지정합니다.
+          priority: -5, // 기본 그룹보다 약간 높은 우선순위를 부여합니다.
+          reuseExistingChunk: true, // 이미 존재하는 청크를 재사용합니다.
+        },
+        // 청크 그룹 설정 (기본값)
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/, // node_modules 폴더에 있는 모듈을 대상으로 합니다.
+          priority: -10, // 우선순위를 설정합니다.
+          reuseExistingChunk: true, // 이미 존재하는 청크를 재사용합니다.
+        },
+        default: {
+          minChunks: 2, // 최소 공유 청크 수를 설정합니다.
+          priority: -20, // 우선순위를 설정합니다.
+          reuseExistingChunk: true, // 이미 존재하는 청크를 재사용합니다.
+        },
+      },
+    },
+```
+
+
+
+<figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
 
 
 
