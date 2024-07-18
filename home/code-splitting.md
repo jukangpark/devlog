@@ -150,7 +150,7 @@ const HexagonChartLayer = React.lazy(() =>
 
 
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Uncaught Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.\
 \
@@ -203,7 +203,7 @@ lazy 에 파라미터는 load 라고 하는 Promise 를 반환하는 함수이�
           </Suspense>
 ```
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>잘 분리된 chunk 파일들</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>잘 분리된 chunk 파일들</p></figcaption></figure>
 
 그러나 util 폴더에서 사용하고 있는 공통 모듈들이 각 chunk 파일에서 중복으로 존재하는걸 발견하였다. 그래서 우리는 2번 이상 재 사용되는 모듈에 대하여 utils 폴더에 있는 모듈들을 splitChunkPlugin 의 범위에 포함시키는 코드를 작성하고 다시 build 하여서 아래와 같이 공통적으로 사용되는 모듈을 청크로 분리하여서 중복을 제거하였다.
 
@@ -254,5 +254,66 @@ splitChunks: {
 
 
 
+우리는 번들된 결과를 보고, **단순히 Dynamic Imports 를 하여 Code Splitting 을 한다고 해서 node\_modules 를 제외한 나머지 모듈도 중복 제거되는건 아니다** 라는 사실을 알게 되었다. 처음에 Code Splitting 을 할 땐, 어째서 SplitChunksPlugin 를 사용하는지에 대하여 헷갈렸었는데, 공식문서의 설명대로 **Prevent Duplication** 을 하기 위해 사용된다는 걸 깨달았다. 공식문서의 설명을 역시 잘 봐야한다.
 
 
+
+이렇게 우리는 초기 페이지 진입시 불필요하다고 생각되는 모듈을 chunk 로 나누고, React.lazy 를 사용하여 런타임시 해당 변수를 사용하게 될 때, 가져올 수 있도록 최적화를 진행해주었다.
+
+
+
+### Before
+
+bundle.main.js : 하나의 파일에 모두 들어있었음 Stat 기준 26.16 MB
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+
+
+### After
+
+bundle.main.js : 하나에서 여러개의 청크로 나뉘어짐 Stat 기준 1.1 MB\
+bundle.2683.js : Stat 기준 6.56 MB -> node\_modules 를 기준으로 SplitChunkPlugin 이 청크해준 2회이상 호출되는 녀석들에 대한 번들 파일\
+bundle.util.js : 청크로 나누게 되면서 중복 모듈들에 대하여 공통 chunk 로 분리함 Stat 기준  553.81 KB
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>현재까지 작업한 번들 분석 결과, 계속해서 초기 로드하는 번들 사이즈를 줄여나가는 중이다.</p></figcaption></figure>
+
+
+
+따라서 최초 페이지 로딩시 이제 가져오는 번들 사이즈는 Stat 기준 \
+**26.16 -> 8.21  로 초기 로드시 68.6% 만큼 번들 사이즈를 줄였다.**\
+
+
+네트워크 탭에서도 비교해보면 기존에는 SplitChunkPlugin 으로 node\_modules 내부 파일만 청크해서, 초기 접근시에는, defaultVendors 번들 사이즈가 27.6 MB 인걸 볼 수 있다.
+
+<figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+
+그러나 현재는 defaultVendors 번들 사이즈가 10.8 MB 이며, util 폴더 내부에 중복으로 chunk 에 포함 되었던 모듈들을 최초에 같이 가지고 오면서 실질적으로 청크 한 이후 전체 번들 사이즈를 줄였다.
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+이해를 돕기 위해 네트워크 사이즈가 왜 두개의 값으로 표시되는지 잠깐 살펴보자면, “Size” 열에 표시되는 두 개의 값은 각각 Content Size와 Transfer Size를 나타낸다. 이 두 값은 네트워크 요청에서 데이터를 전송할 때의 실제 크기와 관련이 있다.&#x20;
+
+
+
+**Content Size:**
+
+이는 서버가 클라이언트로 전송한 원본 파일의 실제 크기이다.\
+예를 들어, 서버에서 보내는 파일의 크기가 압축되지 않은 상태로 1MB라면, Content Size는 1MB 이다.
+
+**Transfer Size:**
+
+이는 실제로 네트워크를 통해 전송된 데이터의 크기이다.\
+Transfer Size는 종종 Content Size보다 작다. 이는 서버에서 데이터를 압축하여 전송하기 때문이다. 예를 들어, gzip 또는 Brotli와 같은 압축 기법을 사용하여 파일 크기를 줄이는 경우이다.
+
+
+
+네트워크 탭에 관련해 보다 자세한 내용은 [https://developer.chrome.com/docs/devtools/network/](https://developer.chrome.com/docs/devtools/network/) 를 참조해보길 바란다. 우리는 웹팩의 [devServer.compress](https://webpack.js.org/configuration/dev-server/#devservercompress) 를 true 로 설정하였기 때문에 gzip compression 을 활성화 하였기 때문에 실제 Content Size 와 Transfer Size 가 차이나는 걸 알 수 있다.&#x20;
+
+
+
+### 결과
+
+구글 LightHouse 로 검사해본 결과로도, FCP 지표가 0.2s 나 줄어든걸 볼 수 있다. 우리는 이런 뱡향성으로 번들 최적화를 계속해서 해나갈 계획이고, 지금은 우리가 30% 정도 최적화 작업을 해준거 같은데, Builder R3 의 초기 로딩 속도는 더 빨라질 것이다.
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
