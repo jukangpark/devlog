@@ -15,7 +15,7 @@
   * [Recoil 활용하면 이거 재렌더링 막을 수 있는데 (작성중)](home/recoil.md)
   * [웹 성능 지표 개선하기 (작성중)](home/undefined-5.md)
   * [Webpack 으로 프로젝트 초기 작업 하기 (작성중)](home/webpack.md)
-  * [번들링 최적화 Code Splitting (작성중)](home/code-splitting.md)
+  * [번들링 최적화 Code Splitting](home/code-splitting.md)
   * [번들링 최적화 minify, uglify (작성중)](home/minify-uglify.md)
   * [모듈 시스템과 Tree-Shaking (작성중)](home/tree-shaking.md)
   * [테스트를 더 효율적으로 할 수 없을까? (작성중)](home/undefined-6.md)
