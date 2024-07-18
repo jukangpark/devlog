@@ -49,7 +49,7 @@ Code splitting is one of the most compelling features of webpack. This feature a
 
 ### SplitChunksPlugin
 
-[SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/#root) 은 코드 중복을 최소화하고 애플리케이션 성능을 최적화하기 위해 공통 모듈을 자동으로 추출하여 별도의 청크 파일로 분리하는 플러그인이다. 각 설정에 대한 자세한 설명은 [여기](https://webpack.kr/plugins/split-chunks-plugin/#optimizationsplitchunks)를 참고하길 바란다. 우리는 웹팩에 아래와 같은 설정을 추가하여, 기존과 번들파일이 어떤식으로 달라지는지 확인해보았다.  기본값에 대하여 설정을 생략 하고, 아래와 같이 코드를 작성하더라도, node\_modules 의 모듈들이 chunk 로 분리된걸 확인하였지만, 각 설정들에 대하여 모든 팀원들이 바로 알 수 있도록 요약된 설명과 공식문서 링크를 주석으로 달았다.
+[SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/#root) 은 코드 중복을 최소화하고 애플리케이션 성능을 최적화하기 위해 공통 모듈을 자동으로 추출하여 별도의 청크 파일로 분리하는 플러그인이다. 각 설정에 대한 자세한 설명은 [여기](https://webpack.kr/plugins/split-chunks-plugin/#optimizationsplitchunks)를 참고하길 바란다. 우리는 웹팩에 아래와 같은 설정을 추가하여, 기존과 번들파일이 어떤식으로 달라지는지 확인해보았다.  기본값에 대하여 설정을 생략 하고, 아래와 같이 기본값을 생략한 코드를 작성하더라도, node\_modules 의 모듈들이 chunk 로 분리된걸 확인했지만, 이해를 돕기 위해 각 설정들에 대하여 요약된 설명과 공식문서 링크를 주석으로 달았다.
 
 ```javascript
 splitChunks: {
@@ -102,15 +102,7 @@ optimization: {
 
 <figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption><p>bundle.main.js 크기가 stat 기준 2.25 MB 로 줄어든 모습</p></figcaption></figure>
 
-
-
-
-
-우리는 웹팩 설정들에 대하여 각 옵션들에 대해 모두 공식 문서 링크와 간단한 설명을 주석으로 적어놓았다. 왜냐하면 다른 개발자들이 보더라도 웹팩 관련된 설정들에 대하여 쉽게 이해하고 파악할 수 있게 하기 위함이었다.&#x20;
-
-
-
-하지만 이것만으로 부족하다.  왜냐하면 네트워크 탭을 보다시피 초기 페이지 진입시에, 유저가 사용하고 있지 않은 번들 파일이 로드 되기 때문이다. 이 defaultVendors 는 하나의 캐시그룹으로 새로 생성되는 대신 재사용된다.
+node\_modules 폴더에 있는 모듈을 대상으로 chunk 를 하였기 때문에, ,bundle.397.js 에는 chunk 된 모듈이 하나의 번들로 존재하는 걸 확인할 수 있었다. 하지만 이것만으로 부족하다.  왜냐하면 네트워크 탭을 보다시피 초기 페이지 진입시에, 유저가 사용하고 있지 않은 번들 파일이 로드 되기 때문이다. 이 defaultVendors 는 하나의 캐시그룹으로 새로 생성되는 대신 재사용된다.
 
 <figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
