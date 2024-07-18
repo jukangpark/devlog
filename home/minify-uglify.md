@@ -58,8 +58,6 @@ function a(b,c){return b+c}console.log(a(5,10));
 
 
 
-
-
 ### uglify
 
 
@@ -81,4 +79,10 @@ npm install compression-webpack-plugin --save-dev
 
 
 
+
+
+
+## compression-webpack-plugin
+
+Prepare compressed versions of assets to serve them with Content-Encoding.&#x20;
 
