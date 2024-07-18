@@ -308,7 +308,7 @@ Transfer Size는 종종 Content Size보다 작다. 이는 서버에서 데이터
 
 
 
-네트워크 탭에 관련해 보다 자세한 내용은 [https://developer.chrome.com/docs/devtools/network/](https://developer.chrome.com/docs/devtools/network/) 를 참조해보길 바란다. 우리는 웹팩의 [devServer.compress](https://webpack.js.org/configuration/dev-server/#devservercompress) 를 true 로 설정하였기 때문에 gzip compression 을 활성화 하였기 때문에 실제 Content Size 와 Transfer Size 가 차이나는 걸 알 수 있다.&#x20;
+네트워크 탭에 관련해 보다 자세한 내용은 [https://developer.chrome.com/docs/devtools/network/](https://developer.chrome.com/docs/devtools/network/) 를 참조해보길 바란다. 우리는 웹팩의 [devServer.compress](https://webpack.js.org/configuration/dev-server/#devservercompress) 를 true 로 설정하였기 때문에 gzip compression 을 활성화 하였기 때문에 실제 Content Size 와 Transfer Size 가 차이나는 걸 알 수 있다.  이 글을 작성하면서 측정한 지표들은 webpack devserver 기준이다. 실제 production 환경에서는 [compression-webpack-plugin](https://webpack.kr/plugins/compression-webpack-plugin/) 을 사용하여 압축될 것이다.
 
 
 
