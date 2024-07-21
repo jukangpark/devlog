@@ -9,6 +9,8 @@ coverY: 0
 
 ### 브라우저 렌더링 과정
 
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>브라우저 렌더링 과정</p></figcaption></figure>
+
 `DOM + CSSOM > 렌더 트리 > 레이아웃 > 페인트 > 컴포지트`
 
 브라우저는 기본적으로 위와 같은 과정을 거쳐 화면을 그린다. 이러한 과정을 Critical Rendering Path 또는 Pixel Pipeline 이라고 한다. 이번 글에서는 각 과정에 대해 알아보고자 한다.

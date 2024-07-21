@@ -5,7 +5,7 @@ cover: >-
 coverY: 0
 ---
 
-# 번들링 최적화 Code Splitting (작성중)
+# 번들링 최적화 Code Splitting
 
 ### 개요
 
@@ -150,7 +150,7 @@ const HexagonChartLayer = React.lazy(() =>
 
 
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Uncaught Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.\
 \
