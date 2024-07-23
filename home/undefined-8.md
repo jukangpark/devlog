@@ -5,5 +5,15 @@ cover: >-
 coverY: 0
 ---
 
-# 오픈소스 막 사용하면 안돼! 라이선스 문제
+# 오픈소스 막 사용하면 안돼! 라이선스 문제 (작성중)
 
+
+
+### 라이센스 종류
+
+\
+
+
+### 올리브 플랫폼
+
+[https://olive.kakao.com/en-docs/main](https://olive.kakao.com/en-docs/main)
