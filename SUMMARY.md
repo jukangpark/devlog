@@ -28,3 +28,4 @@
   * [브라우저는 화면을 어떻게 그리는가](home/undefined-10.md)
   * [기술 블로그 모음 (작성중)](home/undefined-11.md)
   * [Github Action 을 사용하여 오픈소스 CI 구축하기](home/github-action-ci.md)
+  * [오픈소스를 운영해보자](home/undefined-12.md)
