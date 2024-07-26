@@ -11,6 +11,12 @@ coverY: 0
 
 [SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA) 로 구성된 웹앱의 경우 Performance를 보면 초기에 번들 파일(js)을 다운 받기 때문에 시간이 오래 걸린다. 그리고 이 큰 번들 파일(js)을 클라이언트 측에서 실행되기 위해 초기화 과정을 거치게 되는데, 이 과정에서 DOM 조작, 이벤트 리스너 설정, 상태 초기화 등의 작업이 실행된다. Builder R3 프로젝트는 코드 스플리팅과 Lazy Loading 이 적용되지 않았기 때문에, 모든 자바스크립트 코드가 초기 로딩 시점에 한꺼번에 다운로드 되고, 실행되므로 초기 로딩 시간이 길어졌다.
 
+
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>너무 느린 웹 성능 FCP 가 무려 0.6s 나 걸린다!</p></figcaption></figure>
+
+
+
 <figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption><p>Builder R3 의 큰 사이즈의 번들 bundle.main.js (26.16 MB)</p></figcaption></figure>
 
 Webpack Bundle Analyzer 를 사용하여 번들 파일을 분석한 결과, Stat Size 기준으로 26.16MB 가 측정되었다.
@@ -150,7 +156,7 @@ const HexagonChartLayer = React.lazy(() =>
 
 
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Uncaught Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.\
 \
@@ -250,7 +256,7 @@ splitChunks: {
 
 
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>bundle.util.js가 청크되어 네트워크탭에 요청된걸 볼 수 있다</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>bundle.util.js가 청크되어 네트워크탭에 요청된걸 볼 수 있다</p></figcaption></figure>
 
 
 
@@ -285,7 +291,7 @@ bundle.util.js : 청크로 나누게 되면서 중복 모듈들에 대하여 공
 따라서 최초 페이지 로딩시 이제 가져오는 번들 사이즈는 \
 **Stat 기준** **26.16 -> 7.79  로 초기 로드시 70.22% 만큼 번들 사이즈를 줄였다.**
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -316,12 +322,12 @@ Transfer Size는 종종 Content Size보다 작다. 이는 서버에서 데이터
 
 
 
-네트워크 탭에 관련해 보다 자세한 내용은 [https://developer.chrome.com/docs/devtools/network/](https://developer.chrome.com/docs/devtools/network/) 를 참조해보길 바란다. 우리는 웹팩의 [devServer.compress](https://webpack.js.org/configuration/dev-server/#devservercompress) 를 true 로 설정하였기 때문에 gzip compression 을 활성화 하였기 때문에 실제 Content Size 와 Transfer Size 가 차이나는 걸 알 수 있다.  이 글을 작성하면서 측정한 지표들은 webpack devserver 기준이다. 실제 production 환경에서는 [compression-webpack-plugin](https://webpack.kr/plugins/compression-webpack-plugin/) 을 사용하여 압축될 것이다. [compression-webpack-plugin](https://webpack.kr/plugins/compression-webpack-plugin/) 을 사용하여 gzip 적용은 여기([https://jkng-96.gitbook.io/devlog/home/minify-uglify](https://jkng-96.gitbook.io/devlog/home/minify-uglify))를 참고하길 바란다.
+네트워크 탭에 관련해 보다 자세한 내용은 [https://developer.chrome.com/docs/devtools/network/](https://developer.chrome.com/docs/devtools/network/) 를 참조해보길 바란다. 우리는 웹팩의 [devServer.compress](https://webpack.js.org/configuration/dev-server/#devservercompress) 를 true 로 설정하였기 때문에 gzip compression 을 활성화 하였기 때문에 실제 Content Size 와 Transfer Size 가 차이나는 걸 알 수 있다.  이 글을 작성하면서 측정한 지표들은 webpack devserver 기준이다. 실제 production 환경에서는 [compression-webpack-plugin](https://webpack.kr/plugins/compression-webpack-plugin/) 을 사용하여 압축될 것이다. [compression-webpack-plugin](https://webpack.kr/plugins/compression-webpack-plugin/) 을 사용하여 gzip 적용은 여기[https://jkng-96.gitbook.io/devlog/home/minify-uglify](https://jkng-96.gitbook.io/devlog/home/minify-uglify)를 참고하길 바란다.
 
 
 
 ### 결과
 
-구글 LightHouse 로 검사해본 결과로도, FCP 지표가 0.2s 나 줄어든걸 볼 수 있다. 우리는 이런 뱡향성으로 번들 최적화를 계속해서 해나갈 계획이고, 지금은 우리가 30% 정도 최적화 작업을 해준거 같은데, Builder R3 의 초기 로딩 속도는 더 빨라질 것이다
+구글 LightHouse 로 검사해본 결과로도, FCP 지표가 0.3s 나 줄어든걸 볼 수 있다. 우리는 이런 뱡향성으로 번들 최적화를 계속해서 해나갈 계획이고, 지금은 우리가 30% 정도 최적화 작업을 해준거 같은데, Builder R3 의 초기 로딩 속도는 더 빨라질 것이다
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
