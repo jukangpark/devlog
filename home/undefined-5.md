@@ -20,7 +20,7 @@ Lighthouse 를 사용하여 웹 페이지를 측정하게 되면 \
 종합 성능 점수가 매겨지는데, 이 점수는 5개의 **지표 (metris)**에 가중치를 적용해 평균 낸 점수이다.\
 이러한 지표를 **웹 바이탈 (Web Vitals)** 이라고 부른다.
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>5개의 지표들(Metrics)과 가중치(Weighting)</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>5개의 지표들(Metrics)과 가중치(Weighting)</p></figcaption></figure>
 
 ### 빌더 성능 지표 검사 2024 년 7월 8일
 
@@ -83,7 +83,7 @@ Lighthouse 에서 View Treemap 을 클릭하게 되면 아래의 이미지 처�
 
 <figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption><p>All : 33.4 MiB</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption><p>Unused Bytes: 17.8 MiB</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>Unused Bytes: 17.8 MiB</p></figcaption></figure>
 
 
 

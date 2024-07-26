@@ -150,7 +150,7 @@ const HexagonChartLayer = React.lazy(() =>
 
 
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Uncaught Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.\
 \
@@ -250,6 +250,10 @@ splitChunks: {
 
 
 
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>bundle.util.js가 청크되어 네트워크탭에 요청된걸 볼 수 있다</p></figcaption></figure>
+
+
+
 <figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption><p>깔끔하게 util 내부의 중복으로 포함되던 모듈들이 chunk 번들 파일에서 제거된 모습</p></figcaption></figure>
 
 
@@ -264,24 +268,28 @@ splitChunks: {
 
 ### Before
 
-bundle.main.js : 하나의 파일에 모두 들어있었음 Stat 기준 26.16 MB
+bundle.main.js : 하나의 파일에 모두 들어있었음 **Stat 기준 26.16 MB**
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
 ### After
 
-bundle.main.js : 하나에서 여러개의 청크로 나뉘어짐 Stat 기준 1.1 MB\
-bundle.2683.js : Stat 기준 6.56 MB -> node\_modules 를 기준으로 SplitChunkPlugin 이 청크해준 2회이상 호출되는 녀석들에 대한 번들 파일\
-bundle.util.js : 청크로 나누게 되면서 중복 모듈들에 대하여 공통 chunk 로 분리함 Stat 기준  553.81 KB
-
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>현재까지 작업한 번들 분석 결과, 계속해서 초기 로드하는 번들 사이즈를 줄여나가는 중이다.</p></figcaption></figure>
+bundle.main.js : 하나에서 여러개의 청크로 나뉘어짐 **Stat 기준 1.01 MB**\
+bundle.5787.js : node\_modules 를 기준으로 SplitChunkPlugin 이 청크해준 번들 파일 **Stat 기준 6.24 MB**\
+bundle.util.js : 청크로 나누게 되면서 중복 모듈들에 대하여 공통 chunk 로 분리함 **Stat 기준  553.81 KB**
 
 
 
-따라서 최초 페이지 로딩시 이제 가져오는 번들 사이즈는 Stat 기준 \
-**26.16 -> 8.21  로 초기 로드시 68.6% 만큼 번들 사이즈를 줄였다.**\
+따라서 최초 페이지 로딩시 이제 가져오는 번들 사이즈는 \
+**Stat 기준** **26.16 -> 7.79  로 초기 로드시 70.22% 만큼 번들 사이즈를 줄였다.**
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+
+
+\
 
 
 네트워크 탭에서도 비교해보면 기존에는 SplitChunkPlugin 으로 node\_modules 내부 파일만 청크해서, 초기 접근시에는, defaultVendors 번들 사이즈가 27.6 MB 인걸 볼 수 있다.
@@ -308,12 +316,12 @@ Transfer Size는 종종 Content Size보다 작다. 이는 서버에서 데이터
 
 
 
-네트워크 탭에 관련해 보다 자세한 내용은 [https://developer.chrome.com/docs/devtools/network/](https://developer.chrome.com/docs/devtools/network/) 를 참조해보길 바란다. 우리는 웹팩의 [devServer.compress](https://webpack.js.org/configuration/dev-server/#devservercompress) 를 true 로 설정하였기 때문에 gzip compression 을 활성화 하였기 때문에 실제 Content Size 와 Transfer Size 가 차이나는 걸 알 수 있다.  이 글을 작성하면서 측정한 지표들은 webpack devserver 기준이다. 실제 production 환경에서는 [compression-webpack-plugin](https://webpack.kr/plugins/compression-webpack-plugin/) 을 사용하여 압축될 것이다.
+네트워크 탭에 관련해 보다 자세한 내용은 [https://developer.chrome.com/docs/devtools/network/](https://developer.chrome.com/docs/devtools/network/) 를 참조해보길 바란다. 우리는 웹팩의 [devServer.compress](https://webpack.js.org/configuration/dev-server/#devservercompress) 를 true 로 설정하였기 때문에 gzip compression 을 활성화 하였기 때문에 실제 Content Size 와 Transfer Size 가 차이나는 걸 알 수 있다.  이 글을 작성하면서 측정한 지표들은 webpack devserver 기준이다. 실제 production 환경에서는 [compression-webpack-plugin](https://webpack.kr/plugins/compression-webpack-plugin/) 을 사용하여 압축될 것이다. [compression-webpack-plugin](https://webpack.kr/plugins/compression-webpack-plugin/) 을 사용하여 gzip 적용은 여기([https://jkng-96.gitbook.io/devlog/home/minify-uglify](https://jkng-96.gitbook.io/devlog/home/minify-uglify))를 참고하길 바란다.
 
 
 
 ### 결과
 
-구글 LightHouse 로 검사해본 결과로도, FCP 지표가 0.2s 나 줄어든걸 볼 수 있다. 우리는 이런 뱡향성으로 번들 최적화를 계속해서 해나갈 계획이고, 지금은 우리가 30% 정도 최적화 작업을 해준거 같은데, Builder R3 의 초기 로딩 속도는 더 빨라질 것이다.
+구글 LightHouse 로 검사해본 결과로도, FCP 지표가 0.2s 나 줄어든걸 볼 수 있다. 우리는 이런 뱡향성으로 번들 최적화를 계속해서 해나갈 계획이고, 지금은 우리가 30% 정도 최적화 작업을 해준거 같은데, Builder R3 의 초기 로딩 속도는 더 빨라질 것이다
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>

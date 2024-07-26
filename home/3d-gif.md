@@ -69,7 +69,7 @@ react-three/fiber 의 Canvas 컴포넌트를 활용하여, Ground 와, x,y 좌�
 
 DOMS 제작 초기에는 사업을 진행하기 위해 각 대시보드를 구성하는 메타 정보를 수정할 때, JS 파일을 직접 수정하고 빌드했다. 그러나 이 방식은 개발자만 할 수 있으며, 실제 구축 현장에서 엔지니어들이 핸들링하기 어렵다는 의견이 있었다. 이 문제를 해결하기 위해, 나는 DOMS에 편집 기능(이하 ‘빌더’)이 필요하다고 생각했다. 나는 빌더 기능을 넣자고 제안하였고, 몽고디비와 Express를 약간 사용할 수 있었기 때문에 개발용 임시 서버를 구축했다. 빌더의 전체적인 구조를 먼저 설계하고 UI 개발과 캔버스 영역에 대하여 편집 할 수 있는 기능을 직접 구현하여 보여드렸더니, 팀에서도 이 기능을 구현하자고 동의해주셨다.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>엔지니어 혹은 개발자가 직접 수정해줘야했었던 JS 파일</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>엔지니어 혹은 개발자가 직접 수정해줘야했었던 JS 파일</p></figcaption></figure>
 
 그래서 팀의 백엔드 개발자들이 API를 만들기 전까지, 우리 UI 팀은 내가 만든 데이터 스키마와 API를 사용하여 빌더 기능을 개발하기 시작했다. 대시보드에 대한 CRUD 기능과 메타 정보를 저장하는 데이터 스키마를 만들어, 해당 구조를 [백엔드 선임 개발자(김락현)](https://github.com/LakHyeonKim)에게 전달하였고 Spring으로 API를 동일한 구조로 교체해주었다.
 
@@ -130,11 +130,11 @@ import { useFBX } from "@react-three/drei";
 
 <figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>새로운 랙 모델 추가와  전체적인 디자인이 개선된 DOMS</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>카메라 버튼으로 2D 뷰 전환</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>카메라 버튼으로 2D 뷰 전환</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption><p>예약 모드 장비를 예약 할 수 있는 기능</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption><p>예약 모드 장비를 예약 할 수 있는 기능</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption><p>자산 정보 관리 랙을 선택하면 꽂힌 장비 목록을 볼 수 있고, 전체적인 그룹별 랙과 장비를 모두 관리 할 수 있다.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption><p>자산 정보 관리 랙을 선택하면 꽂힌 장비 목록을 볼 수 있고, 전체적인 그룹별 랙과 장비를 모두 관리 할 수 있다.</p></figcaption></figure>
 
 
 

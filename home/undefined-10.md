@@ -9,7 +9,7 @@ coverY: 0
 
 ### 브라우저 렌더링 과정
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>브라우저 렌더링 과정</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>브라우저 렌더링 과정</p></figcaption></figure>
 
 `DOM + CSSOM > 렌더 트리 > 레이아웃 > 페인트 > 컴포지트`
 
