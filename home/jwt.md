@@ -226,14 +226,66 @@ const instance = axios.create();
 instance.interceptors.request.use(function () {/*...*/});
 ```
 
+
+
 예제 코드를 보면 알 수 있듯이,&#x20;
 
+```javascript
+/** 모든 응답 가로채기 */
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    console.log("악시오스 에서받은 에러", error);
+    const {
+      config,
+      response: { status, data },
+    } = error;
+    const originalRequest = config;
+
+    // addRefreshSubscriber 라고 하는 배열에는 엑세스 토큰 or 리프래시 토큰이 만료 되었을 때만
+    // addRefreshSubscriber 에 재요청할 ajax 통신들을 배열에 담아야한다.
+
+    if (status === 500) {
+      let _data = data;
+      if (_data instanceof Blob) {
+        _data = await blobToText(_data).then(JSON.parse);
+      }
+      const obj = errorList.find(
+        ({ errorCode }) => errorCode === _data.errorCode
+      );
+      if (_data.errorCode === "2502") {
+        return;
+      } else {
+        obj.func(_data.errorKoMessage);
+      }
+      if (_data.errorCode === "5001") {
+        const retryOriginalRequest = new Promise((resolve) => {
+          addRefreshSubscriber((accessToken) => {
+            originalRequest.headers.Authorization = "Bearer " + accessToken;
+            if (originalRequest.headers.customType === "UPLOAD") {
+              originalRequest.headers["Content-Type"] = "multipart/form-data";
+            }
+            resolve(api(originalRequest));
+          });
+        });
+        return retryOriginalRequest;
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+```
+
+Access Token 이 만료가 되었을 때 HTTP 응답 상태 코드는 500이며 (서버에서 이 상태 코드로 사용하기로함 401이 일반적임), 이를 더 구체적으로 구별하기 위해 응답 데이터의 errorCode 의 5001 인 경우를 확인합니다. 만약 5001 일 경우 retryOriginalRequest 를 선언하고 토큰이 재발급된 후 대기 중인 요청에 대하여 처리할 수 있도록 Promise 를 생성해서 담습니다.
 
 
 
+현재 코드는&#x20;
 
-Access Token 이 만료가 되었을 때 errorCode 는 5001 이고\
-만약 Access Token 이 유효하지 않은 경우의 errorCode 는 \
 
 
 
