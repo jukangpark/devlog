@@ -228,9 +228,77 @@ instance.interceptors.request.use(function () {/*...*/});
 
 
 
-예제 코드를 보면 알 수 있듯이,&#x20;
+1년 전에 내가 구현했었던 코드는 아래처럼 생겼다.
 
 ```javascript
+import { getToken, saveToken } from "@helpers/Util";
+import axios from "axios";
+import { errorList } from "../errorList/errorList";
+
+export const api = axios.create({
+  baseURL: "/",
+  timeout: 5000,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+let isTokenRefreshing = false;
+let refreshSubscribers = [];
+
+/** 토큰을 재발급 받고, 배열에 담겨있던 ajax 요청을 순차적으로 실행하는 함수 */
+const onTokenRefreshed = (accessToken) => {
+  refreshSubscribers.map((callback) => {
+    return callback(accessToken);
+  });
+  refreshSubscribers = [];
+};
+
+/** 엑세스 토큰이 만료되었을 때 배열에 해당 ajax 요청을 담는 함수 */
+const addRefreshSubscriber = (callback) => {
+  refreshSubscribers.push(callback);
+};
+
+/** 모든 요청 가로채기 */
+api.interceptors.request.use(async (config) => {
+  const accessToken = getToken("accessToken");
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+
+  return config;
+});
+
+export const reIssue = async () => {
+  // 문닫기(한번만 요청)
+  if (!isTokenRefreshing) {
+    isTokenRefreshing = true;
+    const refreshToken = getToken("refreshToken");
+    const { data } = await api.get("/api/doms/reissue", {
+      headers: { "refresh-token": refreshToken },
+    });
+
+    const { accessToken: newAccessToken } = data;
+    saveToken("accessToken", newAccessToken);
+    isTokenRefreshing = false;
+    axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+    onTokenRefreshed(newAccessToken);
+  }
+};
+
+const blobToText = async (blob) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+    reader.onerror = (error) => {
+      reject(error);
+    };
+    reader.readAsText(blob);
+  });
+};
+
 /** 모든 응답 가로채기 */
 api.interceptors.response.use(
   (response) => {
@@ -280,21 +348,115 @@ api.interceptors.response.use(
 
 ```
 
-Access Token 이 만료가 되었을 때 HTTP 응답 상태 코드는 500이며 (서버에서 이 상태 코드로 사용하기로함 401이 일반적임), 이를 더 구체적으로 구별하기 위해 응답 데이터의 errorCode 의 5001 인 경우를 확인합니다. 만약 5001 일 경우 retryOriginalRequest 를 선언하고 토큰이 재발급된 후 대기 중인 요청에 대하여 처리할 수 있도록 Promise 를 생성해서 담습니다.
+error 가 발생할 경우, HTTP 응답 상태 코드는 500으로 통일하기로 했다. \
+(서버에서 이 상태 코드로 사용하기로함. 토큰 만료시 401 Unauthorized 가 일반적임),&#x20;
 
 
 
-현재 코드는&#x20;
+statusCode 에 따라 클라에서 호출해야 하는 함수들을 각각 호출해야한다.\
+errorList.js 는 아래와 같이 구현되어있었다.
+
+```javascript
+import { logOut } from "@helpers/Util";
+import { reIssue } from "../interceptors/interceptors";
+import { Message } from "@components/dashboard";
+import getExceptions from "@api/information/getExceptions";
+
+const func = (message) => {
+  Message("error", message);
+};
+
+let responsedErrorList = null;
+
+let customizeErrorFunc = (d, responsedErrorList) => {
+  if (d.errorCode === "5001") {
+    responsedErrorList.push({
+      ...d,
+      func: () => {
+        reIssue();
+      },
+    });
+  } else if (
+    d.errorCode === "5002" ||
+    d.errorCode === "5003" ||
+    d.errorCode === "5004"
+  ) {
+    responsedErrorList.push({
+      ...d,
+      func: () => {
+        logOut();
+      },
+    });
+  } else {
+    responsedErrorList.push({ ...d, func });
+  }
+};
+
+let requestErrorList = () => {
+  responsedErrorList = [];
+  getExceptions()
+    .then((data) => {
+      data.map((d) => customizeErrorFunc(d, responsedErrorList));
+    })
+    .catch((e) => console.log(e));
+  return responsedErrorList;
+};
+
+export const errorList =
+  responsedErrorList === null ? requestErrorList() : responsedErrorList;
+```
+
+전체적인 로직의 흐름에 대해 설명을 먼저 하고, 위의 코드를 리팩토링 할 예정이다. 코드를 리팩토링 할 때 테스트 코드를 작성해서 각 코드에 대하여 원하는 결과값들을 먼저 구현해놓고 기존의 동작은 변경시키지 않는 선에서 모듈 분리와 리팩토링할 예정이다. 과거 코드는 js 로 되어있었지만, ts 로 마이그레이션 하게 되면서 전체적인 리팩토링도 해주기로 했었다.
+
+
+
+### 기존의 코드 로직 흐름 & 우리가 원하는 결과값
+
+#### **주요 개념과 변수**
+
+1. **api**: Axios 인스턴스로, 기본 URL과 타임아웃, 헤더를 설정하여 사용된다.
+2. **isTokenRefreshing:** 토큰이 재발급 중인지 여부를 추적하는 플래그이다.
+3. **refreshSubscribers:** 토큰이 재발급될 때 대기 중인 요청을 저장하는 배열이다.
+
+
+
+#### **주요 함수**
+
+1\. **onTokenRefreshed(accessToken):**\
+새로운 엑세스 토큰을 발급받은 후, 대기 중인 모든 요청(callback)을 실행하는 역할을 한다.\
+refreshSubscribers 배열에 저장된 모든 콜백을 호출한 후 배열을 초기화한다.
+
+2\. **addRefreshSubscriber(callback):**\
+토큰 재발급 중에 발생한 요청을 refreshSubscribers 배열에 추가한다.\
+토큰이 갱신되면 이 콜백들이 실행된다.
+
+3\. **api.interceptors.request.use(async (config)):**\
+모든 요청 전에 엑세스 토큰을 요청 헤더에 추가하는 인터셉터이다.\
+getToken("accessToken")을 호출해 토큰을 가져오고, 이를 요청의 Authorization 헤더에 추가합니다.
+
+4\. **reIssue():**\
+엑세스 토큰이 만료되었을 때 새롭게 토큰을 발급받는 함수이다.\
+한 번에 하나의 재발급 요청만 처리하기 위해 isTokenRefreshing 플래그를 사용한다.\
+토큰을 성공적으로 재발급받으면 이를 저장하고, 대기 중인 요청들을 실행한다.
+
+5\. **blobToText(blob):**\
+서버에서 받은 Blob 데이터를 텍스트로 변환하는 비동기 함수입니다.
+
+6\. **api.interceptors.response.use(response, async (error)):**\
+모든 응답을 가로채어 처리하는 인터셉터이다.\
+에러가 발생했을 때, 특히 500번 에러일 경우, 특정 에러 코드에 따라 로직을 처리한다.\
+5001 에러 코드의 경우, 토큰 재발급이 필요하므로 요청을 refreshSubscribers 배열에 추가하여 나중에 실행되도록 한다.
+
+\
+\
 
 
 
 
 
-### AccessToken 재발급 받고 어떻게 다시 ajax 요청할까?
 
+\
 
-
-다시 ajax 요청을 하기 위해서는 어떤 구조로 접근해야할까? 고민했었다.
 
 
 
