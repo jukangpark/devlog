@@ -447,15 +447,254 @@ getToken("accessToken")을 호출해 토큰을 가져오고, 이를 요청의 Au
 에러가 발생했을 때, 특히 500번 에러일 경우, 특정 에러 코드에 따라 로직을 처리한다.\
 5001 에러 코드의 경우, 토큰 재발급이 필요하므로 요청을 refreshSubscribers 배열에 추가하여 나중에 실행되도록 한다.
 
-\
-\
+
+
+
+
+### 리팩토링된 interceptors.ts
+
+```typescript
+import { getToken } from "@helpers/Util";
+import axios from "axios";
+import { errorList } from "../errorList/errorList";
+import blobToText from "./blobToText";
+import retryOriginalRequest from "./retryOriginalRequest";
+
+export const api = axios.create({
+  baseURL: "/",
+  timeout: 5000,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+/** 모든 요청 가로채기 */
+api.interceptors.request.use(async (config) => {
+  const accessToken = getToken("accessToken");
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+
+  return config;
+});
+
+/** 모든 응답 가로채기 */
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const {
+      config,
+      response: { status, data },
+    } = error;
+    const originalRequest = config;
+
+    if (status === 500) {
+      let _data = data;
+      if (_data instanceof Blob) {
+        _data = await blobToText(_data).then((res) => JSON.parse(String(res)));
+      }
+      const errorObj = errorList.find(
+        ({ errorCode }) => errorCode === _data.errorCode
+      );
+      if (_data.errorCode === "2502") {
+        return;
+      } else {
+        // errorObj 에 매핑된 함수를 호출합니다. 자세한 내용은 getFuncByErrorCode 함수를 참조하세요.
+        errorObj.func(_data.errorKoMessage);
+      }
+      if (_data.errorCode === "5001") {
+        return retryOriginalRequest(originalRequest);
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+
+```
+
+<figure><img src="../.gitbook/assets/image (42).png" alt=""><figcaption><p>모듈별 test 코드 작성 이후 리팩토링</p></figcaption></figure>
+
+기존의 함수 이름도 변경하고 싶었으나, 전체적인 로직에 대한 변경 이력을 팀과 함께 공유하기 위헤 그대로 두고, 각 모듈을 분리하였다. 유의해서 볼 곳은 state.ts 부분이다. state 객체에 공유할 변수들을 정의해놓고, 각 함수 모듈에서 사용한다.
+
+```typescript
+import StateType from "./state.d";
+
+const state: StateType = {
+  isTokenRefreshing: false, // token 이 재발급 중인지 여부
+  refreshSubscribers: [], // 토큰이 만료된 경우, 새로운 토큰을 받아 오고 난 이후에 새로운 토큰을 사용하여 보낼 요청들을 담아두는 배열
+  responsedErrorList: [], // 서버로 부터 받은 에러 리스트
+};
+
+export default state;
+
+```
 
 
 
 
 
+서버에서 받아온 ErrorList 를 가지고 클라이언트에서 func 를 주입해주는 것과 관련된 로직은 두개의 함수에서 담당한다.&#x20;
 
-\
+1. getErrorObjArrayWithFunc : func 메서드를 가진 errorObj 를 가진 배열을 리턴해주는 함수
+
+```typescript
+import getErrorObjArray from "@api/information/getErrorObjArray";
+import { ErrorObj, ErrorObjWithFunc } from "./errorList.d";
+import state from "../interceptors/state";
+import injectFunctionIntoErrorObj from "./injectFunctionIntoErrorObj";
+const { responsedErrorList } = state;
+
+/**
+  @return {ErrorObjWithFunc[]} - ErrorObjWithFunc 객체를 담을 배열
+  @description - 서버로 부터 받은 에러 코드에 따른 함수를 저장하는 배열을 반환하는 함수
+ */
+const getErrorObjArrayWithFunc = () => {
+  getErrorObjArray()
+    .then((data) => {
+      // 서버로 부터 받아온 에러 코드 목록에는 실행할 func 가 존재 x
+      // injectFunctionIntoErrorObj 함수를 통해 에러 코드 목록에 func를 추가
+      data.forEach((errorObj: ErrorObj) =>
+        injectFunctionIntoErrorObj(errorObj, responsedErrorList)
+      );
+    })
+    .catch((e) => console.log(e));
+  return responsedErrorList;
+};
+
+export default getErrorObjArrayWithFunc;
+
+```
+
+
+
+2. injectFunctionIntoErrorObj : 에러 코드 obj 에 메서드를 주입해주는 함수
+
+```typescript
+import { ErrorObj, ErrorObjWithFunc } from "./errorList.d";
+import getFuncByErrorCode from "./getFuncByErrorCode";
+
+/**
+  @param errorObj {ErrorObj} - 서버로 부터 받은 에러 객체
+  @param responsedErrorList {ErrorObjWithFunc[]} - 서버로 부터 받은 에러 객체에 함수를 추가한 배열
+  @returns {void}
+  @description - 서버로 부터 받은 에러 객체의 errorCode 를 보고 func 메서드를 주입해주는 함수
+ */
+const injectFunctionIntoErrorObj = (
+  errorObj: ErrorObj,
+  responsedErrorList: ErrorObjWithFunc[]
+) => {
+  const { errorCode } = errorObj;
+  const func = getFuncByErrorCode(errorCode);
+  responsedErrorList.push({ ...errorObj, func });
+};
+
+export default injectFunctionIntoErrorObj;
+
+```
+
+
+
+getFuncByErrorCode : 에러코드에 해당하는 함수를 반환해주는 함수
+
+```typescript
+import reIssue from "../interceptors/reIssue";
+import { logOut } from "@helpers/Util";
+import displayErrorMessage from "../interceptors/displayErrorMessage";
+
+/**
+  @param {string} errorCode - 서버로 부터 받은 에러 코드
+  @description - 에러 코드에 따른 함수 반환
+  @returns {function}- 에러 코드에 따른 함수 반환
+ */
+const getFuncByErrorCode = (errorCode: string) => {
+  switch (errorCode) {
+    case "5001":
+      return reIssue;
+    case "5002":
+    case "5003":
+    case "5004":
+      return logOut;
+    default:
+      return displayErrorMessage;
+  }
+};
+
+export default getFuncByErrorCode;
+
+```
+
+
+
+이제 각 errorCode 에 해당 하는 함수들은 \
+`errorObj.func(_data.errorKoMessage);` 이런 형태로 호출되게 될텐데, 특정 함수에서는 인자값이 필요없기 때문에 좀 더 리팩토링 해줘야할 필요성이 있다. (헷갈리기 때문,,)
+
+
+
+reIssue 는 이런식으로 구현되어 있다.&#x20;
+
+```typescript
+import { getToken, saveToken } from "@helpers/Util";
+import state from "./state";
+import { api } from "./interceptors";
+import axios from "axios";
+import onTokenRefreshed from "./onTokenRefreshed";
+
+let { isTokenRefreshing } = state;
+
+/**
+  @description - 토큰 재발급 요청을 보내고, 새로운 accessToken 으로 onTokenRefreshed 함수를 호출하는 함수
+ */
+const reIssue = async () => {
+  // 문닫기(한번만 요청)
+  if (!isTokenRefreshing) {
+    isTokenRefreshing = true;
+    const refreshToken = getToken("refreshToken");
+    const { data } = await api.get("/api/doms/reissue", {
+      headers: { "refresh-token": refreshToken },
+    });
+    const { accessToken: newAccessToken } = data;
+    saveToken("accessToken", newAccessToken);
+    isTokenRefreshing = false;
+    axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+    onTokenRefreshed(newAccessToken);
+  }
+};
+
+export default reIssue;
+```
+
+
+
+**onTokenRefreshed** : 토큰을 재발급 받고, 배열에 담겨있던 ajax 요청을 순차적으로 실행하는 함수\
+state 객체 내부의 refreshSubscribers 를 참조하여 순차적으로 새로운 accessToken 을 가지고 \
+재발행 이후, 각각의 ajax 요청을 호출한다.\
+(개인적으로 reIssue 내부에 onTokenRefreshed 가 존재하는게 아쉬운데 좀 더 좋은 구조가 있는지 고민중이다.)
+
+```typescript
+import state from "./state";
+
+const { refreshSubscribers } = state;
+
+/** 
+  @param {string} accessToken - 새로 발급받은 accessToken
+  @param {function} callback - ajax 요청
+  @return {array} refreshSubscribers - ajax 요청 배열
+  @description - 토큰을 재발급 받고, 배열에 담겨있던 ajax 요청을 순차적으로 실행하는 함수
+*/
+const onTokenRefreshed = (accessToken: string) => {
+  refreshSubscribers.forEach((callback) => {
+    return callback(accessToken);
+  });
+  state.refreshSubscribers.length = 0; // 배열 비우기 (재할당 없이)
+};
+
+export default onTokenRefreshed;
+
+```
+
 
 
 
