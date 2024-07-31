@@ -5,7 +5,7 @@ cover: >-
 coverY: 0
 ---
 
-# JWT 토큰을 활용한 프론트엔드 인증 및 재발행 시스템 구현 (작성중)
+# JWT 토큰을 활용한 프론트엔드 인증 및 재발행 시스템 구현
 
 ### 구현 계기
 
@@ -760,3 +760,7 @@ export default retryOriginalRequest;
 {% embed url="https://github.com/Flyrell/axios-auth-refresh" %}
 
 위의 오픈소스를 참조하여 axios 인터셉터 관련 토큰 재발행 오픈소스를 만들어봐야겠다.
+
+
+
+{% embed url="https://github.com/nkia-development/axios-jwt-reissue" %}
