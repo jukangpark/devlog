@@ -13,7 +13,7 @@ coverY: 0
 
 
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>너무 느린 웹 성능 FCP 가 무려 0.6s 나 걸린다!</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>너무 느린 웹 성능 FCP 가 무려 0.6s 나 걸린다!</p></figcaption></figure>
 
 
 
@@ -156,7 +156,7 @@ const HexagonChartLayer = React.lazy(() =>
 
 
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Uncaught Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.\
 \
@@ -256,7 +256,7 @@ splitChunks: {
 
 
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>bundle.util.js가 청크되어 네트워크탭에 요청된걸 볼 수 있다</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>bundle.util.js가 청크되어 네트워크탭에 요청된걸 볼 수 있다</p></figcaption></figure>
 
 
 
@@ -291,7 +291,7 @@ bundle.util.js : 청크로 나누게 되면서 중복 모듈들에 대하여 공
 따라서 최초 페이지 로딩시 이제 가져오는 번들 사이즈는 \
 **Stat 기준** **26.16 -> 7.79  로 초기 로드시 70.22% 만큼 번들 사이즈를 줄였다.**
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
