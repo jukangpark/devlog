@@ -697,5 +697,66 @@ export default onTokenRefreshed;
 
 
 
+**retryOriginalRequest** : 토큰이 만료되었을 때, 새로운 토큰을 받아온 후에 실행할 ajax 요청 함수
+
+```typescript
+import { api } from "./interceptors";
+import addRefreshSubscriber from "./addRefreshSubscriber";
+
+// types.ts
+interface OriginalRequest {
+  headers: {
+    Authorization: string;
+    customType?: string;
+    [key: string]: string | undefined;
+  };
+}
+
+/**
+  @param {string} accessToken  - 새로 발급받은 토큰 
+  @param {OriginalRequest} originalRequest - 재시도할 요청
+  @returns {Promise} - 재시도할 요청을 반환
+  @description - 새로 발급받은 토큰을 가지고 재시도할 요청을 반환하는 함수
+ */
+const refreshTokenAndRetryRequest = (
+  accessToken: string,
+  originalRequest: OriginalRequest
+): Promise<any> => {
+  originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+  if (originalRequest.headers.customType === "UPLOAD") {
+    originalRequest.headers["Content-Type"] = "multipart/form-data";
+  }
+  return api(originalRequest);
+};
+
+/**
+    @param {OriginalRequest} originalRequest - 재시도할 요청
+    @returns {Promise} - 재시도할 요청
+    @description - 토큰이 만료되었을 때, 새로운 토큰을 받아온 후에 실행할 ajax 요청 함수
+ */
+const retryOriginalRequest = (originalRequest: OriginalRequest) => {
+  // new Promise 객체를 반환하고, resolve 를 직접 호출해주는 이유는
+  // axios 의 interceptor 가 Promise 객체를 반환하기 때문에, 정상적으로 동작하기 위해서입니다. interceptor 가 Promise 객체를 반환하지 않으면, 다음 interceptor 가 실행되지 않습니다.
+  return new Promise((resolve) => {
+    const willRequestFunction = (accessToken: string) => {
+      resolve(refreshTokenAndRetryRequest(accessToken, originalRequest));
+    };
+    addRefreshSubscriber(willRequestFunction);
+  });
+};
+
+export default retryOriginalRequest;
+
+```
 
 
+
+싱글턴 패턴을 유지하면서 각 함수들을 단일책임원칙에 따라 분리하여 리팩토링하여 동일한 결과값을 얻었다.&#x20;
+
+<figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption><p>리팩토링 이후의 동일한 결과</p></figcaption></figure>
+
+리팩토링한 작업에 대하여 팀원들과 공유하였다. 항상 제일 좋은 접근 방법은 없다 꾸준한 개선만 존재할 뿐이다. 현재 작업해놓은 부분들은 팀원들과 공유되고 좀 더 좋은 접근 방법 혹은 코드가 있는지 물어보고 오픈소스들도 참조하여 계속해서 개선해나가야한다.
+
+{% embed url="https://github.com/Flyrell/axios-auth-refresh" %}
+
+위의 오픈소스를 참조하여 axios 인터셉터 관련 토큰 재발행 오픈소스를 만들어봐야겠다.
