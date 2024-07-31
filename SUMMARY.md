@@ -3,7 +3,7 @@
 * [Home](README.md)
   * [3D 데이터 센터 모니터링 솔루션 프로젝트 (작성중 - gif 추가해야함)](home/3d-gif.md)
   * [3D 모델링과 좌표계 설계 그리고 최적화 (작성중)](home/3d.md)
-  * [JWT 토큰을 활용한 프론트엔드 인증 및 재발행 시스템 구현 (작성중)](home/jwt.md)
+  * [JWT 토큰을 활용한 프론트엔드 인증 및 재발행 시스템 구현](home/jwt.md)
   * [피그마 같은 데이터 시각화 편집툴을 만들자고? (작성중)](home/undefined.md)
   * [CRDT 란 무엇인가? (작성중)](home/crdt.md)
   * [상대 좌표계 라이브러리의 한계를 극복? (작성중)](home/undefined-1.md)
