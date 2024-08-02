@@ -1,45 +1,19 @@
 ---
-description: 오픈소스 컨트리뷰터가 되기 위한 여정
+description: 오픈소스 라이선스에 대해 알아보자. 라이선스 검토 자동화 플랫폼 소개도 같이
 cover: >-
-  https://images.unsplash.com/photo-1613206485381-b028e578e791?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwxMHx8dG9vbHxlbnwwfHx8fDE3MjA2ODY4MTV8MA&ixlib=rb-4.0.3&q=85
+  https://images.unsplash.com/photo-1625384827802-1118262acfa6?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw3fHxsaWNlbnNlfGVufDB8fHx8MTcyMTAwODE4NXww&ixlib=rb-4.0.3&q=85
 coverY: 0
 ---
 
-# 오픈소스 컨트리뷰터가 되고 싶어요
-
-### 오픈소스 컨트리뷰터가 되고 싶어진 계기
+# 오픈소스 막 사용하면 안돼! 라이선스 문제 (작성중)
 
 
 
+### 라이센스 종류
+
+\
 
 
-### 오픈소스를 통해 배울 수 있는
+### 올리브 플랫폼
 
-
-
-
-
-### 개발자들과 영어로 소통하기
-
-
-
-
-
-### 이슈 찾기
-
-
-
-
-
-### 문제 해결
-
-
-
-
-
-### 컨트리뷰터가 되었다
-
-
-
-
-
+[https://olive.kakao.com/en-docs/main](https://olive.kakao.com/en-docs/main)
