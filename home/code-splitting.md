@@ -13,7 +13,7 @@ coverY: 0
 
 
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>너무 느린 웹 성능 FCP 가 무려 0.6s 나 걸린다!</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>너무 느린 웹 성능 FCP 가 무려 0.6s 나 걸린다!</p></figcaption></figure>
 
 
 
@@ -156,7 +156,7 @@ const HexagonChartLayer = React.lazy(() =>
 
 
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Uncaught Error: A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.\
 \
@@ -256,7 +256,7 @@ splitChunks: {
 
 
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>bundle.util.js가 청크되어 네트워크탭에 요청된걸 볼 수 있다</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>bundle.util.js가 청크되어 네트워크탭에 요청된걸 볼 수 있다</p></figcaption></figure>
 
 
 
@@ -276,7 +276,7 @@ splitChunks: {
 
 bundle.main.js : 하나의 파일에 모두 들어있었음 **Stat 기준 26.16 MB**
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -291,7 +291,7 @@ bundle.util.js : 청크로 나누게 되면서 중복 모듈들에 대하여 공
 따라서 최초 페이지 로딩시 이제 가져오는 번들 사이즈는 \
 **Stat 기준** **26.16 -> 7.79  로 초기 로드시 70.22% 만큼 번들 사이즈를 줄였다.**
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -330,4 +330,4 @@ Transfer Size는 종종 Content Size보다 작다. 이는 서버에서 데이터
 
 구글 LightHouse 로 검사해본 결과로도, FCP 지표가 0.3s 나 줄어든걸 볼 수 있다. 우리는 이런 뱡향성으로 번들 최적화를 계속해서 해나갈 계획이고, 지금은 우리가 30% 정도 최적화 작업을 해준거 같은데, Builder R3 의 초기 로딩 속도는 더 빨라질 것이다
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>

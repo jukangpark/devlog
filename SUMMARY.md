@@ -27,3 +27,4 @@
   * [기술 블로그 모음 (작성중)](home/undefined-10.md)
   * [Github Action 을 사용하여 오픈소스 CI 구축하기](home/github-action-ci.md)
   * [오픈소스를 운영해보자](home/undefined-11.md)
+  * [NEXT 를 사용해 서비스를 만들어보자](home/next.md)

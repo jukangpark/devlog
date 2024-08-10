@@ -39,7 +39,7 @@ JWT 는 3가지의 부분으로 구성되어있다.
 
 이 세 부분은 각 Base64Url 로 인코딩되며, 점(.) 으로 구분된다.
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -115,7 +115,7 @@ HMACSHA256(
 
 
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 JWT 를 가지고 연습하려면 [jwt.io.Debbugger](https://jwt.io/#debugger-io) 를 decode, verify 그리고 JWT 를 생성할 때 사용하면 된다.
 
@@ -408,7 +408,7 @@ export const errorList =
 
 전체적인 로직의 흐름에 대해 설명을 먼저 하고, 위의 코드를 리팩토링 할 예정이다. 코드를 리팩토링 할 때 테스트 코드를 작성해서 각 코드에 대하여 원하는 결과값들을 먼저 구현해놓고 기존의 동작은 변경시키지 않는 선에서 모듈 분리와 리팩토링할 예정이다. 과거 코드는 js 로 되어있었지만, ts 로 마이그레이션 하게 되면서 전체적인 리팩토링도 해주기로 했었다.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>엑세스토큰 만료시 로그아웃되지않고, 엑세스토큰 재발행 이후 재요청</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>엑세스토큰 만료시 로그아웃되지않고, 엑세스토큰 재발행 이후 재요청</p></figcaption></figure>
 
 ### 기존의 코드 로직 흐름 & 우리가 원하는 결과값
 
