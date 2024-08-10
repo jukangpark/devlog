@@ -1,5 +1,5 @@
 ---
-description: NEXTjs 란 무엇인가?
+description: 한달안에 서비스 릴리즈 하기
 cover: >-
   https://images.unsplash.com/photo-1716643406202-f3a5f212f827?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjMyNjE1OTV8&ixlib=rb-4.0.3&q=85
 coverY: 0
