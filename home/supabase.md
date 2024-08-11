@@ -19,5 +19,5 @@ Supabase 는 Postgres Database 와 Auth 그리고 EdgeFunction, RealTime, Storag
 
 
 
-그래서 Supabase 를 왜 선택했냐면, 우선 개발 속도가 너무 빠르다. NEXT 로 프론트엔드를 구축하고 Vercel 에 배포하고, Supabase 로 DB 를 사용하면, 빠르게 개발 할&#x20;
+그래서 Supabase 를 왜 선택했냐면, 우선 개발 속도가 너무 빠르다. NEXT 로 프론트엔드를 구축하고 Vercel 에 배포하고, Supabase 로 DB 를 사용하면, 빠르게 개발 할 수 있다.
 
