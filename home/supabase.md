@@ -19,5 +19,5 @@ Supabase 는 Postgres Database 와 Auth 그리고 EdgeFunction, RealTime, Storag
 
 
 
-그래서 Supabase 를 왜 선택했냐면, 우선 개발 속도가 너무 빠르다. NEXT 로 프론트엔드를 구축하고 Vercel 에 배포하고, Supabase 로 DB 를 사용하면, 빠르게 개발 할 수 있다.
+그래서 Supabase 를 왜 선택했냐면, 우선 개발 속도가 너무 빠르다. NEXT 로 프론트엔드를 구축하고 Vercel 에 배포하고, Supabase 로 DB 를 사용하면, 빠르게 개발 할 수 있다. Supabase 는 PosgreSQ 을 채택했다. 기존의 Firebase 에서 사용하던 NoSQL 이랑 다른 관계형 데이터 베이스이다. 리얼 타임도 지원하는데, PosgreSQL 의 LISTEN/NOTIFY 의 기능을 활용하여 데이터베이스의 변경 사항을 실시간으로 처리할 수 있다. 인증 및 사용자 관리가 굉장히 쉽게 구현되어있으며, Row Level Security 를 활용한 세밀한 접근 제어도 구현할 수 있다. Supabase 는 테이블을 만들게 되면 RESTful API 가 자동으로 생성되고, 또한 GraphQL API 도 지원해서 데이터를 조회하고 조작할 수 있다. Edge Function(서버리스 함수)를 제공하며 특정 트리거에 따른 코드를 실행할 수 있다. Supabase 는 또한 현재 활발한 오픈소스 커뮤니티를 통해 빠르게 성장중이다.
 
