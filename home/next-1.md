@@ -1,4 +1,5 @@
 ---
+description: 인증을 구현해보자!
 cover: >-
   https://images.unsplash.com/photo-1523485474951-78fcd9344f0c?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw5fHxsb2NrfGVufDB8fHx8MTcyMzQzNTMxNnww&ixlib=rb-4.0.3&q=85
 coverY: 0
