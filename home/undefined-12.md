@@ -1,5 +1,8 @@
 ---
 description: CONTRIBUTING 문서와 CODE CONVENTION 을 작성해보자
+cover: >-
+  https://images.unsplash.com/photo-1716643406202-f3a5f212f827?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjM2MjMxMjl8&ixlib=rb-4.0.3&q=85
+coverY: 0
 ---
 
 # 다양한 개발자들과 협업하기
@@ -102,7 +105,7 @@ axios 인터셉터 관련로직 리팩토링
 
 (매개) **변수,함수에는 카멜 케이스를 사용합니다**. 변수와 함수의 이름에는 카멜 케이스를 사용합니다. **예약어는 절대 사용하지 않습니다.**
 
-```javaScript
+```javascript
 // Bad
 let class;
 let enum;
@@ -125,13 +128,13 @@ example('hello'); // 'hello' 출력
 
 절대 변경되지 않는 개발자들끼리의 약속한 **상수**의 경우에는 영문 대문자 **스네이크 표기법**을 사용합니다.
 
-```javaScript
+```javascript
 const FONT_FAMILY = "Spoqa Han Sans Neo" // 전역으로 사용될 폰트
 ```
 
 생성자는 대문자 카멜 케이스를 사용합니다.
 
-```javaScript
+```javascript
 class ConstructorName {
     //
 }
@@ -139,7 +142,7 @@ class ConstructorName {
 
 #### 이벤트 핸들러
 
-```javaScript
+```javascript
 // handleClick 을 채택하였습니다.
 const handleClick = () => {
     // 이벤트 핸들러
@@ -151,7 +154,7 @@ const handleClick = () => {
 
 #### 불린 반환 함수 : 반환 값이 boolean 인 경우에는 is 로 시작
 
-```javaScript
+```javascript
 function isEven(num) {
     return num % 2 === 0;
 }
@@ -161,14 +164,14 @@ function isEven(num) {
 
 자바스크립트는 전역 변수에 기반을 둡니다. 모든 컴파일 단위는 하나의 공용 전역 객체 (window) 에 로딩 되기 때문에 전역변수는 언제든지 프로그램의 모든 부분에서 접근할 수 있기 때문에, 편하지만 위험합니다. 저희는 최대한 전역변수를 사용하지 않도록 노력합니다.
 
-```javaScript
+```javascript
 // Bad
 const myglobal = "hello";
 ```
 
 #### var 는 절대 사용하지 않으며, 값이 변하지 않는 변수를 let 대신 const 로 선언합니다.
 
-```javaScript
+```javascript
 // Bad
 var a = 1;
 
@@ -180,7 +183,7 @@ const a = 1;
 
 화살표 함수는 별도의 this 바인딩 없이 상위 컨텍스트에 바인딩되기 때문에 함수 표현식보다 혼란이 적으며 덜 장황하고 추론이 쉽습니다.
 
-```javaScript
+```javascript
 // Bad
 [1, 2, 3].map(function (x) {
   const y = x + 1;
@@ -200,7 +203,7 @@ const a = 1;
 
 함수의 본체가 하나의 표현식이면 중괄호를 생략하고 암시적 반환을 사용할 수 있다. 그 외에는 return문을 명시해야 합니다.
 
-```javaScript
+```javascript
 // Bad
 [1, 2, 3].map(number => {
   const nextNumber = number + 1;
@@ -216,7 +219,7 @@ const a = 1;
 
 오브젝트의 프로퍼티에 접근할 때는 최대한 비구조화 할당을 사용을 지향합니다.
 
-```javaScript
+```javascript
 // Bad
 function getFullName(user) {
   const firstName = user.firstName;
@@ -247,7 +250,7 @@ function getFullName({firstName, lastName}) {
 
 새로운 이름으로 변수에 할당 할 때는 꼭 Destructuring을 사용하지 않아도 된다. (둘다 상관 없습니다. 너무 피곤해지니까..)
 
-```javaScript
+```javascript
 // Good
 const changeFirstName = user.firstName;
 
@@ -259,7 +262,7 @@ const {firstName: changeFirstName} = user;
 
 **변수 등을 조합해서 문자열을 생성하는 경우 템플릿 문자열을 이용합니다.** 자바스크립트에서 문자열을 보다 쉽고 명확하게 다룰 수 있어 코드 복잡도가 낮아집니다.
 
-```javaScript
+```javascript
 // Bad
 function sayHi(name) {
   return "How are you, " + name + "?" ;
@@ -285,7 +288,7 @@ function sayHi(name) {
 
 **삼중 등호 연산자인 ===, !==만 사용합니다.** 이건 지향하는게 아니라 **필수**입니다. ==이나 !=는 암묵적 캐스팅으로 타입에 관계없이 판단되어 조건문의 의도를 파악하기 어렵고 버그로 이어집니다.
 
-```javaScript
+```javascript
 
 const numberB = 777;
 
@@ -304,7 +307,7 @@ if (numberB === 777) {
 
 **함수를 작성할 때, JSDoc을 작성하여 함수의 역할과 파라미터, 반환값에 대한 설명을 작성합니다.** TS 타입이 존재하는 경우, 타입을 명시하고, 그렇지 않을 경우 데이터 타입을 명시합니다. 아래 예시 코드를 보면 selectedNodeIds는 string\[] 타입이고, project는 Project 타입이라는 것을 알 수 있습니다.
 
-```javaScript
+```javascript
 import Project from "@builderTypes/builder/Project";
 import getCopiedNodes from "./getCopiedNodes";
 
@@ -334,7 +337,7 @@ export default handleCopy;
 
 중복된 타입 정의를 최대한 줄이고, 타입을 재사용할 수 있도록 노력합니다. 상속을 통해 타입을 재사용할 수 있습니다. **Interface 로 정의된 타입은 prefix 로 I 를 붙이고, Type 으로 정의된 타입은 prefix 로 T 를 붙입니다.** 상속이 필요한 경우, 타입을 정의할 때 interface 를 사용합니다. type 은 상속이 불가능합니다. 상속이 필요하지 않은 경우 type 을 사용하도록 지향합니다. (절대적 규칙은 아닙니다. 개발자가 만약 나중에 상속이 필요하다는 판단이 들면 interface 로 작성해도 무방합니다.)
 
-```javaScript
+```javascript
 // Bad
 interface Project {
   id: string;
@@ -366,7 +369,7 @@ type TProject = {
 
 **전역적으로 사용하게 되는 타입은 types 폴더에 정의하여 사용합니다.**
 
-```javaScript
+```javascript
 // types/IProject.ts
 interface IProject {
   id: string;
@@ -383,7 +386,7 @@ export default IProject;
 
 배열에는 타입을 지정하는 방법이 여러개가 있습니다. 그 중에서도 가장 많이 사용되는 방법은 아래와 같습니다.
 
-```javaScript
+```javascript
 // Bad
 const arr: Array<string> = ['a', 'b', 'c'];
 
@@ -395,7 +398,7 @@ const arr: string[] = ['a', 'b', 'c']; // 이 방법을 사용하도록 합니�
 
 타입 스크립트는 타입 추론을 통해 변수의 타입을 추론합니다. 타입 추론을 최대한 활용하여 코드를 작성합니다. 굳이 명시하지 않아도 되는 타입은 명시하지 않습니다. (경제성)
 
-```javaScript
+```javascript
 // Bad
 const a: number = 1;
 const b: number = 2;
@@ -426,7 +429,7 @@ https://careerly.co.kr/qnas/4968
 
 **로직에 스키마를 확인하는 코드를 작성하지 않습니다.** AJV 를 사용하여 우선 해당 함수에서 인자로 받은 데이터에 대한 데이터 유효성 검사를 수행한 이후에 로직을 수행하도록 합니다.
 
-```javaScript
+```javascript
 // Bad 이렇게 작성하지 않도록 합니다. 로직에 스키마를 확인하는 코드를 작성하지 않습니다.
 function createProject(project) {
   if (!project.id) {
@@ -476,7 +479,7 @@ function createProject(project: IProject) {
 
 **if 문을 사용할 때, 중첩 if 문을 최대한 줄이도록 노력합니다.** 중첩 if 문은 가독성을 떨어뜨리고, 코드의 복잡도를 높입니다. 중첩 if 문을 최대한 줄이도록 노력합니다.
 
-```javaScript
+```javascript
 // Bad
 
 if (condition1) {
@@ -495,7 +498,7 @@ if (condition1 && condition2) {
 
 함수를 작성할 때, 함수의 결합도를 줄이도록 노력합니다. 함수의 결합도가 높으면, 함수의 재사용성이 떨어지고, 유지보수가 어려워집니다. 함수의 결합도를 줄이도록 노력합니다.
 
-```javaScript
+```javascript
 // Bad
 function createProject(project) {
   if (!project.id) {
