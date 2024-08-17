@@ -30,4 +30,4 @@
   * [NEXT 를 사용해 서비스를 만들어보자](home/next.md)
   * [Supabase 를 활용한 릴리즈 주도 개발 (작성중)](home/supabase.md)
   * [NEXT 에서 인증과 사용자 세션을 관리해보자](home/next-1.md)
-  * [다양한 개발자들과 협업하기](home/undefined-12.md)
+  * [협업 문서 작성하기](home/undefined-12.md)
