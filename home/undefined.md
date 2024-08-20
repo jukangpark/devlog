@@ -1,70 +1,43 @@
 ---
-description: 피그마 같은 편집툴을 만드려면 2명이선 너무 공수가 부족해요.. 하하
+description: 2022.05 ~ ing
 cover: >-
-  https://images.unsplash.com/photo-1633355444132-695d5876cd00?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwyfHxGaWdtYXxlbnwwfHx8fDE3MjA1OTM5MjN8MA&ixlib=rb-4.0.3&q=85
+  https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwyfHxwcm9qZWN0fGVufDB8fHx8MTcyNDE1MTc0MXww&ixlib=rb-4.0.3&q=85
 coverY: 0
 ---
 
-# 피그마 같은 데이터 시각화 편집툴을 만들자고? (작성중)
+# 프로젝트
 
-### 피그마 같은 데이터 시각화 편집툴 프로젝트 개요
+### DOMS 프로젝트
 
-팀에서 실시간 데이터 시각화 편집툴을 만들어야했다. 만들게 된 계기는 기존에 회사내에 존재하던 Builder R2 라고 불리는 \
-데이터 시각화 편집 툴이 [AngularJS](https://www.angular.kr/) 로 구축되어있었는데, \
-툴이 너무 오래 되기도 하였고 회사에서 관련 기술 스택을 가진 개발자들을 채용하기가 애매하다는 판단하에\
-회사의 EMS 통합 신제품 POLESTAR 출시와 함께 Builder R3 도 출시하게 되었다.&#x20;
-
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption><p>기존에 존재하던 Builder R2</p></figcaption></figure>
-
-팀의 KPI 를 달성하기 위해, 새로운 프로젝트의 UI 관리자가 나로 임명 되었고, (시작 당시에는 UI 가 나 혼자..)\
-필히 기간안에 프로젝트(Builder R3)를 완성 시켜야 하는 업무를 수행하게 되었다.\
-설명의 편의성을 위해 새 프로젝트를 빌더라고 칭하겠다.\
+{% embed url="https://jkng-96.gitbook.io/devlog/home/3d-gif" %}
 
 
 
+### Builder R3 프로젝트
 
-### 디자인과 기획
-
-디자인과 기획을 하는 단계에서, \
-빌더에 필요한 것들을 기존 R2 를 사용했던 사용자들의 의견을 반영하여\
-다양한 설계들의 초안이 나오기 시작했다.\
-어떤 기능은 필수이고, 어떤 기능은 편의 기능으로 들어가면 좋겠다 라고 하는 제안들이 많이 나오기 시작했다.\
-다양한 사람들의 의견이 나오고 있어서, 이중에 어떤 기능들을 버전 1 로 가져갈지 결정해야할 사안을\
-당시 나와 같이 협업하기로 한 [선임 백엔드 개발자(김락현)](https://github.com/LakHyeonKim)와 함께 논의하기 시작했다.
-
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>기획을 바탕으로 나오게된 피그마 디자인</p></figcaption></figure>
-
-빌더에서 가장 중요하게 생각했던 부분은 **사용자의 편의성**이다.\
-어떻게 해야 사용자들이 우리가 만든 소프트웨어를 편하게 사용할지에 대해 많은 고민을 하였다.\
-
-
-1. 각 노드들을 트리 구조로 핸들링
-2. 기존에 R2 에는 없던 단축키
-3. 실시간으로 협업할 수 있는 편집 툴
-4. 뒤로 가기 / 앞으로 가기
-5. 버전 히스토리 관리
-6. 피그마와 동일한 줌 / 패닝 기능
+{% embed url="https://jkng-96.gitbook.io/devlog/home/undefined" %}
 
 
 
-그래서 우리는 위 기능들을 필수적으로 가져가기로 하였다. \
-이렇게 첫 설계에 대한 기획을 마치고 빌더를 개발하기 시작하였다.\
+### hexagon-chart 오픈소스&#x20;
+
+{% embed url="https://github.com/nkia-development/hexagon-chart" %}
 
 
-### 컴포넌트와 데이터 스키마 설계
 
-비즈니스적인 요구사항을 코드로 구현해내기 위해\
-내가 먼저 하는 작업은 아이패드로 아이디어 스케치를 하여, \
-각 요구사항을 수행하게 될 책임들을 어떤식으로 분리시킬지 컴포넌트 설계를 한다.\
-각 컴포넌트들은 어떤 역할을 맡게 되고, 어떤 행위를 할지 나누기 시작한다.
+### axios-jwt-refresh 오픈소스
 
-<figure><img src="../.gitbook/assets/아이디어 스케치 노트북ㅇㅇㅇ-2 (1).jpg" alt=""><figcaption><p>컴포넌트와 데이터 스키마 설계 아이디어 스케치</p></figcaption></figure>
+{% embed url="https://github.com/nkia-development/axios-jwt-refresh" %}
 
-우선 빌더에서 프로젝트 Project 와 대시보드 Dashboard 라는 큰 개념이 두가지가 있다.
 
-#### 프로젝트 (Project)
 
-#### 대시보드 (Dashboard)
+### Deskify - social networking platform
 
-\
-\
+{% embed url="https://github.com/jukangpark/Deskify" %}
+
+
+
+### CodeKingAcademy - YouTube 강의
+
+{% embed url="https://www.youtube.com/@CodeKingAcademy" %}
+

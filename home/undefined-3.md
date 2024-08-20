@@ -1,31 +1,29 @@
 ---
-description: 프론트엔드 구조 설계에서의 레버리지 당기고 싶어서 구현해본 구조들
+description: E2E PlayWright 을 활용한 회사의 공수 줄이기 대작전
 cover: >-
-  https://images.unsplash.com/photo-1506818144585-74b29c980d4b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwxfHxzcGVlZHxlbnwwfHx8fDE3MjA1OTUwNjB8MA&ixlib=rb-4.0.3&q=85
+  https://images.unsplash.com/photo-1655196601100-8bfb26cf99e9?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwxfHxicm93c2Vyc3xlbnwwfHx8fDE3MjA1OTQxNjJ8MA&ixlib=rb-4.0.3&q=85
 coverY: 0
 ---
 
-# 조금 일하는데 빨리 개발하고싶어요
+# 너무 다른 테스트 환경들 다 맞춰줘야해?
 
-### 레버리지란?
-
-
-
-
-
-### 많은 설정값들에 대한 스키마의 분리와 조합&#x20;
+### 너무나도 다양한 테스트 환경들
 
 
 
 
 
-### 공통 모듈로 가져가야 할 것 vs 아닌 것
+### QA 팀의 공수 줄이기 대작전
 
 
 
 
 
-### 좋은 설계는 모두의 공수를 줄여준다
+### 새로운 테스트 툴을 회사에 도입하기 위한 여정
 
 
+
+
+
+### 개발 문화에 영향 주기
 
