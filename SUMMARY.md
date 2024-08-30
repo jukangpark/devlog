@@ -3,6 +3,7 @@
 * [Home](README.md)
   * [RESUME - JuKangPark](home/resume-jukangpark.md)
   * [프로젝트](home/undefined.md)
+  * [1대1 개발 멘토링 후기](home/1-1.md)
   * [3D 데이터 센터 모니터링 솔루션 프로젝트 (작성중 - gif 추가해야함)](home/3d-gif.md)
   * [3D 모델링과 좌표계 설계 그리고 최적화 (작성중)](home/3d.md)
   * [JWT 토큰을 활용한 프론트엔드 인증 및 재발행 시스템 구현](home/jwt.md)
