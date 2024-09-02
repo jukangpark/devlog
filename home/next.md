@@ -65,5 +65,9 @@ Next 는 서버 사이드 렌더링 (SSR), 정적 사이트 생성(SSG), 클라�
 
 
 
+<figure><img src="../.gitbook/assets/image (46).png" alt=""><figcaption><p>MAU 천명을 향해가보자아</p></figcaption></figure>
+
+
+
 
 
