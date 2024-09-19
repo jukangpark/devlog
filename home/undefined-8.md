@@ -1,26 +1,19 @@
 ---
-description: 리팩토링을 해야하는 이유와 실무에서의 적용 사례
+description: 오픈소스 라이선스에 대해 알아보자. 라이선스 검토 자동화 플랫폼 소개도 같이
 cover: >-
-  https://images.unsplash.com/photo-1514975440715-7b6852af4ee7?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw3fHxjbGVhbnxlbnwwfHx8fDE3MjA2ODY4NDF8MA&ixlib=rb-4.0.3&q=85
+  https://images.unsplash.com/photo-1625384827802-1118262acfa6?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw3fHxsaWNlbnNlfGVufDB8fHx8MTcyMTAwODE4NXww&ixlib=rb-4.0.3&q=85
 coverY: 0
 ---
 
-# 리팩토링 : 클린 코드를 향해
-
-### 리팩토링이란?
+# 오픈소스 막 사용하면 안돼! 라이선스 문제 (작성중)
 
 
 
-### 리팩토링을 하게 된 계기
+### 라이센스 종류
+
+\
 
 
+### 올리브 플랫폼
 
-### 리팩토링 실무 적용 사례
-
-
-
-### 리팩토링을 하게 된 이후의 성장한 개발 문화
-
-
-
-### 경제성 그리고 더 빨라진 개발 속도
+[https://olive.kakao.com/en-docs/main](https://olive.kakao.com/en-docs/main)
