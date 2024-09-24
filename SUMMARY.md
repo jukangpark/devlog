@@ -19,7 +19,7 @@
   * [번들링 최적화 Code Splitting](home/code-splitting.md)
   * [번들링 최적화 minify, uglify, 압축 (작성중)](home/minify-uglify.md)
   * [모듈 시스템과 Tree-Shaking (작성중)](home/tree-shaking.md)
-  * [테스트를 더 효율적으로 할 수 없을까? (작성중)](home/undefined-5.md)
+  * [테스트를 더 효율적으로 할 수 없을까?](home/undefined-5.md)
   * [프런트엔드 개발의 테스트 범위 (테스트 레벨)](home/undefined-6.md)
   * [오픈소스 컨트리뷰터가 되고 싶어요 (작성중)](home/undefined-7.md)
   * [오픈소스 막 사용하면 안돼! 라이선스 문제 (작성중)](home/undefined-8.md)
