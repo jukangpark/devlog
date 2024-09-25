@@ -1,45 +1,26 @@
 ---
-description: 오픈소스 컨트리뷰터가 되기 위한 여정
+description: 리팩토링을 해야하는 이유와 실무에서의 적용 사례
 cover: >-
-  https://images.unsplash.com/photo-1613206485381-b028e578e791?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHwxMHx8dG9vbHxlbnwwfHx8fDE3MjA2ODY4MTV8MA&ixlib=rb-4.0.3&q=85
+  https://images.unsplash.com/photo-1514975440715-7b6852af4ee7?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw3fHxjbGVhbnxlbnwwfHx8fDE3MjA2ODY4NDF8MA&ixlib=rb-4.0.3&q=85
 coverY: 0
 ---
 
-# 오픈소스 컨트리뷰터가 되고 싶어요
+# 리팩토링 : 클린 코드를 향해
 
-### 오픈소스 컨트리뷰터가 되고 싶어진 계기
-
-
+### 리팩토링이란?
 
 
 
-### 오픈소스를 통해 배울 수 있는
+### 리팩토링을 하게 된 계기
 
 
 
-
-
-### 개발자들과 영어로 소통하기
-
+### 리팩토링 실무 적용 사례
 
 
 
-
-### 이슈 찾기
-
+### 리팩토링을 하게 된 이후의 성장한 개발 문화
 
 
 
-
-### 문제 해결
-
-
-
-
-
-### 컨트리뷰터가 되었다
-
-
-
-
-
+### 경제성 그리고 더 빨라진 개발 속도

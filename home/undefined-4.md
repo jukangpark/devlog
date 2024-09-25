@@ -1,114 +1,79 @@
 ---
-description: 웹 성능 지표 개선 해보자!
-cover: >-
-  https://images.unsplash.com/photo-1517026575980-3e1e2dedeab4?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHNlYXJjaHw1fHxHYXVnZXxlbnwwfHx8fDE3MjA1OTMzMTd8MA&ixlib=rb-4.0.3&q=85
-coverY: 0
+description: 프론트엔드 개발의 테스트 범위는 크게 4가지로 분류한다.
 ---
 
-# 웹 성능 지표 개선하기 (작성중)
+# 프런트엔드 개발의 테스트 범위 (테스트 레벨)
 
-### 대시보드 빌더 R3 프로젝트 성능 최적화 개요
+## 테스트 범위와 목적
 
-우리는 대시보드 빌더 R3 프로젝트의 프론트엔드 성능을 개선하기 위해 \
-[Google Developers Lighthouse](https://developer.chrome.com/docs/lighthouse) 를 사용하여 분석을 진행하였다.\
-Lighthouse 의 다양한 성능 지표를 통해 현재 프로젝트의 상태를 평가하고, \
-최적화 작업의 결과를 기록하였다.
+테스트 작성법부터 배우면 상황에 맞는 테스트를 작성하는 것이 어렵다. 이런 혼란을 피하려면 먼저 프런트엔드 테스트의 범위와 목적을 이해해야 한다. 범위와 목적을 이해해야 테스트 자동화의 장점까지 누릴 수 있다.&#x20;
 
+이번 포스팅은 정리하는 차원에서 읽는 것을 권한다. 테스트 작성법을 익히고 다시 읽으면 프런트엔드의 테스트의 전체적인 흐름을 더 잘 이해할 수 있을 것이다.
 
+***
 
-Lighthouse 를 사용하여 웹 페이지를 측정하게 되면 \
-종합 성능 점수가 매겨지는데, 이 점수는 5개의 **지표 (metris)**에 가중치를 적용해 평균 낸 점수이다.\
-이러한 지표를 **웹 바이탈 (Web Vitals)** 이라고 부른다.
+## 테스트 범위
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>5개의 지표들(Metrics)과 가중치(Weighting)</p></figcaption></figure>
+웹 애플리케이션은 여러 모듈을 조합해 만든다. 한 가지 기능을 구현할 때도 다음과 같이 많은 모듈을 활용한다.
 
-### 빌더 성능 지표 검사 2024 년 7월 8일
+1. 라이브러리가 제공하는 함수
+2. 로직을 담당하는 함수
+3. UI 관련 함수
+4. 웹 API 클라이언트
+5. API 서버
+6. 데이터베이스 서버
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption><p>2024 년 7월 8일 Light House 측정 결과</p></figcaption></figure>
+테스트를 작성할 때는 어디부터 어디까지 커버하는 테스트인지 주의해야 한다. 프런트엔드 개발의 테스트 범위(테스트 레벨)는 크게 4개로 분류한다.
 
-{% file src="../.gitbook/assets/빌더 성능지표 검사 24.07.08 (1).pdf" %}
+### 1. 정적 분석
 
-### First Contentful Paint (FCP)
-
-[FCP](https://developer.chrome.com/docs/lighthouse/performance/first-contentful-paint) 는 페이지가 로드될 때 브라우저가 DOM 컨텐츠의 첫 번째 부분을 렌더링 하는 데 걸리는 시간에 관한 지표이다.
-
-* 페이지에 진입하여 첫 콘텐츠가 뜨기 까지 0.6초가 걸렸음을 알 수 있다. \
-
-
-### Largest Contentful Paint (LCP)
-
-[LCP](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint) 는 페이지가 로드될 때 화면 내에 있는 가장 큰 이미지나 텍스트 요소가 렌더링되기까지 걸리는 시간을 나타내는 지표이다. 위 결과에서 LCP 는 6.6 초가 걸렸음을 알 수 있다.\
-그런데 아래의 이미지를 같이 참조하여 보면 알겠지만, h1 태그를 기준으로 6.6초가 걸림을 알 수 있다.\
-h1 요소가 LCP 지표의 기준으로 사용되는 이유는 h1 태그가 중요한 콘텐츠라고 생각해서 그런 거 같다.\
-그렇기 때문에 시맨틱한 HTML 태그를 준수하는 코드를 짜야함을 다시 한번 깨닫게 되었다.\
-
-
-<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption><p>LCP 의 기준이 왜 h1 요소일까</p></figcaption></figure>
-
-### Total Blocking Time (TBT)
-
-[TBT](https://developer.chrome.com/docs/lighthouse/performance/lighthouse-largest-contentful-paint) 는 페이지가 클릭, 키보드 입력 등의 사용자 입력에 응답하지 않도록 차단된 시간을 총합한 지표이다.\
-측정은 FCP 와 TTI 사이의 시간 동안 일어나며 메인 스레드를 독점하여 다른 동작을 방해하는 작업에 걸린 시간을 총합한다.\
-
-
-* 700ms 라는 결과값이 나왔고, 어떤 이유로 Bloking TIme 이 700ms 나 되는지 원인을 찾아봐야겠다.
+타입스크립트나 ESLint 가 제공하는 기능을 활용한다. 각 모듈 내부의 검증 뿐 아니라, 2-3 검증, 3-4 검증 처럼 인접 모듈을 연계해 사용할 때의 문제점도 검증한다.
 
 
 
-### Cumulative Layout Shift (CLS)
+### 2. 단위 테스트
 
-[CLS](https://web.dev/articles/cls) 는 페이지 로드 과정에서 발생하는 예기치 못한 레이아웃 이동을 측정한 지표이다. 레이아웃 이동이란 화면상에서 요소의 위치나 크기가 순간적으로 변하는 것을 말한다.
-
-
-
-* 예기치 못한 레이아웃 이동은 없는 거 같다.
+한 가지 모듈에 한정하여 해당 모듈이 제공하는 기능을 검증하는 테스트다. 독립된 환경에서 검증하기 때문에 실제로 애플리케이션을 사용할 때는 거의 발생하지 않는 케이스(코너 케이스 corner case) 검증에 적합하다.
 
 
 
-### Speed Index (SI)
+### 3. 통합 테스트
 
-[SI](https://developer.chrome.com/docs/lighthouse/performance/speed-index) 는 페이지 로드 중에 콘텐츠가 시각적으로 표시되는 속도를 나타내는 지표이다.\
-
-
-* 어째서 4.6초나 걸렸는지 찾아보고 개선해야 할 거 같다.\
-
-
-### View Treemap
-
-Lighthouse 에서 View Treemap 을 클릭하게 되면 아래의 이미지 처럼,\
-마치 [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) 와 비슷한 트리맵 이미지를 얻을 수 있다. \
-현재 프로젝트의 모듈 번들링과 사용하고 있는 모듈, 사용하고 있지 않은 모듈을 한눈에 볼 수 있어 좋다.
+1\~4, 2\~3 처럼 모듈 조합으로 제공되는 기능을 검증하는 테스트다. 범위가 넓어질수록 효율적인 테스트가 가능하지만 상대적으로 대략적인 검증에 그치게 된다.
 
 
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption><p>All : 33.4 MiB</p></figcaption></figure>
+### 4. E2E 테스트
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>Unused Bytes: 17.8 MiB</p></figcaption></figure>
-
-
-
-### 대시보드 빌더 R3 프로젝트 성능 최적화 계획
-
-우리는 Lighthouse 분석 결과를 바탕으로 각 성능 지표에 대한 개선 작업을 진행할 것이다.\
-각 지표에 대한 개선 작업 계획은 다음과 같았다.
+1\~4 를 통틀어 헤드리스 브라우저와 UI 자동화 도구를 결합하여 검증하는 테스트다. 가장 광범위한 통합 테스트다. 실제로 애플리케이션을 사용할 때와 가장 유사한 테스트이기도 하다.
 
 
 
-1. FCP\
-   개선 계획 : \
-   불필요한 JavaScript 비동기 로드 및 지연 로드\
-   이미지 최적화 및 적절한 포맷 사용하기
-2. LCP\
-   개선계획 : \
-   올바른 Largest Content 의 기준 정하기 ( 시맨틱 HTML )\
-   클라이언트 측 렌더링 성능 개선
-3. TBT\
-   개선계획 : \
-   긴 JavaScript 작업을 작은 단위로 나누어 처리\
-   효율적인 코드 분할 및 로딩 전략 적용\
-   사용하지 않는 폴리필 및 라이브러리 제거\
-   \
+***
 
+## 테스트의 목적
+
+테스트 타입은 테스트 목적에 따라 분류된다. 소프트웨어 테스트 분야에서 많이 알려진 테스트 타입에는 기능 테스트, 비기능 테스트, 화이트박스 테스트, 회귀 테스트가 있다.
+
+테스트 타입은 검증 목적에 맞게 설정해야 하며, 테스트 타입마다 적절한 테스트 도구가 있다. 한 가지 도구 혹은 여러 도구를 조합해 검증하는 경우도 있다. 웹 프런트엔드의 대표적인 테스트 타입을 살펴보자.
+
+
+
+### 1. 기능 테스트 (인터랙션 테스트)
+
+개발된 기능에 문제가 없는지 검증하는 테스트다. 웹 프런트엔드의 대부분 기능은 UI 컴포넌트 조작(인터랙션)에서 시작하기 때문에 인터랙션 테스트가 기능 테스트가 될 때가 많으며, 중요성 또한 높다. 실제 브라우저 API 를 사용하는 것이 중요한 테스트라면 헤드리스 브라우저와 UI 자동화 도구를 사용하는 것이 좋다.
+
+
+
+### 2. 비 기능 테스트(접근성 테스트)
+
+신체적, 정신적 특성에 따른 차이 없이 동등하게 제품을 사용할 수 있는지 검증하는 테스트다. 최근에는 전 세계적으로 웹 접근성 관련 API 가 여러 플랫폼에 추가돼 테스트 자동화를 할 때 객관적으로 검증할 수 있는 환경이 갖춰지고 있다.&#x20;
+
+
+
+### 3. 회귀 테스트
+
+특정 시점을 기준으로 전후 차이를 비교하여 문제가 있는지 검증하는 테스트다. 웹 프런트엔드는 시각적으로 보이는 UI 컴포넌트를 개발하기 때문에 시각적 회귀 테스트가 중요하다.
 
 
 
