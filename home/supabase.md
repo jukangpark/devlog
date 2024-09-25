@@ -5,11 +5,11 @@ cover: >-
 coverY: 0
 ---
 
-# Supabase 를 활용한 릴리즈 주도 개발 (작성중)
+# Supabase 를 활용한 릴리즈 주도 개발
 
 <figure><img src="../.gitbook/assets/image (44).png" alt=""><figcaption><p>수파베이스!</p></figcaption></figure>
 
-### Supabase 란 무엇인가
+### Supabase 란?
 
 [supabase](https://supabase.com)  슬로건은 Build in a weeked Scale to millioins 이다. 개발 생태계는 역시 슬로건을 잘 지어야한다. 후킹을 하고 싶었던 거면 우선 성공이다.&#x20;
 
