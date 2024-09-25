@@ -5,7 +5,7 @@ cover: >-
 coverY: 0
 ---
 
-# 기술 블로그 모음 (작성중)
+# 기술 블로그 모음
 
 [kakao tech](https://tech.kakao.com)
 
@@ -40,4 +40,6 @@ coverY: 0
 [소카](https://tech.socarcorp.kr)
 
 [네이버](https://d2.naver.com/home)
+
+[토스](https://toss.tech/tech)
 
