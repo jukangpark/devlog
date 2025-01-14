@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Home](README.md)
-  * [RESUME - JuKangPark](home/resume-jukangpark.md)
   * [프로젝트](home/undefined.md)
   * [1대1 개발 멘토링 후기](home/1-1.md)
   * [3D 데이터 센터 모니터링 솔루션 프로젝트](home/3d.md)
