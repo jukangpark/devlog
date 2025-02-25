@@ -26,3 +26,4 @@
   * [NEXT 를 사용해 서비스를 만들어보자](home/next.md)
   * [Supabase 를 활용한 릴리즈 주도 개발](home/supabase.md)
   * [협업 문서 작성하기](home/undefined-7.md)
+  * [MFA 와 Module Federation](home/mfa-module-federation.md)
