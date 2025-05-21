@@ -19,16 +19,6 @@ coverY: 0
 
 
 
-### hexagon-chart 오픈소스&#x20;
-
-{% embed url="https://github.com/nkia-development/hexagon-chart" %}
-
-
-
-### axios-jwt-refresh 오픈소스
-
-{% embed url="https://github.com/nkia-development/axios-jwt-refresh" %}
-
 
 
 ### Deskify - social networking platform
