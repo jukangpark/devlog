@@ -15,9 +15,7 @@ coverY: 0
 
 ### Builder R3 프로젝트
 
-{% embed url="https://jkng-96.gitbook.io/devlog/home/undefined" %}
-
-
+[https://jkng-96.gitbook.io/devlog/home/r3](https://jkng-96.gitbook.io/devlog/home/r3)
 
 
 
