@@ -27,3 +27,4 @@
   * [Supabase 를 활용한 릴리즈 주도 개발](home/supabase.md)
   * [협업 문서 작성하기](home/undefined-7.md)
   * [MFA 와 Module Federation](home/mfa-module-federation.md)
+  * [대시보드 생성 및 편집](home/undefined-8.md)

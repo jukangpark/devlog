@@ -180,7 +180,7 @@ Uncaught Error: A component suspended while responding to synchronous input. Thi
 
 lazy 를 사용하면 컴포넌드가 처음 렌더링 될 때까지 로딩을 연기할 수 있다.
 
-* `load`: A function that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Promise) or another _thenable_ (a Promise-like object with a `then` method). React will not call `load` until the first time you attempt to render the returned component. After React first calls `load`, it will wait for it to resolve, and then render the resolved value’s `.default` as a React component. Both the returned Promise and the Promise’s resolved value will be cached, so React will not call `load` more than once. If the Promise rejects, React will `throw` the rejection reason for the nearest Error Boundary to handle.
+* `load`: A function that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or another _thenable_ (a Promise-like object with a `then` method). React will not call `load` until the first time you attempt to render the returned component. After React first calls `load`, it will wait for it to resolve, and then render the resolved value’s `.default` as a React component. Both the returned Promise and the Promise’s resolved value will be cached, so React will not call `load` more than once. If the Promise rejects, React will `throw` the rejection reason for the nearest Error Boundary to handle.
 
 lazy 에 파라미터는 load 라고 하는 Promise 를 반환하는 함수이다. React 는 반환된 컴포넌트를 처음 렌더링 할 때까지 load 함수를 호출하지 않는다. React 가 먼저 load 함수를 호출한 후 resolve 가 될 때까지 기다렸다가 해결된 값의 .default 를 Reat 컴포넌트로 렌더링한다. 반환된 Promise 의 resolved 된 값이 모두 캐시되므로 React 는 load 함수를 두 번 이상 호출하지 않는다. Promise 가 만약 reject 되면 React 는 가장 가까운 Error Boundary 에서 rejections reason 을 throw 할것이다.
 
@@ -295,8 +295,7 @@ bundle.util.js : 청크로 나누게 되면서 중복 모듈들에 대하여 공
 
 
 
-\
-
+<br>
 
 네트워크 탭에서도 비교해보면 기존에는 SplitChunkPlugin 으로 node\_modules 내부 파일만 청크해서, 초기 접근시에는, defaultVendors 번들 사이즈가 27.6 MB 인걸 볼 수 있다.
 

@@ -23,8 +23,7 @@ coverY: 0
 
 
 
-번들러란? js, css, 이미지 등의 파일을 묶어주는 작업을 '번들링(Bundling)' 이라고 하고, 작업의 결과물은 '번들(Bundle)' 이라고 한다. 웹팩 자체는 묶어주는 역할을 하기 때문에 '번들러(Bundler)' 라고 한다. 번들링 과정이 끝나면 기존 스크립트에서 import/export 가 사라지기 때문에 type="module"이 필요 없어진다. 따라서 번들링 과정을 거친 스크립트는 일반 스크립트 처럼 취급한다.\
-
+번들러란? js, css, 이미지 등의 파일을 묶어주는 작업을 '번들링(Bundling)' 이라고 하고, 작업의 결과물은 '번들(Bundle)' 이라고 한다. 웹팩 자체는 묶어주는 역할을 하기 때문에 '번들러(Bundler)' 라고 한다. 번들링 과정이 끝나면 기존 스크립트에서 import/export 가 사라지기 때문에 type="module"이 필요 없어진다. 따라서 번들링 과정을 거친 스크립트는 일반 스크립트 처럼 취급한다.<br>
 
 
 
@@ -52,17 +51,13 @@ coverY: 0
    config파일에서 entry 속성을 설정해서 웹팩이 어떤 모듈로부터 시작해서, \
    디펜던시 그래프를 그려나갈지 명시해줄 수 있다.\
    'entry' 속성의 기본값은 './src/index.js'이지만 \
-   다른 Entry Point를 지정할 수도 있다. (여러 개도 지정 가능)\
-
+   다른 Entry Point를 지정할 수도 있다. (여러 개도 지정 가능)<br>
 2. [**Output**](https://webpack.js.org/concepts/output/#root)\
-   웹팩이 번들을 꾸리고 나서 결과물을 어디로 내보낼지 지정하는 속성이다. \
-
+   웹팩이 번들을 꾸리고 나서 결과물을 어디로 내보낼지 지정하는 속성이다. <br>
 3. [**Loaders**](https://webpack.js.org/loaders/)\
    이제까지 자바스크립트 외의 리소스도 번들링할 수 있다고 했지만, \
    사실 웹팩은 기본적으로 JavaScript와 JSON 파일만 이해할 수 있다. \
    이 때 필요한 것이 Loader이다. \
-   사용하려는 포맷에 대응하는 Loader를 설정해주면 다른 포맷의 리소스도 디펜던시 그래프에 추가할 수있게 된다.\
-
-4. [**Plugin**](https://webpack.js.org/concepts/plugins/#root)\
-
+   사용하려는 포맷에 대응하는 Loader를 설정해주면 다른 포맷의 리소스도 디펜던시 그래프에 추가할 수있게 된다.<br>
+4. [**Plugin**](https://webpack.js.org/concepts/plugins/#root)<br>
 

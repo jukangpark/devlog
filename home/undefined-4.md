@@ -39,8 +39,7 @@ coverY: 0
 
 ### 렌더트리 (render tree)
 
-렌더 트리는 DOM 과 CSSOM 의 결합으로 생성된다. 이 렌더 트리는 화면에 표시되는 각 요소의 레이아웃을 계산하는 데 사용된다. 달리 말하면, display: none 으로 설정되어 화면에 표시되지 않는 요소는 렌더 트리에 포함되지 않는다.\
-
+렌더 트리는 DOM 과 CSSOM 의 결합으로 생성된다. 이 렌더 트리는 화면에 표시되는 각 요소의 레이아웃을 계산하는 데 사용된다. 달리 말하면, display: none 으로 설정되어 화면에 표시되지 않는 요소는 렌더 트리에 포함되지 않는다.<br>
 
 > display: none 은 렌더 트리에 포함되지 않지만, opacity: 0 이나 visibility: hidden 인 요소는 렌더 트리에 포함된다. 이러한 속성은 사용자 눈에는 보이지 않지만 요소 자체가 없어진 것은 아니기 때문이다.
 
@@ -82,8 +81,7 @@ coverY: 0
 
 #### 리플로우와 리페인트를 발생시키는 속성
 
-> 리플로우 : position, display, width, float, height, font-family, top, left, font-size, font-weight, line-height, min-height, margin, padding, border 등\
->
+> 리플로우 : position, display, width, float, height, font-family, top, left, font-size, font-weight, line-height, min-height, margin, padding, border 등<br>
 >
 > 리페인트 : background, background-image, background-position, border-radius, border-style, box-shadow, color, line-style, outline 등
 

@@ -21,7 +21,7 @@ Webpack 에서 build 시 [Tree Shaking](https://webpack.js.org/guides/tree-shaki
 
 ### Tree Shaking 이란?
 
-[Tree Shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree\_shaking) 이란 최종 번들 결과물에서, 불필요한 코드가 없어지는 과정을 의미한다. MDN 의 정의를 살펴보자.
+[Tree Shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) 이란 최종 번들 결과물에서, 불필요한 코드가 없어지는 과정을 의미한다. MDN 의 정의를 살펴보자.
 
 It relies on the [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) and [export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) statements to detect if code modules are exported and imported for use between JavaScript files.
 
@@ -54,8 +54,7 @@ Node.js 환경에서는 CommonJS 를 채택하였다. CommonJS 의 특징은 아
 
 1\. 간단하고 명확함: 동기적 로딩과 정적 바인딩은 코드의 실행 흐름을 이해하기 쉽게 합니다.\
 2\. 빠른 로드 시간: 서버 환경에서 모든 모듈이 로컬에 존재하기 때문에, 동기적 로딩이 성능에 큰 영향을 미치지 않습니다.\
-3\. 의존성 관리 용이: 의존성이 정적으로 결정되기 때문에, 모듈 간의 의존성 관계를 쉽게 추적하고 관리할 수 있습니다.\
-
+3\. 의존성 관리 용이: 의존성이 정적으로 결정되기 때문에, 모듈 간의 의존성 관계를 쉽게 추적하고 관리할 수 있습니다.<br>
 
 단점
 

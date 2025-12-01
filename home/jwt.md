@@ -13,8 +13,7 @@ coverY: 0
 
 우리가 떠올린 디자인 패턴은 프록시 패턴이었다. 프록시 패턴을 사용하면 요청을 가로채어 토큰을 추가하거나 검증할 수 있기 때문이다. 이 과정에서 우리는 [Axios](https://axios-http.com/kr/)의 [인터셉터](https://axios-http.com/kr/docs/interceptors)를 활용하여 프록시 패턴을 적용했다. 인터셉터를 사용하면 모든 HTTP 요청과 응답을 가로채고 처리할 수 있어 JWT 토큰을 이용한 인증 절차를 손쉽게 구현할 수 있다.
 
-이 글에서 JWT 에 대한 기본적인 개념과 Axios 의 인터셉터를 활용하여 실제 프로젝트에 인증 및 재발행 시스템을 구현한 기술적인 내용을 다루고자 한다.\
-
+이 글에서 JWT 에 대한 기본적인 개념과 Axios 의 인터셉터를 활용하여 실제 프로젝트에 인증 및 재발행 시스템을 구현한 기술적인 내용을 다루고자 한다.<br>
 
 
 
@@ -25,7 +24,7 @@ JSON Web Token (JWT) is an open standard ([RFC 7519](https://tools.ietf.org/html
 Although JWTs can be encrypted to also provide secrecy between parties, we will focus on _signed_ tokens. Signed tokens can verify the _integrity_ of the claims contained within it, while encrypted tokens _hide_ those claims from other parties. When tokens are signed using public/private key pairs, the signature also certifies that only the party holding the private key is the one that signed it.
 
 공식문서의 정의를 한글로 요약하면,\
-[JWT (Json Web Token)](https://jwt.io/introduction) 토큰은 정보의 안전한 전송을 위해 JSON 객체 형태로 정보를 담아 디지털 서명으로 신뢰성을 보장하는 개방형 표준이다. JWT는 [HMAC](https://ko.wikipedia.org/wiki/HMAC) 알고리즘을 사용한 비밀 키 또는 [RSA](https://ko.wikipedia.org/wiki/RSA\_%EC%95%94%ED%98%B8)나 [ECDSA](https://ko.wikipedia.org/wiki/%ED%83%80%EC%9B%90%EA%B3%A1%EC%84%A0\_DSA)를 사용한 공개/개인 키 쌍으로 서명될 수 있으며, 서명된 토큰은 그 안의 정보 무결성을 검증할 수 있다.
+[JWT (Json Web Token)](https://jwt.io/introduction) 토큰은 정보의 안전한 전송을 위해 JSON 객체 형태로 정보를 담아 디지털 서명으로 신뢰성을 보장하는 개방형 표준이다. JWT는 [HMAC](https://ko.wikipedia.org/wiki/HMAC) 알고리즘을 사용한 비밀 키 또는 [RSA](https://ko.wikipedia.org/wiki/RSA_%EC%95%94%ED%98%B8)나 [ECDSA](https://ko.wikipedia.org/wiki/%ED%83%80%EC%9B%90%EA%B3%A1%EC%84%A0_DSA)를 사용한 공개/개인 키 쌍으로 서명될 수 있으며, 서명된 토큰은 그 안의 정보 무결성을 검증할 수 있다.
 
 
 
@@ -73,13 +72,11 @@ JWT 는 3가지의 부분으로 구성되어있다.
 
     • iat (issued at): 토큰 발급 시간, 토큰 발급 이후의 경과 시간을 알 수 있음
 
-    • jti (JWT ID): 토큰 고유 식별자, 중복 방지를 위해 사용하며, 일회용 토큰 (AccesToken) 등에 사용\
-
+    • jti (JWT ID): 토큰 고유 식별자, 중복 방지를 위해 사용하며, 일회용 토큰 (AccesToken) 등에 사용<br>
 2.  공개 클레임 (Public claims) : 충돌을 방지하기 위해 IANA JSON Web Token Registry 또는 URI 형식을 통해 정의된 클레임\
     • name: 사용자 이름
 
-    • email: 사용자 이메일 주소\
-
+    • email: 사용자 이메일 주소<br>
 3.  비공개 클레임 (Private claims) : 공개적으로 사용되지 않으며, 클레임 이름과 의미가 해당 시스템 내에서만 이해되고 처리된다. 따라서 특정 애플리케이션이나 시스템 요구 사항에 맞춰 자유롭게 정의될 수 있다.\
     예를 들어,\
     • user\_id: 사용자 ID
@@ -192,7 +189,7 @@ Refresh Token 을 통해 사용자 로그인 빈도를 줄여 편의성을 높�
 ### 요청과 응답을 가로채자
 
 그럼 이제 기본적인 개념들과 설계 방향성에 대하여 모두 알았으니, 실제로 Axios 의 [인터셉터](https://axios-http.com/kr/docs/interceptors)를 사용하여 요청와 응답을 가로채보자. 공식문서를 보면 then 또는 catch 로 처리되기 전에 요청과 응답을 가로챌 수 있다고 되어있다.\
-Promise 와 관련된 배경지식이 부족하다면 [여기](https://www.instagram.com/p/C3PFvcYSmO\_/?img\_index=1)를 보고 오자.
+Promise 와 관련된 배경지식이 부족하다면 [여기](https://www.instagram.com/p/C3PFvcYSmO_/?img_index=1)를 보고 오자.
 
 ```javascript
 // 요청 인터셉터 추가하기
