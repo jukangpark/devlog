@@ -163,11 +163,89 @@ description: 대시보드 생성 및 편집을 위해 "대시보드빌더"에 �
 
 #### 노트
 
-이미지 업로드는 다음 형식의 파일만 업로드 가능합니다. (png, jpg, gif, svg)<br>
+이미지 업로드는 다음 형식의 파일만 업로드 가능합니다. (png, jpg, gif, svg)
 
-<div align="left"><figure><img src="../.gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure></div>
+<div align="center"><figure><img src="../.gitbook/assets/image (60).png" alt=""><figcaption></figcaption></figure></div>
 
 
 
-\
-<br>
+#### 파인더 동영상
+
+이미지/에셋 관리하기를 통해 대시보드 동영상 목록을 관리할 수 있습니다.\
+동영상 파일은 외부에서 자유롭게 드래그하여 파인더(탐색기)로 추가할 수 있습니다.
+
+
+
+#### 노트
+
+동영상 업로드는 다음 형식의 파일만 업로드 가능합니다. (mp4)
+
+<figure><img src="../.gitbook/assets/image (61).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 파인더 폰트
+
+이미지/에셋 관리하기를 통해 대시보드 폰트 목록을 관리할 수 있습니다.\
+폰트 파일은 외부에서 자유롭게 드래그하여 파인더(탐색기)로 추가할 수 있습니다.
+
+
+
+#### 노트
+
+폰트 업로드는 다음 형식의 파일만 업로드 가능합니다. (ttf. otf)
+
+<figure><img src="../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 대시보드 만들기
+
+프로젝트 생성 및 삭제 : 대시보드를 제작하기 위해서는 가장 먼저 프로젝트를 생성해야 합니다. 프로젝트는 대시보드를 구성하는 모든 파일이 저장되는 가장 상위의 단위입니다.
+
+
+
+#### 노트
+
+프로젝트는 메인 화면 상단에서 ‘새 프로젝트 생성’ 버튼을 눌러 생성할 수도 있고, 파인더(탐색기)의 프로젝트 메뉴에서 ‘+’ 버튼을 눌러 생성할 수도 있습니다.
+
+<p align="center"><br><img src="../.gitbook/assets/image (64).png" alt=""><br></p>
+
+<figure><img src="../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 프로젝트 다운로드 및 업로드
+
+대시보드 프로젝트는 json 파일 형태로 다운로드 및 업로드 할 수 있습니다.
+
+<figure><img src="../.gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
+
+
+
+
+
+#### 프레임
+
+프로젝트가 생성되었으면 이제 대시보드를 만들 수 있습니다. 가장 먼저 밑바탕의 역할을 하는 프레임을 생성해야합니다. 프레임은 우측 사이드 바에서 디자인 탭의 ‘대시보드 프레임’에서 원하는 해상도를 선택하여 캔버스 영역으로 드래그하거나, 캔버스에서 마우스 우클릭 하여 ‘대시보드 프레임 생성하기’ 메뉴를 통해 선택한 해상도로 프레임을 생성할 수 있습니다.
+
+
+
+#### 노트
+
+현재 지원가능한 해상도는 4K(3840X2160), 2K(2560X1440), Full HD(1920X1080), HD(1280X720)입니다.
+
+<figure><img src="../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 레이어
+
+프레임을 생성하였으면 이제 레이어를 만들어 대시보드 화면을 구성합니다. 생성할 수 있는 레이어의 종류는 텍스트와 도형 레이어가 있고, 캔버스 영역에서 마우스 우클릭을 하여 레이어를 생성할 수 있습니다.
+
+<figure><img src="../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
+
+
+
