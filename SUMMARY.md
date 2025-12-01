@@ -28,4 +28,4 @@
   * [협업 문서 작성하기](home/undefined-7.md)
   * [MFA 와 Module Federation](home/mfa-module-federation.md)
   * [대시보드 빌더 R3 사용자 메뉴얼](home/r3.md)
-  * [위젯 대시보드 편집](home/undefined-8.md)
+  * [위젯 대시보드 빌더 사용자 메뉴얼](home/undefined-8.md)
