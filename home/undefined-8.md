@@ -9,7 +9,7 @@ coverY: 0
 
 위젯 대시보드를 맵을 신규 혹은 기존의 위젯 대시보드를 편집할 수 있습니다. 생성시 기본으로 제공되는 레이아웃을 선택할 수 있으며. 자유롭게 변경할 수 있습니다.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 #### 노트
 
@@ -25,7 +25,7 @@ coverY: 0
 
 위젯 대시보드의 구성을 손쉽게 하기위해 레이아웃을 선택할 수 있습니다. 4가지의 시각화 레이아웃과 자유형태의 레이아웃이 있습니다. 사용자는 선택한 레이아웃을 이용하여 다양한 위젯 대시보드를 생성할 수 있습니다.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">1. 균형형 대시보드</td><td valign="top">레이아웃은 균등하고 대칭적인 위젯 배치를 통해 데이터를 효과적으로 정리하고 비교할 수 있도록 합니다.</td></tr><tr><td valign="top">2. 강조형 대시보드</td><td valign="top">데이터의 중요도에 따라 위젯 크기를 달리하여 주요 정보를 효과적으로 전달하는 데 최적화되어 있습니다.</td></tr><tr><td valign="top">3. 계층형 대시보드</td><td valign="top">계층적이고 유연한 정보 배치를 통해 다양한 데이터 유형을 효과적으로 시각화할 수 있습니다.</td></tr><tr><td valign="top">4. 분할형 대시보드</td><td valign="top">작은 위젯과 큰 위젯의 조합으로 시각적 균형 유지와 데이터 비교 용이하여 중요한 데이터의 세부 정보를 한눈에 볼 수 있습니다.</td></tr><tr><td valign="top">5. 지유형태 레이아웃</td><td valign="top">사용자 선호에 따라 대시보드를 개인화하여 효율적인 정보 접근과 분석을 지원합니다.</td></tr></tbody></table>
 
@@ -213,7 +213,67 @@ coverY: 0
 
 <table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">1. 지표 선택</td><td valign="top">카드에 표시할 지표를 선택합니다. [추가] 버튼을 클릭하여 다중으로 추가가 가능합니다.</td></tr></tbody></table>
 
-<br>
+
+
+#### 기본 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">2. 위젯 타이틀</td><td valign="top">위젯 타이틀을 설정합니다.</td></tr><tr><td valign="top">3. 위젯 설명</td><td valign="top">위젯 설명을 설정합니다.</td></tr><tr><td valign="top">4. 레이아웃</td><td valign="top">멀티 카드 위젯을 표현할 레이아웃을 설정합니다. 원하는 곳을 클릭하면 해당 레이아웃으로 설정됩니다.</td></tr></tbody></table>
+
+#### 데이터 표현
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">5. 정렬</td><td valign="top">카드에 표시되는 텍스트 정렬합니다.</td></tr><tr><td valign="top">6. 폰트 크기</td><td valign="top">카드에 표시되는 텍스트의 폰트 크기를 설정합니다.</td></tr></tbody></table>
+
+
+
+#### 표시 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">7. 차트 사용</td><td valign="top">멀티 카드에 추가적으로 차트를 표시할지 여부를 설정합니다.</td></tr><tr><td valign="top">8. 차트 종류</td><td valign="top">차트의 종류를 설정합니다.</td></tr><tr><td valign="top">9. 차트 위치</td><td valign="top">차트를 표시할 위치를 설정합니다.</td></tr><tr><td valign="top">10. 비교 데이터</td><td valign="top">카드에 표시할 비교 데이터를 설정합니다.</td></tr></tbody></table>
+
+#### 위젯 강조 표시
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">11. 강조 스타일</td><td valign="top">강조 스타일을 설정합니다.</td></tr><tr><td valign="top">12. 강조 조건</td><td valign="top">강조 조건을 설정합니다.</td></tr></tbody></table>
+
+
+
+#### TopN 위젯
+
+선택된 대상의 성능 정보를 TopN으로 볼 수 있으며 TopN에 표시된 지표의 이력정보를 차트로 볼 수 있는 위젯 기능을 제공합니다.
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 대상 선
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">1. 지표 선택</td><td valign="top">TopN으로 표시할 지표를 선택합니다.</td></tr></tbody></table>
+
+
+
+#### 기본 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">2. 위젯 타이틀</td><td valign="top">위젯 타이틀을 설정합니다.</td></tr><tr><td valign="top">3. 위젯 설명</td><td valign="top">위젯 설명을 설정합니다.</td></tr></tbody></table>
+
+
+
+#### 표시 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">4. TopN 구성</td><td valign="top">TopN으로 표시할 정보를 설정합니다.</td></tr><tr><td valign="top">5. 차트 사용</td><td valign="top">TopN에 추가적으로 차트를 표시할지 여부를 설정합니다.</td></tr><tr><td valign="top">6. 그리드 사용</td><td valign="top">TopN테이블을 표시할지 여부를 설정합니다.</td></tr><tr><td valign="top">7. 차트 종류</td><td valign="top">차트의 종류를 설정합니다.</td></tr><tr><td valign="top">8. 차트 위치</td><td valign="top">차트를 표시할 위치를 설정합니다.</td></tr><tr><td valign="top">9. 단위 표시</td><td valign="top">단위 표시여부를 설정합니다.</td></tr><tr><td valign="top">10. 데이터 포멧</td><td valign="top">표시할 성능 정보의 데이터 포멧을 설정합니다.</td></tr></tbody></table>
+
+
+
+#### 위젯 강조 표시
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">11. 강조 스타일</td><td valign="top">강조 스타일을 설정합니다.</td></tr><tr><td valign="top">12. 강조 조건</td><td valign="top">강조 조건을 설정합니다.</td></tr></tbody></table>
+
+
+
+#### 게이지 차트 위젯
+
+선택된 대상의 성능 정보를 게이지 차트로 볼 수 있는 위젯 기능을 제공합니다.
+
+<figure><img src="../.gitbook/assets/image (80).png" alt=""><figcaption></figcaption></figure>
+
+
 
 
 

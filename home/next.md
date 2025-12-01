@@ -7,7 +7,7 @@ coverY: 0
 
 # NEXT 를 사용해 서비스를 만들어보자
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>리액트 프레임워크!</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption><p>리액트 프레임워크!</p></figcaption></figure>
 
 
 
