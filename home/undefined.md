@@ -21,13 +21,12 @@ coverY: 0
 
 
 
-### Deskify - social networking platform
-
-{% embed url="https://github.com/jukangpark/Deskify" %}
-
-
-
 ### CodeKingAcademy - YouTube 강의
 
 {% embed url="https://www.youtube.com/@CodeKingAcademy" %}
 
+
+
+#### CodeKingBuilder - 개인 프로젝트
+
+{% embed url="https://www.codekingbuilder.com/ko" %}
