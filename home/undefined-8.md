@@ -287,3 +287,91 @@ coverY: 0
 
 
 
+#### 위젯 강조 표기
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">5. 임계치</td><td valign="top">게이지 차트의 임계치 여부를 설정합니다. 임계치 여부 설정을 True 하면 각 게이지별로 임계치를 설정합니다.</td></tr></tbody></table>
+
+
+
+#### 맵 위젯
+
+선택된 토폴로지 정보와 를 볼 수 있는 위젯 기능을 제공합니다.
+
+<figure><img src="../.gitbook/assets/image (81).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 대상 선택
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">1. 위젯 타입</td><td valign="top"><p>위젯 타입을 선택합니다. [토폴로지맵], [네트워크 자동맵], [태그맵], [파드맵], [파드뷰], [서비스맵] 중에 선택할 수 있습니다.</p><p>위젯 타입에 따라 선택되는 항목이 다르며 기본 값은 [토폴로지맵] 으로 이미 생성된 토폴로지맵을 선택할 수 있는 대상 선택이 표시됩니다.</p></td></tr><tr><td valign="top">2. 대상 선택</td><td valign="top"><p>초기 화면은 토폴로지맵을 선택할 수 있는 대상 선택이 표시됩니다.</p><p>위젯 타입에 따라 선택할 수 있는 대상 선택이 다릅니다.</p><p> </p><p>[토폴로지맵] : 이미 생성된 토폴로지 목록에서 표시합니다. [추가] 버튼을 클릭하여 다중으로 추가가 가능하며 슬라이드 보기가 활성화됩니다.</p><p>[서비스맵] : 서비스 맵 타입을 표시합니다. 현재는 [서비스 목록] 만 있으며  생성된 APM의 서비스맵을 왼쪽에 목록으로 표시합니다. 체크 버튼을 이용하여 다중 선택이 가능합니다.</p><p>[나머지] : 필터링 할 수 있는 화면이 표시됩니다.</p></td></tr></tbody></table>
+
+
+
+#### 기본 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">3. 위젯 타이틀</td><td valign="top">위젯 타이틀을 설정합니다.</td></tr><tr><td valign="top">4. 위젯 설명</td><td valign="top">위젯 설명을 설정합니다.</td></tr></tbody></table>
+
+
+
+
+
+#### 표시 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">5. 슬라이드 설정</td><td valign="top">슬라이드 보기를 설정합니다. 슬라이드 보기를 설정하지 않고 다중 토폴로지를 선택하면 선택된 토폴로지가 전부 표시됩니다.</td></tr></tbody></table>
+
+
+
+#### 테이블 위젯
+
+테이블 형태의 데이터를 쉽게 확인할 수 있는 위젯 기능을 제공합니다.
+
+<figure><img src="../.gitbook/assets/image (82).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 대상 선택
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">1. 위젯 타입</td><td valign="top">위젯 타입을 선택합니다. [알람], [이벤트], [관리항목], [사용자 정의 항목] 중에 선택할 수 있습니다. [관리항목]과 [사용자 정의 항목]을 선택하면 하위 메뉴를 선택할 수 있습니다.</td></tr><tr><td valign="top">2. 분류</td><td valign="top">대상의 필터를 선택합니다.</td></tr><tr><td valign="top">3. 알람 등급</td><td valign="top">위젯 타입이 [알람]일 경우에만 표시가 되며 표시를 원하는 알람 등급을 토글 합니다.</td></tr></tbody></table>
+
+
+
+#### 기본 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">4. 위젯 타이틀</td><td valign="top">위젯 타이틀을 설정합니다.</td></tr><tr><td valign="top">5. 위젯 설명</td><td valign="top">위젯 설명을 설정합니다.</td></tr></tbody></table>
+
+
+
+#### 표시 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">6. 목록 개수</td><td valign="top">목록에 표시할 개수를 설정합니다.</td></tr><tr><td valign="top">7. 컬럼 설정</td><td valign="top">컬럼의 위치, 넓이, 표시여부를 설정합니다.</td></tr></tbody></table>
+
+
+
+#### 네트워크 인터페이스 위젯
+
+선택된 네트워크 대상의 인터페이스 정보를 분류별로 볼 수 있는 위젯 기능을 제공합니다. 인터페이스 차트를 제공하여 각각의 정보를 확인할 수 있습니다.
+
+<figure><img src="../.gitbook/assets/image (83).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 대상 선택
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">1. 위젯 타입</td><td valign="top">위젯 타입을 선택합니다. [필터], [태그] 중에 선택할 수 있습니다.</td></tr><tr><td valign="top">2. 분류</td><td valign="top">대상의 필터를 선택합니다.</td></tr></tbody></table>
+
+&#x20;
+
+#### 기본 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">3. 위젯 타이틀</td><td valign="top">위젯 타이틀을 설정합니다.</td></tr><tr><td valign="top">4. 위젯 설명</td><td valign="top">위젯 설명을 설정합니다.</td></tr></tbody></table>
+
+&#x20;
+
+&#x20;
+
+#### 표시 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">5. 차트 사용</td><td valign="top">차트 사용여부를 설정합니다.</td></tr><tr><td valign="top">6. 분류</td><td valign="top">분류 표시여부를 설정합니다.</td></tr></tbody></table>
+
+
+
