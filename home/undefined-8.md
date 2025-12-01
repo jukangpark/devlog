@@ -60,13 +60,11 @@ description: 대시보드 생성 및 편집을 위해 "대시보드빌더"에 �
 
 메인 캔버스 영역은 대시보드를 생성하여 제작할 수 있는 영역이며 캔버스 영역안에서 자유롭게 대시보드를 제작할 수 있습니다.
 
-
+<figure><img src="../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 
 #### 노트
 
 우측메뉴 디자인 프레임을 제작하고자 하는 대시보드의 해상도에 맞게 선택하여 시작할 수 있습니다.
-
-<figure><img src="../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -74,13 +72,13 @@ description: 대시보드 생성 및 편집을 위해 "대시보드빌더"에 �
 
 좌측메뉴는 레이어 트리와 에셋&컴포넌트를 전환하여 사용할 수 있도록 탭버튼 형식으로 구성되어 있습니다.
 
+<figure><img src="../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
+
 
 
 #### 노트
 
 기본적으로 제공되는 4가지 해상도를 선택하여 제작할 수 있지만 해상도 선택후 해당 해상도의 width, height 값을 직접 수정하여 변경할 수 있습니다.
-
-<figure><img src="../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
 
 #### 우측 메뉴 설명
 
@@ -229,15 +227,13 @@ description: 대시보드 생성 및 편집을 위해 "대시보드빌더"에 �
 
 프로젝트가 생성되었으면 이제 대시보드를 만들 수 있습니다. 가장 먼저 밑바탕의 역할을 하는 프레임을 생성해야합니다. 프레임은 우측 사이드 바에서 디자인 탭의 ‘대시보드 프레임’에서 원하는 해상도를 선택하여 캔버스 영역으로 드래그하거나, 캔버스에서 마우스 우클릭 하여 ‘대시보드 프레임 생성하기’ 메뉴를 통해 선택한 해상도로 프레임을 생성할 수 있습니다.
 
+<figure><img src="../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../.gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
 
 #### 노트
 
 현재 지원가능한 해상도는 4K(3840X2160), 2K(2560X1440), Full HD(1920X1080), HD(1280X720)입니다.
-
-<figure><img src="../.gitbook/assets/image (67).png" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
 
 
 
