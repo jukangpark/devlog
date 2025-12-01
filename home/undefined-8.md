@@ -123,13 +123,13 @@ description: 대시보드 생성 및 편집을 위해 "대시보드빌더"에 �
 
 
 
-<figure><img src="../.gitbook/assets/image (54).png" alt=""><figcaption><p>프로젝트 및 에셋 삭제</p></figcaption></figure>
+<div align="left"><figure><img src="../.gitbook/assets/image (54).png" alt=""><figcaption><p>프로젝트 및 에셋 삭제</p></figcaption></figure></div>
 
-<figure><img src="../.gitbook/assets/image (55).png" alt=""><figcaption><p>프로젝트 및 에셋 추가</p></figcaption></figure>
+<div align="left"><figure><img src="../.gitbook/assets/image (55).png" alt=""><figcaption><p>프로젝트 및 에셋 추가</p></figcaption></figure></div>
 
-<figure><img src="../.gitbook/assets/image (56).png" alt=""><figcaption><p>프로젝트 다운로드 ( 프로젝트 메뉴만 해당)</p></figcaption></figure>
+<div align="left"><figure><img src="../.gitbook/assets/image (56).png" alt=""><figcaption><p>프로젝트 다운로드 ( 프로젝트 메뉴만 해당)</p></figcaption></figure></div>
 
-<figure><img src="../.gitbook/assets/image (57).png" alt=""><figcaption><p>프로젝트 업로드 (프로젝트 메뉴만 해당)</p></figcaption></figure>
+<div align="left"><figure><img src="../.gitbook/assets/image (57).png" alt=""><figcaption><p>프로젝트 업로드 (프로젝트 메뉴만 해당)</p></figcaption></figure></div>
 
 
 
