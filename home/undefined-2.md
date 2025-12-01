@@ -7,7 +7,7 @@ coverY: 0
 
 # 테스트를 더 효율적으로 할 수 없을까?
 
-<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption><p>Builder R3 v1.0 기능 리스트</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (15) (1).png" alt=""><figcaption><p>Builder R3 v1.0 기능 리스트</p></figcaption></figure>
 
 
 
@@ -17,7 +17,7 @@ coverY: 0
 
 
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption><p>테스트 시나리오를 기반으로 테스트를 진행</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (16) (1).png" alt=""><figcaption><p>테스트 시나리오를 기반으로 테스트를 진행</p></figcaption></figure>
 
 
 

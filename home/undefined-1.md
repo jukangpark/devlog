@@ -14,7 +14,7 @@ coverY: 0
 툴이 너무 오래 되기도 하였고 회사에서 관련 기술 스택을 가진 개발자들을 채용하기가 애매하다는 판단하에\
 회사의 EMS 통합 신제품 POLESTAR 출시와 함께 Builder R3 도 출시하게 되었다.&#x20;
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption><p>기존에 존재하던 Builder R2</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12) (1).png" alt=""><figcaption><p>기존에 존재하던 Builder R2</p></figcaption></figure>
 
 팀의 KPI 를 달성하기 위해, 새로운 프로젝트의 UI 관리자가 나로 임명 되었고, (시작 당시에는 UI 가 나 혼자..)\
 필히 기간안에 프로젝트(Builder R3)를 완성 시켜야 하는 업무를 수행하게 되었다.\
@@ -31,7 +31,7 @@ coverY: 0
 다양한 사람들의 의견이 나오고 있어서, 이중에 어떤 기능들을 버전 1 로 가져갈지 결정해야할 사안을\
 당시 나와 같이 협업하기로 한 [선임 백엔드 개발자(김락현)](https://github.com/LakHyeonKim)와 함께 논의하기 시작했다.
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>기획을 바탕으로 나오게된 피그마 디자인</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11) (1).png" alt=""><figcaption><p>기획을 바탕으로 나오게된 피그마 디자인</p></figcaption></figure>
 
 빌더에서 가장 중요하게 생각했던 부분은 **사용자의 편의성**이다.\
 어떻게 해야 사용자들이 우리가 만든 소프트웨어를 편하게 사용할지에 대해 많은 고민을 하였다.<br>
