@@ -275,5 +275,15 @@ coverY: 0
 
 
 
+#### 대상 선택
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">1. 지표 선택</td><td valign="top">게이지 차트로 표시할 지표를 선택합니다. [추가] 버튼을 클릭하여 다중으로 추가가 가능합니다.</td></tr></tbody></table>
+
+
+
+#### 기본 설정
+
+<table data-header-hidden><thead><tr><th valign="top"></th><th valign="top"></th></tr></thead><tbody><tr><td valign="top">2. 위젯 타이틀</td><td valign="top">위젯 타이틀을 설정합니다.</td></tr><tr><td valign="top">3. 위젯 설명</td><td valign="top">위젯 설명을 설정합니다.</td></tr><tr><td valign="top">4. 레이아웃</td><td valign="top">게이지 차트 위젯을 표현할 레이아웃을 설정합니다. 원하는 곳을 클릭하면 해당 레이아웃으로 설정됩니다.</td></tr></tbody></table>
+
 
 
