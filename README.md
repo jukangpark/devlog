@@ -17,7 +17,9 @@ coverY: 0
 
 유튜브 : [https://www.youtube.com/channel/UCJoqs9hXVD2gdZusrhSRN9A](https://www.youtube.com/channel/UCJoqs9hXVD2gdZusrhSRN9A)
 
-인스타 그램 : [https://www.instagram.com/code\_king\_academy/](https://www.instagram.com/code\_king\_academy/)
+인스타 그램 : [https://www.instagram.com/code\_king\_academy/](https://www.instagram.com/code_king_academy/)
+
+[https://www.instagram.com/code\_king\_builder/](https://www.instagram.com/code_king_builder/)
 
 깃헙 : [https://github.com/jukangpark](https://github.com/jukangpark)
 
