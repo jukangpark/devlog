@@ -38,7 +38,7 @@ JWT 는 3가지의 부분으로 구성되어있다.
 
 이 세 부분은 각 Base64Url 로 인코딩되며, 점(.) 으로 구분된다.
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -112,7 +112,7 @@ HMACSHA256(
 
 
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 JWT 를 가지고 연습하려면 [jwt.io.Debbugger](https://jwt.io/#debugger-io) 를 decode, verify 그리고 JWT 를 생성할 때 사용하면 된다.
 
@@ -156,7 +156,7 @@ Authorization: Bearer <token>
 
 HTTP 헤더를 통해 JWT 토큰을 보내는 경우 너무 커지는 것을 방지해야 한다. 일부 서버는 헤더에 8KB 이상을 허용하지 않는다. 사용자의 모든 권한을 포함하는 것처럼 JWT 토큰에 너무 많은 정보를 포함하려고 하면 Auth0 Fine-Grained Authorization과 같은 대체 솔루션이 필요할 수 있다.
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption><p>인증 과정</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption><p>인증 과정</p></figcaption></figure>
 
 위와 같은 형태로 클라이언트에서 인증 구조를 구현하려고 했다. 그러면 여기서 잠깐 Access Token 과 Refresh Token 차이가 무엇일까?
 
@@ -405,7 +405,7 @@ export const errorList =
 
 전체적인 로직의 흐름에 대해 설명을 먼저 하고, 위의 코드를 리팩토링 할 예정이다. 코드를 리팩토링 할 때 테스트 코드를 작성해서 각 코드에 대하여 원하는 결과값들을 먼저 구현해놓고 기존의 동작은 변경시키지 않는 선에서 모듈 분리와 리팩토링할 예정이다. 과거 코드는 js 로 되어있었지만, ts 로 마이그레이션 하게 되면서 전체적인 리팩토링도 해주기로 했었다.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>엑세스토큰 만료시 로그아웃되지않고, 엑세스토큰 재발행 이후 재요청</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>엑세스토큰 만료시 로그아웃되지않고, 엑세스토큰 재발행 이후 재요청</p></figcaption></figure>
 
 ### 기존의 코드 로직 흐름 & 우리가 원하는 결과값
 

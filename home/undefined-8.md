@@ -245,3 +245,95 @@ description: 대시보드 생성 및 편집을 위해 "대시보드빌더"에 �
 
 
 
+#### 텍스트
+
+텍스트 레이어는 대시보드에서 주로 각 지표의 타이틀을 구성하는데 쓰이며, 폰트, 크기, 정렬 등 여러 가지 속성을 통해 원하는 스타일로 작성할 수 있습니다.
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+#### 도형
+
+도형 레이어는 대시보드에서 다양한 용도로 쓰일 수 있으며, 사각형, 원, 세모 중에서 선택할 수 있습니다. (현재는 사각형 레이어만 지원) 단위입니다.
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+#### 노트
+
+사각형 레이어는 최초 100X100 사이즈로 생성되며, 내부는 랜덤 색상으로 채워집니다.
+
+
+
+#### 에셋&컴포넌트
+
+텍스트와 도형을 제외한 나머지는 ‘에셋&컴포넌트’에서 찾을 수 있습니다. ‘컴포넌트’에서는 데이터소스가 맵핑된 종류별 차트를 만들 수 있고, ‘이미지’, ‘동영상’을 통해 외부에서 이미지 파일 및 동영상도 삽입할 수 있습니다.
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+#### 노트
+
+생성할 수 있는 컴포넌트의 종류로는 차트, 데이터, 3D, 기타, 모션차트, 링크 가 있으며, 각각 여러 형태를 지원합니다. 좌측 메뉴에서 드래그 또는 마우스 우클릭으로 컴포넌트를 생성합니다.
+
+
+
+#### 차트
+
+바, 라인, 영역, 스케터, 파이, 헥사곤, 스택, 게이지 등 다양한 차트를 제공합니다.
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 데이터
+
+그리드, 데이터 텍스트, 데이터 이미지, 범례, 타임라인, 타임 등 데이터 관련 컴포넌트를 제공합니다.
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 기타
+
+코딩을 통해 커스텀하기 쉽도록 리액트 노드 컴포넌트를 제공합니다.
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 모션차트
+
+대시보드에서 주요 서비스 그룹의 상태를 애니메이션 효과를 주어 표현하기 위해 많이 사용하는 컴포넌트 입니다. 아래와 같이 서클 모양을 이루며 특정 방향과 주기를 가지고 회전하는 효과를 줍니다.
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+
+
+#### 노트
+
+배경 이미지, 캐러셀 요소 이미지, 캐러셀 요소 임계치 이미지를 통해 표현할 수 있습니다.
+
+
+
+#### 링크
+
+전환할 대상의 설정 값(노드 아이디)을 통해 화면전환을 제공합니다.
+
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
+#### 노트
+
+링크 컴포넌트는 링크탭, 링크탭 토글 스위치 두개의 컴포넌트를 제공하며 대시보드 성격에 맞게 선택하시면 됩니다.
+
+
+
+#### 링크 컴포넌트 설명
+
+1. 링크탭 : 2개 이상의 메뉴를 통해 링크 버튼을 만들 때 주로 사용합니다.
+2. 링크 탭 토글 스위치 : 토글 스위치 형식의 탭 전환이 필요할 때 주로 사용합니다.
+
+
+
+#### 이미지
+
+좌측 메뉴의 이미지 모음에서 사용할 이미지를 캔버스로 드래그 하여 사용합니다.
+
+<figure><img src="../.gitbook/assets/image (71).png" alt=""><figcaption></figcaption></figure>
